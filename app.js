@@ -1,25 +1,31 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.132.2";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls.js";
-// import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/loaders/GLTFLoader.js";
 
 // Global variables
-let scene, camera, renderer, controls, clickMouse, moveMouse, raycaster;
-let draggableObject;
+let scene,
+  camera,
+  renderer,
+  controls,
+  clickMouse,
+  moveMouse,
+  raycaster,
+  draggableModel;
 
 // Create Scene and lights
 function init() {
   // SCENE
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xBE95C4);
+  scene.background = new THREE.Color(0x073B4C);
 
   // CAMERA
   camera = new THREE.PerspectiveCamera(
-    50,
+    70,
     window.innerWidth / window.innerHeight,
     0.1,
     5000
   );
-  camera.position.set(-80, 100, 200);
+  camera.position.set(200, 100, 0);
 
   // RENDERER
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -30,87 +36,82 @@ function init() {
 
   // CAMERA MOVEMENT CONTROLS
   controls = new OrbitControls(camera, renderer.domElement);
-  controls.target.set(0, 60, 0);
-  controls.enableDamping = false;
+  controls.target.set(0, 0, 0);
+  controls.enableDamping = true;
   controls.update();
 
   // LIGHTS
-  let ambientLight = new THREE.AmbientLight(0xE0B1CB, 0.3);
-  let directionalLight = new THREE.DirectionalLight(0xE0B1CB, 1);
+  let ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+  let directionalLight = new THREE.DirectionalLight(0xffffff, 1);
   directionalLight.position.set(-30, 50, 150);
   scene.add(ambientLight);
   scene.add(directionalLight);
 
-  // RAYCASTING (mouse functionality)
+// RAYCASTING (funcionalidade do mouse)
   raycaster = new THREE.Raycaster();
   clickMouse = new THREE.Vector2();
   moveMouse = new THREE.Vector2();
 
-  // FLOOR
+  // CHÃO
   let floor = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(2000, 3, 2000),
-    new THREE.MeshPhongMaterial({ color: 0x231942 })
+    new THREE.BoxBufferGeometry(250, 5, 250),
+    new THREE.MeshPhongMaterial({ color: 0x118AB2 })
   );
   floor.isDraggable = false;
   scene.add(floor);
 }
 
-// Recursive function to render the scene
-function animate() {
-  controls.update();
-  renderer.render(scene, camera);
-  requestAnimationFrame(animate);
+/**
+ *Adiciona um simples à cena
+ *
+ * @param {string} dir Nome da pasta que contém o arquivo .gltf.
+ * @param {Object} pos objeto contendo dados de posição { x: number, y: number, z: number }
+ */
+function addModelSaturnV(pos) {
+  const loader = new GLTFLoader();
+  loader.load(`assets/saturnV/scene.gltf`, (gltf) => {
+    const model = gltf.scene;
+    model.position.set(pos.x, pos.y, pos.z);
+    model.isDraggable = true;
+    scene.add(model);
+  });
 }
 
-// Re-renders the scene upon window resize
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+function addModelSakurajimaMai(pos) {
+  const loader = new GLTFLoader();
+  loader.load(`assets/SakurajimaMai/scene.gltf`, (gltf) => {
+    const model = gltf.scene;
+    model.position.set(pos.x, pos.y, pos.z);
+    model.isDraggable = true;
+    scene.add(model);
+  });
 }
 
-function addObject(radius, pos, color) {
-  const object = new THREE.Mesh(
-    new THREE.CylinderBufferGeometry(radius, radius, 10, 50),
-    new THREE.MeshPhongMaterial({ color: color })
-  );
-  object.position.set(pos.x, pos.y, pos.z);
-  object.isDraggable = true;
-  scene.add(object);
+function addModelMoon(pos) {
+  const loader = new GLTFLoader();
+  loader.load(`assets/lunalow1/scene.gltf`, (gltf) => {
+    const model = gltf.scene;
+    model.position.set(pos.x, pos.y, pos.z);
+    model.isDraggable = true;
+    scene.add(model);
+  });
 }
 
-window.addEventListener("click", (event) => {
-  // If 'holding' object on-click, set container to <undefined> to 'drop’ the object.
-  if (draggableObject) {
-    draggableObject = undefined;
-    return;
-  }
-
-  // If NOT 'holding' object on-click, set container to <object> to 'pick up' the object.
-  clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  raycaster.setFromCamera(clickMouse, camera);
-  const found = raycaster.intersectObjects(scene.children, true);
-  if (found.length && found[0].object.isDraggable) {
-    draggableObject = found[0].object;
-  }
-});
-
-window.addEventListener("mousemove", (event) => {
-  moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-});
-
-function dragObject() {
-  // If 'holding' an object, move the object
-  if (draggableObject) {
+/**
+  * Verifica se o usuário está 'segurando' e modelo.
+  * Se verdadeiro, a função atualiza a localização do modelo com base na posição do mouse
+  * Se falso, a função não faz nada
+  */
+function dragModel() {
+// Se 'segurar' um modelo, mova o modelo  
+if (draggableModel) {
+    raycaster.setFromCamera(moveMouse, camera);
     const found = raycaster.intersectObjects(scene.children);
-    // `found` is the metadata of the objects, not the objetcs themsevles
-    if (found.length) {
+    if (found.length > 0) {
       for (let obj3d of found) {
         if (!obj3d.object.isDraggablee) {
-          draggableObject.position.x = obj3d.point.x;
-          draggableObject.position.z = obj3d.point.z;
+          draggableModel.position.x = obj3d.point.x;
+          draggableModel.position.z = obj3d.point.z;
           break;
         }
       }
@@ -118,16 +119,59 @@ function dragObject() {
   }
 }
 
+// Permite que o usuário pegue e solte modelos em eventos de clique
+window.addEventListener("click", (event) => {
+// Se 'segurar' o modelo ao clicar, defina o contêiner como <indefinido> para 'soltar' o modelo.  
+if (draggableModel) {
+    draggableModel = undefined;
+    return;
+  }
+
+// Se NÃO 'segurar' o modelo ao clicar, defina o contêiner como <object> para 'pegar' o modelo.  
+  clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(clickMouse, camera);
+  const found = raycaster.intersectObjects(scene.children, true);
+  if (found.length) {
+    // Percorre cada pai para cima até atingir a camada superior
+     // Esta camada superior é o grupo criado pela função GLTFLoader
+    let current = found[0].object;
+    while (current.parent.parent !== null) {
+      current = current.parent;
+    }
+    if (current.isDraggable) {
+      draggableModel = current;
+    }
+  }
+});
+
+// Atualiza constantemente a localização do mouse para uso em `dragModel()`
 window.addEventListener("mousemove", (event) => {
-  dragObject();
+  dragModel(); // atualiza a posição do modelo toda vez que o mouse se move
   moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 });
 
-// Start the program
+// Função recursiva para renderizar a cena
+function animate() {
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+
+// Re-renderiza a cena ao redimensionar a janela
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+// Iniciar o programa
 (function () {
   window.addEventListener("resize", onWindowResize, false);
   init();
+  // addModelSaturnV({ x: -50, y: 1, z: 0 });
+  // addModelMoon({ x: 0, y: 1, z: 0 });
+  addModelSakurajimaMai({ x: 50, y: 1, z: 0 });
   animate();
-  addObject(8, { x: 0, y: 6, z: 0 }, "#5E548E");
 })();

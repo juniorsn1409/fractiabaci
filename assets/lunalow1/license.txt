@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lunalow1
+* source:	https://sketchfab.com/3d-models/lunalow1-0825c0184aa94b5c9e3da10955d9b17d
+* author:	Nol22 (https://sketchfab.com/manoloescobedo22)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lunalow1" (https://sketchfab.com/3d-models/lunalow1-0825c0184aa94b5c9e3da10955d9b17d) by Nol22 (https://sketchfab.com/manoloescobedo22) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

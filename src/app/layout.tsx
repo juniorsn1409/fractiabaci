@@ -2,14 +2,13 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
-
 const font = Poppins({
   weight: '500',
   subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
-  title: 'Fracti Abacus',
+  title: 'Fracti Abacus | Ábaco de Papel',
   description: 'Ábaco de Papel',
 }
 

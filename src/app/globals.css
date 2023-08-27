@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.casa-decimal {
+  width: 30%;
+  height: 100vh; /* 100% da altura da viewport */
+}
+
+.unidade {
+  background-color: #FF0000;
+}
+
+.dezena {
+  background-color: #183EFF;
+}
+
+.centena {
+  background-color: #FFD000;
+}
+
+.milhar {
+  background-color: #00D000;
+}
+
+
+@keyframes gather {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, -50%);
+  }
+}
+
+.animate-gather {
+  animation: gather 5s ease-out forwards;
+}

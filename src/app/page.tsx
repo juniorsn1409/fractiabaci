@@ -1,14 +1,24 @@
-"use client";
+'use client'
 
-import Artefato from "@/components/Artefato";
-// import CasaDecimal from "@/components/CasaDecimal";
+import Header from '@/components/Header';
+import Main from '@/components/Main';
+import { styled } from 'styled-components';
 
-export default function Home() {
+const Background = styled.div`
+  /* height: 703px; */
+  background-color: var(--braco-isabeline);
+  width: 100%;
+  min-width: 600;
+  min-height: 100vh;
+`
+
+export default function App() {
   return (
-    <div  className="container pai" >
-      {/* <CasaDecimal unidadeColor="red" dezenaColor="blue" centenaColor="green" /> */}
-      <Artefato></Artefato>
-      
-    </div>
-  );
+    <Background>
+      <Header />
+      <Main>
+
+      </Main>
+    </Background>
+  )
 }

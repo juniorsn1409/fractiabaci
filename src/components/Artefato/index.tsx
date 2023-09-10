@@ -1,57 +1,50 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useDragControls } from 'framer-motion';
+import React, { useRef } from 'react';
+import { styled } from 'styled-components';
+
+
 
 interface ArtefatoProps {
-  color?: string;
 }
 
-export default function Artefato({ color = "#CF4D6F" }: ArtefatoProps) {
-  const circleSize = 50;
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+const AreaLimite = styled.div`
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+`
+const Logo = styled.h1`
+`
 
-  useEffect(() => {
-    // Atualizar o tamanho da janela quando a janela for redimensionada
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
+export default function Artefato({ }: ArtefatoProps) {
+  const size = 75;
+  const controls = useDragControls();
+  const ref = useRef(null);
 
-    window.addEventListener("resize", handleResize);
-
-    // Remover o ouvinte de redimensionamento quando o componente for desmontado
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  function startDrag(event: React.PointerEvent) {
+    controls.start(event, { snapToCursor: true });
+    console.log("event: " + event);
+  }
 
   return (
-    <div style={{ overflow: "hidden" }}>
-      {/* Adicione overflow: hidden ao elemento pai */}
+    <AreaLimite ref={ref}>
+      <div onPointerDown={startDrag} style={{ touchAction: "none" }} ></div>
       <motion.div
-        style={{
-          width: `${circleSize}px`,
-          height: `${circleSize}px`,
-          borderRadius: "50%",
-          opacity: 0.75,
-          backgroundColor: `${color}`,
-          transition: "width 0.2s, height 0.2s",
-          position: "absolute",
-        }}
-        whileHover={{ scale: 1.1 }}
         drag
-        dragConstraints={{
-          top: circleSize * 2,
-          left: circleSize * 2,
-          right: windowSize.width - circleSize * 2,
-          bottom: windowSize.height - circleSize * 2,
+        dragConstraints={ref}
+        dragElastic={0.90}
+        dragListener={true}
+        dragControls={controls}
+        style={{
+          zIndex: 99,
+          width: `${size}px`,
+          height: `${size}px`,
+          borderRadius: "50%",
+          backgroundColor: "#ff0066",
         }}
-        dragElastic={0.2}
+        onMeasureDragConstraints={console.log}
       />
-    </div>
+    </AreaLimite>
   );
 }
+
+

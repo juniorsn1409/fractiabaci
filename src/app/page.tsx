@@ -1,13 +1,14 @@
 "use client";
 
-import { Casa } from "@/components/Casa";
+import Artefato from "@/components/Artefato";
+// import CasaDecimal from "@/components/CasaDecimal";
 
 export default function Home() {
   return (
-    <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
-
-      <Casa color="#3C3C3C" textColor="#FFFFFF"></Casa>
-     
+    <div  className="container pai" >
+      {/* <CasaDecimal unidadeColor="red" dezenaColor="blue" centenaColor="green" /> */}
+      <Artefato></Artefato>
+      
     </div>
   );
 }

@@ -1,7 +1,7 @@
+// Artefato.js
+
 import { motion, useDragControls } from 'framer-motion';
 import React from 'react';
-
-
 
 interface ArtefatoProps {
   refExterna: React.RefObject<HTMLDivElement>;
@@ -18,30 +18,24 @@ export default function Artefato({ refExterna }: ArtefatoProps) {
 
   return (
     <>
-      <div onPointerDown={startDrag} style={{ touchAction: "none" }} ></div>
+      <div onPointerDown={startDrag} style={{ position: "absolute", touchAction: "none" }} ></div>
       <motion.div
         drag
         dragConstraints={refExterna}
-        dragElastic={0.90}
+        dragElastic={0.85}
         dragListener={true}
         dragControls={controls}
-        onDrag={
-          (event, info) => console.log(info.point.x, info.point.y)
-        }
-        onDragEnd={
-          (event, info) => console.log(info.point.x, info.point.y)
-        }
+        onDrag={(event, info) => console.log(info.point.x, info.point.y)}
+        onDragEnd={(event, info) => console.log(info.point.x, info.point.y)}
         style={{
           zIndex: 1,
           width: `${size}px`,
           height: `${size}px`,
           borderRadius: "50%",
-          backgroundColor: "#ff0066",
+          backgroundColor: "var(--azul-atlatico)",
         }}
         onMeasureDragConstraints={console.log}
       />
     </>
   );
 }
-
-

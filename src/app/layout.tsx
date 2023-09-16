@@ -1,7 +1,11 @@
 import type { Metadata } from 'next'
+
 import { Poppins } from 'next/font/google'
 import { ReactNode } from 'react'
-import './globals.css'
+
+import StyledJsxRegistry from './registry'
+
+import './../../public/globals.css'
 
 const font = Poppins({
   weight: '500',
@@ -9,14 +13,18 @@ const font = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Fracti Abacus',
+  title: 'Fracti Abacus | Ábaco de Papel',
   description: 'Ábaco de Papel',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-br" className="h-full">
-      <body className={font.className + '·h-full'}>{children}</body>
+    <html lang="pt-br">
+      <body className={font.className}>
+        <StyledJsxRegistry>
+          {children}
+        </StyledJsxRegistry>
+      </body>
     </html>
   )
 }

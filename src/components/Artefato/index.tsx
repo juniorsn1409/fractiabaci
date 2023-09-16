@@ -1,24 +1,15 @@
 import { motion, useDragControls } from 'framer-motion';
-import React, { useRef } from 'react';
-import { styled } from 'styled-components';
+import React from 'react';
 
 
 
 interface ArtefatoProps {
+  refExterna: React.RefObject<HTMLDivElement>;
 }
 
-const AreaLimite = styled.div`
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-`
-const Logo = styled.h1`
-`
-
-export default function Artefato({ }: ArtefatoProps) {
-  const size = 75;
+export default function Artefato({ refExterna }: ArtefatoProps) {
+  const size = 50;
   const controls = useDragControls();
-  const ref = useRef(null);
 
   function startDrag(event: React.PointerEvent) {
     controls.start(event, { snapToCursor: true });
@@ -26,16 +17,22 @@ export default function Artefato({ }: ArtefatoProps) {
   }
 
   return (
-    <AreaLimite ref={ref}>
+    <>
       <div onPointerDown={startDrag} style={{ touchAction: "none" }} ></div>
       <motion.div
         drag
-        dragConstraints={ref}
+        dragConstraints={refExterna}
         dragElastic={0.90}
         dragListener={true}
         dragControls={controls}
+        onDrag={
+          (event, info) => console.log(info.point.x, info.point.y)
+        }
+        onDragEnd={
+          (event, info) => console.log(info.point.x, info.point.y)
+        }
         style={{
-          zIndex: 99,
+          zIndex: 1,
           width: `${size}px`,
           height: `${size}px`,
           borderRadius: "50%",
@@ -43,7 +40,7 @@ export default function Artefato({ }: ArtefatoProps) {
         }}
         onMeasureDragConstraints={console.log}
       />
-    </AreaLimite>
+    </>
   );
 }
 

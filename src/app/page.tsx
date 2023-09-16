@@ -16,9 +16,7 @@ export default function App() {
   return (
     <Background>
       <Header />
-      <Main>
-
-      </Main>
+      <Main />
     </Background>
   )
 }

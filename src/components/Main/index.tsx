@@ -20,25 +20,37 @@ const MainContent = styled.main`
 
 export default function Main() {
   const mainContentRef = useRef(null);
+  const [artefatos, setArtefatos] = useState<string[]>([]); // Defina o tipo como string[]
+  const [qtdArtefato, setQtdArtefato] = useState(0);
 
-  const [artefatos, setArtefatos] = useState<JSX.Element[]>([]);
   const adicionarArtefato = () => {
-    // Gerar um ID único para o novo artefato
     const novoArtefatoId = Date.now().toString();
+    setArtefatos([...artefatos, novoArtefatoId]);
+  };
 
-    // Criar um novo elemento Artefato com a chave definida como o ID único
-    const novoArtefato = <Artefato key={novoArtefatoId} refExterna={mainContentRef} />;
+  const aumentarNumero = () => {
+    setQtdArtefato(qtdArtefato + 1);
+  };
 
-    // Adicionar o novo elemento à lista de artefatos
-    setArtefatos([...artefatos, novoArtefato]);
+  const diminuirNumero = () => {
+    setQtdArtefato(qtdArtefato - 1);
   };
 
   return (
     <MainContent ref={mainContentRef}>
-      <CasaDecimal texto={"unidade"} numero={"0"} />
-      {artefatos.map((artefato) => (
-        <div key={artefato.key}>{artefato}</div>
+      {/* <CasaDecimal tipo='centena' artefatos={qtdArtefato} />
+      <CasaDecimal tipo='dezena' artefatos={qtdArtefato} /> */}
+      <CasaDecimal tipo='unidade' artefatos={qtdArtefato} />
+
+      {artefatos.map((artefatoId) => (
+        <Artefato
+          key={artefatoId}
+          refExterna={mainContentRef}
+          setQtdArtefato={setQtdArtefato}
+          qtdArtefato={qtdArtefato}
+        />
       ))}
+
       <button onClick={adicionarArtefato}>Adicionar Artefato</button>
     </MainContent>
   );

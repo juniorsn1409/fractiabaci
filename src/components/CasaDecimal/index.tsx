@@ -7,8 +7,8 @@ interface CasaDecimalProps {
 }
 
 const Casa = styled.div`
-  width: 50%;
-  height: 90%;
+  width: 30%;
+  height: 70%;
   margin: auto;
   border-radius: 8px;
   transition: background-color 0.3s;

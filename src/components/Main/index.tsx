@@ -18,28 +18,27 @@ const MainContent = styled.main`
   position: relative;
 `;
 
-// Novo contêiner para os Artefatos com posicionamento absoluto
-const ArtefatosContainer = styled.div`
-  position: absolute;
-`;
-
 export default function Main() {
   const mainContentRef = useRef(null);
 
   const [artefatos, setArtefatos] = useState<JSX.Element[]>([]);
   const adicionarArtefato = () => {
-    setArtefatos([...artefatos, <Artefato refExterna={mainContentRef} />]);
+    // Gerar um ID único para o novo artefato
+    const novoArtefatoId = Date.now().toString();
+
+    // Criar um novo elemento Artefato com a chave definida como o ID único
+    const novoArtefato = <Artefato key={novoArtefatoId} refExterna={mainContentRef} />;
+
+    // Adicionar o novo elemento à lista de artefatos
+    setArtefatos([...artefatos, novoArtefato]);
   };
 
   return (
     <MainContent ref={mainContentRef}>
-      <CasaDecimal texto={"unidade"} numero={"9"} />
-      {/* Renderize os Artefatos dentro do novo contêiner */}
-      <ArtefatosContainer>
-        {artefatos.map((artefato, index) => (
-          <div key={index}>{artefato}</div>
-        ))}
-      </ArtefatosContainer>
+      <CasaDecimal texto={"unidade"} numero={"0"} />
+      {artefatos.map((artefato) => (
+        <div key={artefato.key}>{artefato}</div>
+      ))}
       <button onClick={adicionarArtefato}>Adicionar Artefato</button>
     </MainContent>
   );

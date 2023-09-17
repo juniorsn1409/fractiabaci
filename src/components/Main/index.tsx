@@ -35,7 +35,7 @@ export default function Main() {
 
   return (
     <MainContent ref={mainContentRef}>
-      <CasaDecimal texto={"unidade"} numero={"9"} />
+      <CasaDecimal texto={"unidade"} numero={"0"} />
       {artefatos.map((artefato) => (
         <div key={artefato.key}>{artefato}</div>
       ))}

@@ -29,12 +29,15 @@ export default function Main() {
     // Criar um novo elemento Artefato com a chave definida como o ID único
     const novoArtefato = <Artefato key={novoArtefatoId} refExterna={mainContentRef} />;
 
+    const novaListaArtefatos = [novoArtefato, ...artefatos]
     // Adicionar o novo elemento à lista de artefatos
-    setArtefatos([...artefatos, novoArtefato]);
+    setArtefatos(novaListaArtefatos);
   };
 
   return (
     <MainContent ref={mainContentRef}>
+      <CasaDecimal texto={"centena"} numero={"0"} />
+      <CasaDecimal texto={"dezena"} numero={"0"} />
       <CasaDecimal texto={"unidade"} numero={"0"} />
       {artefatos.map((artefato) => (
         <div key={artefato.key}>{artefato}</div>

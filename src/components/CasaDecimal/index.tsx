@@ -38,10 +38,22 @@ export default function CasaDecimal({ texto, numero }: CasaDecimalProps) {
     setNumeroExibido(numero);
   }, [numero]);
 
+  const handleDragOver = (event: { preventDefault: () => void; }) => {
+    event.preventDefault(); // Impede o comportamento padrão (não permite que o elemento seja solto aqui)
+    // Adicione estilos ou feedback visual aqui, se necessário
+  };
+  const handleDrop = (event: { preventDefault: () => void; }) => {
+    event.preventDefault(); // Impede o comportamento padrão
+    // Aqui você pode acessar o elemento que foi solto usando event.dataTransfer
+    // Atualize o estado ou execute a lógica necessária com base no elemento solto
+    // Por exemplo, você pode extrair informações do elemento solto e atualizar 'numeroExibido'
+  };
+
   return (
-    <Casa>
+    <Casa onDragOver={handleDragOver} onDrop={handleDrop}>
       <Numero>{numeroExibido}</Numero>
       <Titulo>{texto}</Titulo>
     </Casa>
+
   );
 }

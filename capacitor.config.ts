@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.example.app',
-  appName: 'web-app',
+  appName: 'fracti-abacus',
   webDir: 'out',
   server: {
     androidScheme: 'https'

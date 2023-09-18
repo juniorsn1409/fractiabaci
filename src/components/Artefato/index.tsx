@@ -1,88 +1,70 @@
 import { motion, useDragControls } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ArtefatoProps {
-  qtdArtefato: number; // Alterado para o tipo 'number'
+  qtdArtefato: number;
   refExterna: React.RefObject<HTMLDivElement>;
   setQtdArtefato: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export default function Artefato({ refExterna, qtdArtefato, setQtdArtefato }: ArtefatoProps) {
+const Artefato = ({ refExterna, qtdArtefato, setQtdArtefato }: ArtefatoProps) => {
   const size = 50;
-  var isInCasaDecimal: boolean = false;
-  var beforeIsInCasaDecimal: boolean = false
   const controls = useDragControls();
+  const [isIn, setIsIn] = useState(false);
 
   function startDrag(event: React.PointerEvent) {
     controls.start(event, { snapToCursor: true });
-    console.log("event: " + event);
   }
 
-  const handlerDragEnd = (info: any) => {
-    console.log("[dragEnd] verificando se info existe: ")
-    console.log("info: " + info)
-    console.log("info.point: " + info.point)
-    if (info && info.point) {
+  const handleDragEnd = (info: any) => {
+    const checkIfInside = (info: any) => {
       const casaDecimal = document.getElementById('casaDecimal');
-      console.log("[dragEnd] info existe!");
-      console.log("[dragEnd] se casaDecimal existe: " + casaDecimal)
       if (casaDecimal) {
-        console.log("[dragEnd] casaDecimal existe!")
         const casaDecimalRect = casaDecimal.getBoundingClientRect();
-        console.log("[dragEnd]  verificando se estamos dentro!")
-        if (
+        return (
           info.point.x >= casaDecimalRect.left &&
           info.point.x <= casaDecimalRect.right &&
           info.point.y >= casaDecimalRect.top &&
           info.point.y <= casaDecimalRect.bottom
-        ) {
-          console.log("[dragEnd] estamos dentro!")
-          beforeIsInCasaDecimal = isInCasaDecimal
-          isInCasaDecimal = true
-        } else {
-          console.log("[dragEnd] estamos fora!")
-          beforeIsInCasaDecimal = isInCasaDecimal
-          isInCasaDecimal = false
-        }
-
-        console.log("[dragEnd][Verificação]")
-        console.log("beforeIsInCasaDecimal: " + beforeIsInCasaDecimal)
-        console.log("isInCasaDecimal: " + isInCasaDecimal)
-
-        verificandoCondicaoParaArtefato(beforeIsInCasaDecimal, isInCasaDecimal);
-        setQtdArtefato(qtdArtefato + 1)
+        );
       }
+      return false;
+    };
+
+    const isInside = checkIfInside(info);
+
+    console.log(isInside ? "[DragEnd] Estou Dentro" : "[DragEnd] Estou Fora");
+
+    if (isInside && !isIn && qtdArtefato < 9) {
+      setIsIn(true);
+      setQtdArtefato(qtdArtefato + 1);
+    } else if (!isInside && isIn) {
+      setIsIn(false);
+      setQtdArtefato(qtdArtefato - 1);
     }
   };
 
-  const verificandoCondicaoParaArtefato = (before: boolean, actual: boolean) => {
-
-  }
-
   return (
-    <>
-      <motion.div
-        drag
-        onPointerDown={startDrag}
-        dragConstraints={refExterna}
-        dragElastic={0.85}
-        dragListener={true}
-        dragControls={controls}
-        // onDragEnd={handlerDragEnd(event, info)}
-        onDrag={(event, info) => console.log(info.point.x, info.point.y)}
-        onDragEnd={(event, info) => {
-          handlerDragEnd(info)
-          console.log(info.point.x, info.point.y);
-        }}
-        style={{
-          touchAction: 'none',
-          zIndex: 1,
-          width: `${size}px`,
-          height: `${size}px`,
-          borderRadius: "50%",
-          backgroundColor: "var(--azul-atlatico)",
-        }}
-      />
-    </>
+    <motion.div
+      drag
+      onPointerDown={startDrag}
+      dragConstraints={refExterna}
+      dragElastic={0.85}
+      dragListener={true}
+      dragControls={controls}
+      onDragEnd={(event, info) => {
+        handleDragEnd(info);
+      }}
+      style={{
+        touchAction: 'none',
+        zIndex: 1,
+        width: `${size}px`,
+        height: `${size}px`,
+        borderRadius: '50%',
+        backgroundColor: 'var(--azul-atlatico)',
+      }}
+    />
   );
 }
+
+export default Artefato;

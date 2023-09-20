@@ -21,37 +21,34 @@ const MainContent = styled.main`
 export default function Main() {
   const mainContentRef = useRef(null);
   const [artefatos, setArtefatos] = useState<string[]>([]); // Defina o tipo como string[]
-  const [qtdArtefato, setQtdArtefato] = useState(0);
+
+  const [qtdUnidade, setQtdUnidade] = useState(0);
+  const [qtdDezena, setQtdDezena] = useState(0);
+  const [qtdCentena, setQtdCentena] = useState(0);
 
   const adicionarArtefato = () => {
     const novoArtefatoId = Date.now().toString();
     setArtefatos([...artefatos, novoArtefatoId]);
   };
 
-  const aumentarNumero = () => {
-    setQtdArtefato(qtdArtefato + 1);
-  };
-
-  const diminuirNumero = () => {
-    setQtdArtefato(qtdArtefato - 1);
-  };
-
   return (
-    <MainContent ref={mainContentRef}>
-      {/* <CasaDecimal tipo='centena' artefatos={qtdArtefato} />
-      <CasaDecimal tipo='dezena' artefatos={qtdArtefato} /> */}
-      <CasaDecimal tipo='unidade' artefatos={qtdArtefato} />
+    <>
+      <MainContent ref={mainContentRef}>
+        <CasaDecimal tipo='centena' artefatos={qtdCentena} />
+        <CasaDecimal tipo='dezena' artefatos={qtdDezena} />
+        <CasaDecimal tipo='unidade' artefatos={qtdUnidade} />
 
-      {artefatos.map((artefatoId) => (
-        <Artefato
-          key={artefatoId}
-          refExterna={mainContentRef}
-          setQtdArtefato={setQtdArtefato}
-          qtdArtefato={qtdArtefato}
-        />
-      ))}
-
+        {artefatos.map((artefatoId) => (
+          <Artefato
+            key={artefatoId}
+            tipo={'unidade'}
+            refExterna={mainContentRef}
+            setQtdArtefato={setQtdUnidade}
+            qtdArtefato={qtdUnidade}
+          />
+        ))}
+      </MainContent>
       <button onClick={adicionarArtefato}>Adicionar Artefato</button>
-    </MainContent>
+    </>
   );
 }

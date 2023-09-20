@@ -2,12 +2,13 @@ import { motion, useDragControls } from 'framer-motion';
 import React, { useState } from 'react';
 
 interface ArtefatoProps {
+  tipo: String;
   qtdArtefato: number;
   refExterna: React.RefObject<HTMLDivElement>;
   setQtdArtefato: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Artefato = ({ refExterna, qtdArtefato, setQtdArtefato }: ArtefatoProps) => {
+const Artefato = ({ tipo, refExterna, qtdArtefato, setQtdArtefato }: ArtefatoProps) => {
   const size = 50;
   const controls = useDragControls();
   const [isIn, setIsIn] = useState(false);
@@ -18,7 +19,7 @@ const Artefato = ({ refExterna, qtdArtefato, setQtdArtefato }: ArtefatoProps) =>
 
   const handleDragEnd = (info: any) => {
     const checkIfInside = (info: any) => {
-      const casaDecimal = document.getElementById('casaDecimal');
+      const casaDecimal = document.getElementById(`${tipo}`);
       if (casaDecimal) {
         const casaDecimalRect = casaDecimal.getBoundingClientRect();
         return (
@@ -49,7 +50,7 @@ const Artefato = ({ refExterna, qtdArtefato, setQtdArtefato }: ArtefatoProps) =>
       drag
       onPointerDown={startDrag}
       dragConstraints={refExterna}
-      dragElastic={0.85}
+      dragElastic={0.0}
       dragListener={true}
       dragControls={controls}
       onDragEnd={(event, info) => {

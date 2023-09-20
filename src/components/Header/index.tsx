@@ -1,7 +1,5 @@
 'use client'
 
-import { FiMoon, FiSettings } from 'react-icons/fi'
-import { RiTranslate2 } from 'react-icons/ri'
 import styled from 'styled-components'
 
 const HeaderContainer = styled.div`
@@ -93,14 +91,14 @@ export default function Header() {
       </Logo>
       <HeaderMenu>
         <a href="/" className="activate">Ábaco de Papel</a>
-        <a href="/ArtigoCientifico">Artigo Cientifico</a>
+        {/* <a href="/ArtigoCientifico">Artigo Cientifico</a> */}
         <a href="/Contato">Contato</a>
       </HeaderMenu>
-      <UserSettings>
+      {/* <UserSettings>
         <FiMoon className="icon" />
         <RiTranslate2 className="icon" />
         <FiSettings className="icon">Configuração</FiSettings>
-      </UserSettings>
+      </UserSettings> */}
     </HeaderContainer>
   );
 }

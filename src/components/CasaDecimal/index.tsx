@@ -18,9 +18,9 @@ const Titulo = styled.span`
 export default function CasaDecimal({ tipo, artefatos }: CasaDecimalProps) {
   return (
     <motion.div
-      id='casaDecimal' // Atualizado para 'casaDecimal'
+      id={tipo} // Atualizado para 'tipo'
       style={{
-        width: '25%',
+        width: '30%',
         height: '70%',
         margin: 'auto',
         borderRadius: '8px',

@@ -27,7 +27,7 @@ const Artefato = ({
         return 'var(--azul-atlatico)'
         break
       case 'centena':
-        return 'var(--amarelo-ipe)'
+        return 'var(--amarelo-sol)'
         break
       default:
         return 'var(--cinza-harpia)'

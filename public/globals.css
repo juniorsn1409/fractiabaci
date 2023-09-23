@@ -153,7 +153,7 @@ table {
   width: 100%;
   min-width: 100vh;
   min-height: 100vh;
-  background-color: var(--cinza-harpia)
+  background-color: var(--braco-isabelinea)
 }
 
 #mainBackground {
@@ -233,9 +233,9 @@ userSettings {
 /* começo Main */
 
 #mainContent {
-  flex: 2;
   background-color: var(--branco-paz);
   border-radius: 5px;
+  margin-bottom: 10px;
   overflow: hidden;
   width: 98%;
   height: 500px;
@@ -261,11 +261,11 @@ userSettings {
 }
 
 .primeiro {
-  background-color: var(--vermelho-guara);
+  background-color: var(--vermelho-ucari);
 }
 
 .segundo {
-  background-color: var(--azul-atlatico);
+  background-color: var(--azul-ararinha);
 
 }
 

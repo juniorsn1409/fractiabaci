@@ -153,6 +153,7 @@ table {
   width: 100%;
   min-width: 100vh;
   min-height: 100vh;
+  background-color: var(--cinza-harpia)
 }
 
 #mainBackground {
@@ -241,7 +242,39 @@ userSettings {
   display: flex;
 }
 
-/* começo Main */
+.AreaDoArtefato {
+  width: 10%;
+  height: 100%;
+  margin: 1%;
+  bborder-radius: 8px;
+  transition: background-color 0.3s;
+  background-color: var(--braco-isabeline);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  alignItems: center;
+}
+
+.qualdrado {
+  width: 100%;
+  height: 100%;
+}
+
+.primeiro {
+  background-color: var(--vermelho-guara);
+}
+
+.segundo {
+  background-color: var(--azul-atlatico);
+
+}
+
+.terceiro {
+  background-color: var(--amarelo-ipe);
+
+}
+
+/* fim Main */
 
 /* começo CasaDecimal */
 
@@ -255,4 +288,4 @@ userSettings {
   transition: 1.5s ease-in-out;
 }
 
-/* começo CasaDecimal */
+/* fim CasaDecimal */

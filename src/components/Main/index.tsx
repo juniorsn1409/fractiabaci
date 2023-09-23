@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Artefato from '../Artefato'
 import CasaDecimal from '../CasaDecimal'
@@ -42,50 +41,41 @@ export default function Main() {
         <CasaDecimal tipo="dezena" artefatos={qtdDezena} />
         <CasaDecimal tipo="unidade" artefatos={qtdUnidade} />
 
-        {artefatosCentena.map((artefatoId) => (
-          <Artefato
-            key={artefatoId}
-            tipo={'centena'}
-            refExterna={mainContentRef}
-            setQtdArtefato={setQtdCentena}
-            qtdArtefato={qtdCentena}
-          />
-        ))}
-
-        {artefatosDezena.map((artefatoId) => (
-          <Artefato
-            key={artefatoId}
-            tipo={'dezena'}
-            refExterna={mainContentRef}
-            setQtdArtefato={setQtdDezena}
-            qtdArtefato={qtdDezena}
-          />
-        ))}
-
-        {artefatosUnidade.map((artefatoId) => (
-          <Artefato
-            key={artefatoId}
-            tipo={'unidade'}
-            refExterna={mainContentRef}
-            setQtdArtefato={setQtdUnidade}
-            qtdArtefato={qtdUnidade}
-          />
-        ))}
-
-        <motion.div
-          style={{
-            width: '10%',
-            height: '90%',
-            margin: '1%',
-            borderRadius: '8px',
-            transition: 'background-color 0.3s',
-            backgroundColor: 'var(--braco-isabeline)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        ></motion.div>
+        <div className="AreaDoArtefato">
+          <div className="qualdrado primeiro">
+            {artefatosUnidade.map((artefatoId) => (
+              <Artefato
+                key={artefatoId}
+                tipo={'unidade'}
+                refExterna={mainContentRef}
+                setQtdArtefato={setQtdUnidade}
+                qtdArtefato={qtdUnidade}
+              />
+            ))}
+          </div>
+          <div className="qualdrado segundo">
+            {artefatosDezena.map((artefatoId) => (
+              <Artefato
+                key={artefatoId}
+                tipo={'dezena'}
+                refExterna={mainContentRef}
+                setQtdArtefato={setQtdDezena}
+                qtdArtefato={qtdDezena}
+              />
+            ))}
+          </div>
+          <div className="qualdrado terceiro">
+            {artefatosCentena.map((artefatoId) => (
+              <Artefato
+                key={artefatoId}
+                tipo={'centena'}
+                refExterna={mainContentRef}
+                setQtdArtefato={setQtdCentena}
+                qtdArtefato={qtdCentena}
+              />
+            ))}
+          </div>
+        </div>
       </div>
       <button onClick={adicionarArtefatoCentena}>
         Adicionar Artefato Centena

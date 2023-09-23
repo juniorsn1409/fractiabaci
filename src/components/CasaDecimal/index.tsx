@@ -1,28 +1,18 @@
-import { motion } from 'framer-motion';
-import { styled } from 'styled-components';
+import { motion } from 'framer-motion'
 
 interface CasaDecimalProps {
-  tipo: 'unidade' | 'dezena' | 'centena';
-  artefatos: number;
+  tipo: 'unidade' | 'dezena' | 'centena'
+  artefatos: number
 }
-
-const Numero = styled.h1`
-  font-size: 100px;
-  margin-bottom: 16px;
-  transition: 0.5s;
-`;
-const Titulo = styled.span`
-  font-size: 25px;
-`;
 
 export default function CasaDecimal({ tipo, artefatos }: CasaDecimalProps) {
   return (
     <motion.div
-      id={tipo} // Atualizado para 'tipo'
+      id={tipo}
       style={{
-        width: '30%',
-        height: '70%',
-        margin: 'auto',
+        width: '25%',
+        height: '90%',
+        margin: '1%',
         borderRadius: '8px',
         transition: 'background-color 0.3s',
         backgroundColor: 'var(--braco-isabeline)',
@@ -32,9 +22,8 @@ export default function CasaDecimal({ tipo, artefatos }: CasaDecimalProps) {
         alignItems: 'center',
       }}
     >
-      <Numero>{artefatos}</Numero>
-      <Titulo>{tipo}</Titulo>
+      <h1 className="numero">{artefatos}</h1>
+      <span className="titulo">{tipo}</span>
     </motion.div>
-  
-  );
+  )
 }

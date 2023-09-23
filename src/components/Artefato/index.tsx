@@ -1,49 +1,68 @@
-import { motion, useDragControls } from 'framer-motion';
-import React, { useState } from 'react';
+import { PanInfo, motion, useDragControls } from 'framer-motion'
+import React, { useState } from 'react'
 
 interface ArtefatoProps {
-  tipo: String;
-  qtdArtefato: number;
-  refExterna: React.RefObject<HTMLDivElement>;
-  setQtdArtefato: React.Dispatch<React.SetStateAction<number>>;
+  tipo: string
+  qtdArtefato: number
+  refExterna: React.RefObject<HTMLDivElement>
+  setQtdArtefato: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Artefato = ({ tipo, refExterna, qtdArtefato, setQtdArtefato }: ArtefatoProps) => {
-  const size = 50;
-  const controls = useDragControls();
-  const [isIn, setIsIn] = useState(false);
+const Artefato = ({
+  tipo,
+  refExterna,
+  qtdArtefato,
+  setQtdArtefato,
+}: ArtefatoProps) => {
+  const size = 50
+  const controls = useDragControls()
+  const [isIn, setIsIn] = useState(false)
 
-  function startDrag(event: React.PointerEvent) {
-    controls.start(event, { snapToCursor: true });
+  const handleColor = (tipo: string) => {
+    switch (tipo) {
+      case 'unidade':
+        return 'var(--vermelho-urucum)'
+        break
+      case 'dezena':
+        return 'var(--azul-atlatico)'
+        break
+      case 'centena':
+        return 'var(--amarelo-ipe)'
+        break
+      default:
+        return 'var(--cinza-harpia)'
+        break
+    }
   }
 
-  const handleDragEnd = (info: any) => {
-    const checkIfInside = (info: any) => {
-      const casaDecimal = document.getElementById(`${tipo}`);
+  function startDrag(event: React.PointerEvent) {
+    controls.start(event, { snapToCursor: true })
+  }
+
+  const handleDragEnd = (info: PanInfo) => {
+    const checkIfInside = (info: PanInfo) => {
+      const casaDecimal = document.getElementById(`${tipo}`)
       if (casaDecimal) {
-        const casaDecimalRect = casaDecimal.getBoundingClientRect();
+        const casaDecimalRect = casaDecimal.getBoundingClientRect()
         return (
           info.point.x >= casaDecimalRect.left &&
           info.point.x <= casaDecimalRect.right &&
           info.point.y >= casaDecimalRect.top &&
           info.point.y <= casaDecimalRect.bottom
-        );
+        )
       }
-      return false;
-    };
-
-    const isInside = checkIfInside(info);
-
-    console.log(isInside ? "[DragEnd] Estou Dentro" : "[DragEnd] Estou Fora");
-
-    if (isInside && !isIn && qtdArtefato < 9) {
-      setIsIn(true);
-      setQtdArtefato(qtdArtefato + 1);
-    } else if (!isInside && isIn) {
-      setIsIn(false);
-      setQtdArtefato(qtdArtefato - 1);
+      return false
     }
-  };
+
+    const isInside = checkIfInside(info)
+    if (isInside && !isIn && qtdArtefato < 9) {
+      setIsIn(true)
+      setQtdArtefato(qtdArtefato + 1)
+    } else if (!isInside && isIn) {
+      setIsIn(false)
+      setQtdArtefato(qtdArtefato - 1)
+    }
+  }
 
   return (
     <motion.div
@@ -54,7 +73,7 @@ const Artefato = ({ tipo, refExterna, qtdArtefato, setQtdArtefato }: ArtefatoPro
       dragListener={true}
       dragControls={controls}
       onDragEnd={(event, info) => {
-        handleDragEnd(info);
+        handleDragEnd(info)
       }}
       style={{
         touchAction: 'none',
@@ -62,10 +81,10 @@ const Artefato = ({ tipo, refExterna, qtdArtefato, setQtdArtefato }: ArtefatoPro
         width: `${size}px`,
         height: `${size}px`,
         borderRadius: '50%',
-        backgroundColor: 'var(--azul-atlatico)',
+        backgroundColor: `${handleColor(tipo)}`,
       }}
     />
-  );
+  )
 }
 
-export default Artefato;
+export default Artefato

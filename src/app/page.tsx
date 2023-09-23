@@ -1,22 +1,15 @@
 'use client'
 
-import Header from '@/components/Header';
-import Main from '@/components/Main';
-import { styled } from 'styled-components';
-
-const Background = styled.div`
-  /* height: 703px; */
-  background-color: var(--braco-isabeline);
-  width: 100%;
-  min-width: 600;
-  min-height: 100vh;
-`
+import Header from '@/components/Header'
+import Main from '@/components/Main'
 
 export default function App() {
   return (
-    <Background>
+    <div id="background">
       <Header />
-      <Main />
-    </Background>
+      <div id="mainBackground">
+        <Main />
+      </div>
+    </div>
   )
 }

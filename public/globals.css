@@ -130,19 +130,162 @@ table {
 
 :root {
   --branco-paz: #ffffff;
-  --braco-isabeline: #F4F3EE;
+  --braco-isabeline: #f4f3ee;
   --cinza-harpia: #3c3c3c;
-  --preto-ebano: #0A0F0D;
+  --preto-ebano: #0a0f0d;
   --vermelho-ucari: #ff6464;
-  --vermelho-urucum: #FF0000;
-  --vermelho-guara: #9B0000;
-  --azul-ararinha: #00C8FF;
-  --azul-atlatico: #183EFF;
-  --azul-petroleo: #00008C;
-  --amarelo-ipe: #FFFF00;
-  --amarelo-sol: #FFD000;
-  --amarelo-mel: #FF7D00;
-  --verde-mandacaru: #00F537;
-  --verde-amazonia: #00D000;
+  --vermelho-urucum: #ff0000;
+  --vermelho-guara: #9b0000;
+  --azul-ararinha: #00c8ff;
+  --azul-atlatico: #183eff;
+  --azul-petroleo: #00008c;
+  --amarelo-ipe: #ffff00;
+  --amarelo-sol: #ffd000;
+  --amarelo-mel: #ff7d00;
+  --verde-mandacaru: #00f537;
+  --verde-amazonia: #00d000;
   --verde-quartzo: #009600;
 }
+
+/*começo page.tsx*/
+
+#background {
+  width: 100%;
+  min-width: 100vh;
+  min-height: 100vh;
+  background-color: var(--braco-isabelinea)
+}
+
+#mainBackground {
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+/*fim page.tsx*/
+
+/* começo header */
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--branco-paz);
+  padding: 10px;
+  color: var(--preto-ebano);
+}
+
+.headerMenu {
+  display: flex;
+
+  .activate {
+    color: var(--azul-atlatico);
+    border-bottom: 3px solid transparent;
+    border-bottom-color: var(--c-accent-primary);
+  }
+
+  a {
+    color: var(--preto-ebano);
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 20px;
+
+    &:hover {
+      color: var(--azul-atlatico);
+      transition: 0.3;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+}
+
+userSettings {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    margin-right: 20px;
+    cursor: pointer;
+    color: var(--preto-ebano);
+    font-size: 24px;
+
+    &:hover {
+      color: var(--azul-atlatico);
+      transition: 0.3;
+    }
+  }
+}
+/* fim header */
+
+/* começo Main */
+
+#mainContent {
+  background-color: var(--braco-isabeline);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 600px;
+  display: flex;
+}
+
+.AreaDoArtefato {
+  width: 20%;
+  height: 95%;
+  margin: 1%;
+  bborder-radius: 8px;
+  transition: background-color 0.3s;
+  background-color: var(--braco-isabeline);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  alignItems: center;
+}
+
+.qualdrado {
+  width: 100%;
+  height: 33.3%;
+}
+
+.primeiro {
+  background-color: var(--vermelho-ucari);
+}
+
+.segundo {
+  background-color: var(--azul-ararinha);
+
+}
+
+.terceiro {
+  background-color: var(--amarelo-ipe);
+
+}
+
+/* fim Main */
+
+/* começo CasaDecimal */
+
+.titulo {
+  font-size: 25px;
+}
+
+.numero {
+  font-size: 125px;
+  margin-bottom: 16px;
+  transition: 1.5s ease-in-out;
+}
+
+/* fim CasaDecimal */

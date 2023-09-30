@@ -1,74 +1,9 @@
 'use client'
 
-import { FiMoon, FiSettings } from 'react-icons/fi'
-import { RiTranslate2 } from 'react-icons/ri'
-import styled from 'styled-components'
-
-const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--branco-paz);
-  padding: 10px;
-  color: var(--preto-ebano);
-`
-const Logo = styled.div`
-  display: flex;
-  align-items: center;
-
-  svg {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  }
-`
-const HeaderMenu = styled.div`
-  display: flex;
-
-  .activate {
-    color: var(--azul-atlatico);
-    border-bottom: 3px solid transparent;
-    border-bottom-color: var(--c-accent-primary);
-    }
-
-  a {
-    color: var(--preto-ebano);
-    text-decoration: none;
-    font-weight: 500;
-    margin-right: 20px;
-
-    &:hover{
-      color: var(--azul-atlatico);
-      transition: 0.3;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-`
-const UserSettings = styled.div`
-  display: flex;
-  align-items: center;
-
-  .icon {
-    margin-right: 20px;
-    cursor: pointer;
-    color: var(--preto-ebano);
-    font-size: 24px; 
-
-  &:hover{
-    color: var(--azul-atlatico);
-    transition: 0.3;
-  }
-
-  }
-`
-
 export default function Header() {
   return (
-    <HeaderContainer>
-      <Logo>
+    <div className="headerContainer">
+      <div className="logo">
         {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path
             xmlns="http://www.w3.org/2000/svg"
@@ -90,17 +25,17 @@ export default function Header() {
           />
         </svg> */}
         Fracti Abacus
-      </Logo>
-      <HeaderMenu>
-        <a href="/" className="activate">Ábaco de Papel</a>
-        <a href="/ArtigoCientifico">Artigo Cientifico</a>
-        <a href="/Contato">Contato</a>
-      </HeaderMenu>
-      <UserSettings>
-        <FiMoon className="icon" />
-        <RiTranslate2 className="icon" />
-        <FiSettings className="icon">Configuração</FiSettings>
-      </UserSettings>
-    </HeaderContainer>
-  );
+      </div>
+      <div className="headerMenu">
+        {/* <a href="/" className="activate">Ábaco de Papel</a> */}
+        {/* <a href="/ArtigoCientifico">Artigo Cientifico</a> */}
+        {/* <a href="/Contato">Contato</a> */}
+      </div>
+      <div className="userSettings">
+        {/* <FiMoon className="icon" /> */}
+        {/* <RiTranslate2 className="icon" /> */}
+        {/* <FiSettings className="icon">Configuração</FiSettings> */}
+      </div>
+    </div>
+  )
 }

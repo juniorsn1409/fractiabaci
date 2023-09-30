@@ -1,45 +1,91 @@
-import { useRef, useState } from 'react';
-import { styled } from 'styled-components';
-import Artefato from '../Artefato';
-import CasaDecimal from '../CasaDecimal';
-
-const MainContent = styled.main`
-  flex: 2;
-  background-color: var(--branco-paz);
-  border-radius: 5px;
-  overflow: hidden;
-  width: 95%;
-  height: 500px;
-  display: flex;
-  flex-direction: row;
-  margin: 25px 25px 25px 25px;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-`;
+import { useRef, useState } from 'react'
+import Artefato from '../Artefato'
+import CasaDecimal from '../CasaDecimal'
 
 export default function Main() {
-  const mainContentRef = useRef(null);
+  const mainContentRef = useRef(null)
 
-  const [artefatos, setArtefatos] = useState<JSX.Element[]>([]);
-  const adicionarArtefato = () => {
-    // Gerar um ID único para o novo artefato
-    const novoArtefatoId = Date.now().toString();
+  const [artefatosCentena, setArtefatosCentena] = useState<string[]>([])
+  const [artefatosDezena, setArtefatosDezena] = useState<string[]>([])
+  const [artefatosUnidade, setArtefatosUnidade] = useState<string[]>([])
 
-    // Criar um novo elemento Artefato com a chave definida como o ID único
-    const novoArtefato = <Artefato key={novoArtefatoId} refExterna={mainContentRef} />;
+  const [qtdUnidade, setQtdUnidade] = useState(0)
+  const [qtdDezena, setQtdDezena] = useState(0)
+  const [qtdCentena, setQtdCentena] = useState(0)
 
-    // Adicionar o novo elemento à lista de artefatos
-    setArtefatos([...artefatos, novoArtefato]);
-  };
+  const adicionarArtefatoCentena = () => {
+    if (artefatosCentena.length < 9) {
+      const novoArtefatoId = Date.now().toString()
+      setArtefatosCentena([...artefatosCentena, novoArtefatoId])
+    }
+  }
+
+  const adicionarArtefatoDezena = () => {
+    if (artefatosDezena.length < 9) {
+      const novoArtefatoId = Date.now().toString()
+      setArtefatosDezena([...artefatosDezena, novoArtefatoId])
+    }
+  }
+
+  const adicionarArtefatoUnidade = () => {
+    if (artefatosUnidade.length < 9) {
+      const novoArtefatoId = Date.now().toString()
+      setArtefatosUnidade([...artefatosUnidade, novoArtefatoId])
+    }
+  }
 
   return (
-    <MainContent ref={mainContentRef}>
-      <CasaDecimal texto={"unidade"} numero={"0"} />
-      {artefatos.map((artefato) => (
-        <div key={artefato.key}>{artefato}</div>
-      ))}
-      <button onClick={adicionarArtefato}>Adicionar Artefato</button>
-    </MainContent>
-  );
+    <>
+      <div id="mainContent" ref={mainContentRef}>
+        <CasaDecimal tipo="centena" artefatos={qtdCentena} />
+        <CasaDecimal tipo="dezena" artefatos={qtdDezena} />
+        <CasaDecimal tipo="unidade" artefatos={qtdUnidade} />
+
+        <div className="AreaDoArtefato">
+          <div className="qualdrado primeiro">
+            {artefatosUnidade.map((artefatoId) => (
+              <Artefato
+                key={artefatoId}
+                tipo={'unidade'}
+                refExterna={mainContentRef}
+                setQtdArtefato={setQtdUnidade}
+                qtdArtefato={qtdUnidade}
+              />
+            ))}
+          </div>
+          <div className="qualdrado segundo">
+            {artefatosDezena.map((artefatoId) => (
+              <Artefato
+                key={artefatoId}
+                tipo={'dezena'}
+                refExterna={mainContentRef}
+                setQtdArtefato={setQtdDezena}
+                qtdArtefato={qtdDezena}
+              />
+            ))}
+          </div>
+          <div className="qualdrado terceiro">
+            {artefatosCentena.map((artefatoId) => (
+              <Artefato
+                key={artefatoId}
+                tipo={'centena'}
+                refExterna={mainContentRef}
+                setQtdArtefato={setQtdCentena}
+                qtdArtefato={qtdCentena}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      <button onClick={adicionarArtefatoCentena}>
+        Adicionar Artefato Centena
+      </button>
+      <button onClick={adicionarArtefatoDezena}>
+        Adicionar Artefato Dezena
+      </button>
+      <button onClick={adicionarArtefatoUnidade}>
+        Adicionar Artefato Unidade
+      </button>
+    </>
+  )
 }

@@ -1,47 +1,46 @@
-import { useEffect, useState } from 'react';
-import { styled } from 'styled-components';
+import { motion } from 'framer-motion'
 
 interface CasaDecimalProps {
-  texto: string;
-  numero: string;
+  tipo: 'unidade' | 'dezena' | 'centena'
+  artefatos: number
 }
 
-const Casa = styled.div`
-  width: 30%;
-  height: 70%;
-  margin: auto;
-  border-radius: 8px;
-  transition: background-color 0.3s;
-  background-color: var(--braco-isabeline);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Numero = styled.h1`
-  font-size: 100px;
-  margin-bottom: 16px;
-  transition: 0.5s;
-`;
-
-const Titulo = styled.span`
-  font-size: 25px;
-`
-
-export default function CasaDecimal({ texto, numero }: CasaDecimalProps) {
-  // Usar estado local para controlar o número exibido
-  const [numeroExibido, setNumeroExibido] = useState(numero);
-
-  // Use useEffect para atualizar o número exibido sempre que a prop 'numero' mudar
-  useEffect(() => {
-    setNumeroExibido(numero);
-  }, [numero]);
+export default function CasaDecimal({ tipo, artefatos }: CasaDecimalProps) {
+  const handleColor = (tipo: string) => {
+    switch (tipo) {
+      case 'unidade':
+        return 'var(--vermelho-ucari)'
+        break
+      case 'dezena':
+        return 'var(--azul-ararinha)'
+        break
+      case 'centena':
+        return 'var(--amarelo-ipe)'
+        break
+      default:
+        return 'var(--braco-isabeline)'
+        break
+    }
+  }
 
   return (
-    <Casa>
-      <Numero>{numeroExibido}</Numero>
-      <Titulo>{texto}</Titulo>
-    </Casa>
-  );
+    <motion.div
+      id={tipo}
+      style={{
+        width: '25%',
+        height: '95%',
+        margin: '1%',
+        borderRadius: '8px',
+        transition: 'background-color 0.3s',
+        backgroundColor: `${handleColor(tipo)}`,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <h1 className="numero">{artefatos}</h1>
+      <span className="titulo">{tipo}</span>
+    </motion.div>
+  )
 }

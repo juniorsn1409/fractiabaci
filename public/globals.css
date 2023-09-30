@@ -233,18 +233,18 @@ userSettings {
 /* começo Main */
 
 #mainContent {
-  background-color: var(--branco-paz);
+  background-color: var(--braco-isabeline);
   border-radius: 5px;
   margin-bottom: 10px;
   overflow: hidden;
-  width: 98%;
-  height: 500px;
+  width: 100%;
+  height: 600px;
   display: flex;
 }
 
 .AreaDoArtefato {
-  width: 10%;
-  height: 100%;
+  width: 20%;
+  height: 95%;
   margin: 1%;
   bborder-radius: 8px;
   transition: background-color 0.3s;
@@ -257,7 +257,7 @@ userSettings {
 
 .qualdrado {
   width: 100%;
-  height: 100%;
+  height: 33.3%;
 }
 
 .primeiro {

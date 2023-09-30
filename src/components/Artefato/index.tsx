@@ -77,6 +77,7 @@ const Artefato = ({
       }}
       style={{
         touchAction: 'none',
+        position: 'absolute',
         zIndex: 1,
         width: `${size}px`,
         height: `${size}px`,

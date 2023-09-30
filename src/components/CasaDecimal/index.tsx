@@ -28,7 +28,7 @@ export default function CasaDecimal({ tipo, artefatos }: CasaDecimalProps) {
       id={tipo}
       style={{
         width: '25%',
-        height: '100%',
+        height: '95%',
         margin: '1%',
         borderRadius: '8px',
         transition: 'background-color 0.3s',

@@ -1,3 +1,12 @@
+//  S# SEVERITY
+//
+//  layout.tsx
+//  Presentation
+//
+//  Created by Edson Júnior Ananias de Lima on 30/09/23.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+
 import type { Metadata } from 'next'
 
 import { Poppins } from 'next/font/google'

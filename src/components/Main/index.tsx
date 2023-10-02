@@ -1,91 +1,149 @@
+//  S# SEVERITY
+//
+//  Main/index.tsx
+//  Presentation
+//
+//  Created by Edson Júnior Ananias de Lima on 01/10/23.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+
 import { useRef, useState } from 'react'
-import Artefato from '../Artefato'
-import CasaDecimal from '../CasaDecimal'
+import { motion } from 'framer-motion'
+
+import Parts from '@/components/Parts'
+import DecimalPlace from '@/components/DecimalPlace'
+
+import { PlaceValueType } from '@/core/domain/PlaceValueType'
+import AbacusBehaviorUseCase from '@/core/application/Abacus/AbacusBehaviorUseCase'
+import ChoosingColorUseCase from '@/core/application/Parts/ChoosingColorUseCase'
+
+const abacusBehaviorUseCase = new AbacusBehaviorUseCase()
+const choosingColorUseCase = new ChoosingColorUseCase()
 
 export default function Main() {
-  const mainContentRef = useRef(null)
+  const limitationReference = useRef(null)
 
-  const [artefatosCentena, setArtefatosCentena] = useState<string[]>([])
-  const [artefatosDezena, setArtefatosDezena] = useState<string[]>([])
-  const [artefatosUnidade, setArtefatosUnidade] = useState<string[]>([])
+  const [qtdHundred, setQtdHundred] = useState(0)
+  const [partsHundred, setPartsHundred] = useState<string[]>([])
 
-  const [qtdUnidade, setQtdUnidade] = useState(0)
-  const [qtdDezena, setQtdDezena] = useState(0)
-  const [qtdCentena, setQtdCentena] = useState(0)
+  const [qtdTen, setQtdTen] = useState(0)
+  const [partsTen, setPartsTen] = useState<string[]>([])
 
-  const adicionarArtefatoCentena = () => {
-    if (artefatosCentena.length < 9) {
-      const novoArtefatoId = Date.now().toString()
-      setArtefatosCentena([...artefatosCentena, novoArtefatoId])
-    }
+  const [qtdUnit, setQtdUnit] = useState(0)
+  const [partsUnit, setPartsUnit] = useState<string[]>([])
+
+  const addingPartsHundred = () => {
+    abacusBehaviorUseCase.addingParts(partsHundred, setPartsHundred)
   }
 
-  const adicionarArtefatoDezena = () => {
-    if (artefatosDezena.length < 9) {
-      const novoArtefatoId = Date.now().toString()
-      setArtefatosDezena([...artefatosDezena, novoArtefatoId])
-    }
+  const addingPartsTen = () => {
+    abacusBehaviorUseCase.addingParts(partsTen, setPartsTen)
   }
 
-  const adicionarArtefatoUnidade = () => {
-    if (artefatosUnidade.length < 9) {
-      const novoArtefatoId = Date.now().toString()
-      setArtefatosUnidade([...artefatosUnidade, novoArtefatoId])
-    }
+  const addingPartsUnit = () => {
+    abacusBehaviorUseCase.addingParts(partsUnit, setPartsUnit)
   }
 
   return (
     <>
-      <div id="mainContent" ref={mainContentRef}>
-        <CasaDecimal tipo="centena" artefatos={qtdCentena} />
-        <CasaDecimal tipo="dezena" artefatos={qtdDezena} />
-        <CasaDecimal tipo="unidade" artefatos={qtdUnidade} />
+      <motion.div
+        ref={limitationReference}
+        style={{
+          width: `100%`,
+          height: `550px`,
+          display: `flex`,
+          overflow: `hidden`,
+          borderRadius: `5px`,
+          marginBottom: `10px`,
+          backgroundColor: `var(--braco-isabeline)`,
+        }}
+      >
+        <DecimalPlace type={PlaceValueType.hundred} parts={qtdHundred} />
+        <DecimalPlace type={PlaceValueType.ten} parts={qtdTen} />
+        <DecimalPlace type={PlaceValueType.unit} parts={qtdUnit} />
 
-        <div className="AreaDoArtefato">
-          <div className="qualdrado primeiro">
-            {artefatosUnidade.map((artefatoId) => (
-              <Artefato
-                key={artefatoId}
-                tipo={'unidade'}
-                refExterna={mainContentRef}
-                setQtdArtefato={setQtdUnidade}
-                qtdArtefato={qtdUnidade}
+        <motion.div
+          style={{
+            width: `5%`,
+            height: `95%`,
+            margin: `1%`,
+            display: `flex`,
+            borderRadius: `8px`,
+            alignItems: `center`,
+            flexDirection: `column`,
+            justifyContent: `center`,
+            transition: `background-color 0.3s`,
+            backgroundColor: `var(--braco-isabeline)`,
+          }}
+        >
+          <motion.div
+            style={{
+              width: `100%`,
+              height: `33.3%`,
+              borderTopLeftRadius: `8px`,
+              borderTopRightRadius: `8px`,
+              backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
+                PlaceValueType.unit,
+              )}`,
+            }}
+          >
+            {partsUnit.map((PartsId) => (
+              <Parts
+                key={PartsId}
+                type={PlaceValueType.unit}
+                qtdParts={qtdUnit}
+                setQtdParts={setQtdUnit}
+                limitationReference={limitationReference}
               />
             ))}
-          </div>
-          <div className="qualdrado segundo">
-            {artefatosDezena.map((artefatoId) => (
-              <Artefato
-                key={artefatoId}
-                tipo={'dezena'}
-                refExterna={mainContentRef}
-                setQtdArtefato={setQtdDezena}
-                qtdArtefato={qtdDezena}
+          </motion.div>
+
+          <motion.div
+            style={{
+              width: `100%`,
+              height: `33.3%`,
+              backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
+                PlaceValueType.ten,
+              )}`,
+            }}
+          >
+            {partsTen.map((PartsId) => (
+              <Parts
+                key={PartsId}
+                type={PlaceValueType.ten}
+                qtdParts={qtdTen}
+                setQtdParts={setQtdTen}
+                limitationReference={limitationReference}
               />
             ))}
-          </div>
-          <div className="qualdrado terceiro">
-            {artefatosCentena.map((artefatoId) => (
-              <Artefato
-                key={artefatoId}
-                tipo={'centena'}
-                refExterna={mainContentRef}
-                setQtdArtefato={setQtdCentena}
-                qtdArtefato={qtdCentena}
+          </motion.div>
+
+          <motion.div
+            style={{
+              width: `100%`,
+              height: `33.3%`,
+              borderBottomLeftRadius: `8px`,
+              borderBottomRightRadius: `8px`,
+              backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
+                PlaceValueType.hundred,
+              )}`,
+            }}
+          >
+            {partsHundred.map((PartsId) => (
+              <Parts
+                key={PartsId}
+                type={PlaceValueType.hundred}
+                qtdParts={qtdHundred}
+                setQtdParts={setQtdHundred}
+                limitationReference={limitationReference}
               />
             ))}
-          </div>
-        </div>
-      </div>
-      <button onClick={adicionarArtefatoCentena}>
-        Adicionar Artefato Centena
-      </button>
-      <button onClick={adicionarArtefatoDezena}>
-        Adicionar Artefato Dezena
-      </button>
-      <button onClick={adicionarArtefatoUnidade}>
-        Adicionar Artefato Unidade
-      </button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+      <button onClick={addingPartsHundred}>Adicionar Peça Cenena</button>
+      <button onClick={addingPartsTen}>Adicionar Peça Dezena</button>
+      <button onClick={addingPartsUnit}>Adicionar Peça Unidade</button>
     </>
   )
 }

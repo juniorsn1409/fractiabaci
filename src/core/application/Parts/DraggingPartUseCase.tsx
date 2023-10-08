@@ -11,8 +11,10 @@ import { useDragControls, PanInfo } from 'framer-motion'
 import DraggingPartUseCaseInterface from '@/core/domain/interfaces/DraggingPartUseCaseInterface'
 
 class DraggingPartUseCase implements DraggingPartUseCaseInterface {
+  // MARK: - Properties
   controls = useDragControls()
 
+  // MARK: - Public methods
   public dragging(event: React.PointerEvent): void {
     this.controls.start(event, { snapToCursor: true })
   }

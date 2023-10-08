@@ -16,12 +16,9 @@ import Parts from '@/components/Parts'
 import DecimalPlace from '@/components/DecimalPlace'
 
 import { PlaceValueType } from '@/core/domain/models/PlaceValueType'
+import AbacusManager from '@/core/domain/models/AbacusManager'
 
-import AbacusBehaviorUseCase from '@/core/application/Abacus/AbacusBehaviorUseCase'
-import ChoosingColorUseCase from '@/core/application/Parts/ChoosingColorUseCase'
-
-const abacusBehaviorUseCase = new AbacusBehaviorUseCase()
-const choosingColorUseCase = new ChoosingColorUseCase()
+const abacusManager = new AbacusManager()
 
 export default function Main() {
   const limitationReference = useRef(null)
@@ -29,19 +26,22 @@ export default function Main() {
   const [amountHundred, setAmountHundred] = useState(0)
   const [partsHundred, setPartsHundred] = useState<string[]>([])
   const addingHundred = () => {
-    abacusBehaviorUseCase.addingParts(partsHundred, setPartsHundred)
+    abacusManager.abacusBehaviorUseCase.addingParts(
+      partsHundred,
+      setPartsHundred,
+    )
   }
 
   const [amountTen, setAmountTen] = useState(0)
   const [partsTen, setPartsTen] = useState<string[]>([])
   const addingTen = () => {
-    abacusBehaviorUseCase.addingParts(partsTen, setPartsTen)
+    abacusManager.abacusBehaviorUseCase.addingParts(partsTen, setPartsTen)
   }
 
   const [amountUnit, setAmountUnit] = useState(0)
   const [partsUnit, setPartsUnit] = useState<string[]>([])
   const addingUnit = () => {
-    abacusBehaviorUseCase.addingParts(partsUnit, setPartsUnit)
+    abacusManager.abacusBehaviorUseCase.addingParts(partsUnit, setPartsUnit)
   }
 
   return (
@@ -98,7 +98,7 @@ export default function Main() {
               height: '33.3333%',
               borderTopLeftRadius: '8px',
               borderTopRightRadius: '8px',
-              backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
+              backgroundColor: `${abacusManager.choosingColorUseCase.colorDecimalPlace(
                 PlaceValueType.unit,
               )}`,
             }}
@@ -118,7 +118,7 @@ export default function Main() {
             style={{
               width: '100%',
               height: '33.3333%',
-              backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
+              backgroundColor: `${abacusManager.choosingColorUseCase.colorDecimalPlace(
                 PlaceValueType.ten,
               )}`,
             }}
@@ -139,7 +139,7 @@ export default function Main() {
               height: '33.3333%',
               borderBottomLeftRadius: '8px',
               borderBottomRightRadius: '8px',
-              backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
+              backgroundColor: `${abacusManager.choosingColorUseCase.colorDecimalPlace(
                 PlaceValueType.hundred,
               )}`,
             }}

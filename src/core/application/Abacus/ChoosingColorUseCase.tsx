@@ -11,6 +11,7 @@ import { PlaceValueType } from '@/core/domain/models/PlaceValueType'
 import ChoosingColorUseCaseInterface from '@/core/domain/interfaces/ChoosingColorUseCaseInterface'
 
 class ChoosingColorUseCase implements ChoosingColorUseCaseInterface {
+  // MARK: - Public methods
   public colorParts(type: PlaceValueType): string {
     switch (type) {
       case PlaceValueType.unit:

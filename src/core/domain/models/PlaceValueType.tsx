@@ -7,7 +7,7 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-export enum PlaceValueType {
+export const enum PlaceValueType {
   unit,
   ten,
   hundred,

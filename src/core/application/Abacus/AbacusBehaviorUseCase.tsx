@@ -11,7 +11,7 @@ import AbacusBehaviorInterface from '@/core/domain/interfaces/AbacusBehaviorInte
 
 class AbacusBehaviorUseCase implements AbacusBehaviorInterface {
   // MARK: - Public methods
-  addingParts(
+  public addingParts(
     parts: string[],
     setParts: Dispatch<SetStateAction<string[]>>,
   ): void {

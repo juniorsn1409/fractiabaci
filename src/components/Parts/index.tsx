@@ -13,7 +13,7 @@ import { motion } from 'framer-motion'
 import PartsInterface from '@/core/domain/interfaces/PartsInterface'
 
 import DraggingPartUseCase from '@/core/application/Parts/DraggingPartUseCase'
-import ChoosingColorUseCase from '@/core/application/Parts/ChoosingColorUseCase'
+import ChoosingColorUseCase from '@/core/application/Abacus/ChoosingColorUseCase'
 
 const chossingColorUseCase = new ChoosingColorUseCase()
 

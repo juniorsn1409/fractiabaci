@@ -14,7 +14,7 @@ import {
   Descriptions,
 } from '@/core/domain/models/PlaceValueType'
 
-import ChoosingColorUseCase from '@/core/application/Parts/ChoosingColorUseCase'
+import ChoosingColorUseCase from '@/core/application/Abacus/ChoosingColorUseCase'
 
 interface DecimalPlaceInterface {
   type: PlaceValueType

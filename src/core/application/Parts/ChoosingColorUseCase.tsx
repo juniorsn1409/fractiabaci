@@ -7,15 +7,10 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-import { PlaceValueType } from '@/core/domain/PlaceValueType'
+import { PlaceValueType } from '@/core/domain/models/PlaceValueType'
+import ChoosingColorUseCaseInterface from '@/core/domain/interfaces/ChoosingColorUseCaseInterface'
 
-interface ChoosingColorUseCaseProtocol {
-  colorParts: (type: PlaceValueType) => string
-  colorDecimalPlace: (type: PlaceValueType) => string
-}
-
-class ChoosingColorUseCase implements ChoosingColorUseCaseProtocol {
-  // MARK: - Public methods
+class ChoosingColorUseCase implements ChoosingColorUseCaseInterface {
   public colorParts(type: PlaceValueType): string {
     switch (type) {
       case PlaceValueType.unit:

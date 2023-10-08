@@ -19,14 +19,13 @@ export default function App() {
     <motion.div
       style={{
         width: `100%`,
-        minWidth: `100vh`,
+        minWidth: `70vh`,
         minHeight: `100vh`,
         backgroundColor: `var(--braco-isabelinea)`,
       }}
     >
       <Header />
       <motion.div
-        id="mainBackground"
         style={{
           justifyContent: `center`,
           alignItems: `center`,

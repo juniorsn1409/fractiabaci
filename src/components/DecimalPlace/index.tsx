@@ -9,22 +9,26 @@
 
 import { motion } from 'framer-motion'
 
-import { PlaceValueType } from '@/core/domain/PlaceValueType'
+import {
+  PlaceValueType,
+  Descriptions,
+} from '@/core/domain/models/PlaceValueType'
+
 import ChoosingColorUseCase from '@/core/application/Parts/ChoosingColorUseCase'
 
 interface DecimalPlaceInterface {
   type: PlaceValueType
-  parts: number
+  amount: number
 }
 
 const choosingColorUseCase = new ChoosingColorUseCase()
 
-export default function DecimalPlace({ type, parts }: DecimalPlaceInterface) {
+export default function DecimalPlace({ type, amount }: DecimalPlaceInterface) {
   return (
     <motion.div
-      id={type}
+      id={`${type}`}
       style={{
-        width: '31.6%',
+        width: '31.6666%',
         height: '95%',
         margin: '1%',
         borderRadius: '8px',
@@ -43,15 +47,15 @@ export default function DecimalPlace({ type, parts }: DecimalPlaceInterface) {
           transition: `1.5s ease-in-out`,
         }}
       >
-        {parts}
+        {amount}
       </motion.h1>
       <motion.span
         style={{
-          fontSize: `30px`,
+          fontSize: `50px`,
           transition: `1.5s ease-in-out`,
         }}
       >
-        {type.valueOf()}
+        {`${Descriptions[type]}`}
       </motion.span>
     </motion.div>
   )

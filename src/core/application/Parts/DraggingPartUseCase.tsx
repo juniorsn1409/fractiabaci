@@ -7,42 +7,27 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-import { useDragControls, DragControls, PanInfo } from 'framer-motion'
-
-import { PlaceValueType } from '@/core/domain/PlaceValueType'
-
-interface DraggingPartUseCaseInterface {
-  controls: DragControls
-  dragging(event: React.PointerEvent): void
-  isInsideOfDecimalPlace(info: PanInfo, type: PlaceValueType): boolean
-  handleDragginEnd(
-    info: PanInfo,
-    type: PlaceValueType,
-    qtdParts: number,
-    isInside: React.SetStateAction<boolean>,
-    setIsInside: React.Dispatch<React.SetStateAction<boolean>>,
-    setQtdParts: React.Dispatch<React.SetStateAction<number>>,
-  ): void
-}
+import { useDragControls, PanInfo } from 'framer-motion'
+import DraggingPartUseCaseInterface from '@/core/domain/interfaces/DraggingPartUseCaseInterface'
 
 class DraggingPartUseCase implements DraggingPartUseCaseInterface {
-  // MARK: - Public properties
   controls = useDragControls()
 
-  // MARK: - Public methods
   public dragging(event: React.PointerEvent): void {
     this.controls.start(event, { snapToCursor: true })
   }
 
-  isInsideOfDecimalPlace(info: PanInfo, type: PlaceValueType) {
-    const decimalPlace = document.getElementById(`${type}`)
+  public detecting(info: PanInfo, type: string): boolean {
+    const decimalPlace = document.getElementById(type)
+
     if (decimalPlace) {
       const decimalPlaceRect = decimalPlace.getBoundingClientRect()
+      const { point } = info
       return (
-        info.point.x >= decimalPlaceRect.left &&
-        info.point.x <= decimalPlaceRect.right &&
-        info.point.y >= decimalPlaceRect.top &&
-        info.point.y <= decimalPlaceRect.bottom
+        point.x >= decimalPlaceRect.left &&
+        point.x <= decimalPlaceRect.right &&
+        point.y >= decimalPlaceRect.top &&
+        point.y <= decimalPlaceRect.bottom
       )
     }
     return false
@@ -50,19 +35,26 @@ class DraggingPartUseCase implements DraggingPartUseCaseInterface {
 
   public handleDragginEnd(
     info: PanInfo,
-    type: PlaceValueType,
-    qtdParts: number,
-    isInside: React.SetStateAction<boolean>,
-    setIsInside: React.Dispatch<React.SetStateAction<boolean>>,
-    setQtdParts: React.Dispatch<React.SetStateAction<number>>,
+    type: string,
+    amount: number,
+    setAmount: React.Dispatch<React.SetStateAction<number>>,
+    detecting: React.SetStateAction<boolean>,
+    setDetecting: React.Dispatch<React.SetStateAction<boolean>>,
   ): void {
-    if (this.isInsideOfDecimalPlace(info, type) && !isInside && qtdParts < 9) {
-      setQtdParts(qtdParts + 1)
-      setIsInside(true)
-    } else if (!this.isInsideOfDecimalPlace(info, type) && isInside) {
-      setQtdParts(qtdParts - 1)
-      setIsInside(false)
+    const isDetecting = this.detecting(info, type)
+
+    if (isDetecting && !detecting && amount < 9) {
+      setDetecting(true)
+      setAmount(amount + 1)
+    } else if (!isDetecting && detecting) {
+      setDetecting(false)
+      setAmount(amount - 1)
     }
+  }
+
+  public handleDelet(info: PanInfo): boolean {
+    const isDetectingDelete = this.detecting(info, 'delet')
+    return isDetectingDelete
   }
 }
 

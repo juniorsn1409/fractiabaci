@@ -10,32 +10,28 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-import { PlaceValueType } from '@/core/domain/PlaceValueType'
+import PartsInterface from '@/core/domain/interfaces/PartsInterface'
+
 import DraggingPartUseCase from '@/core/application/Parts/DraggingPartUseCase'
 import ChoosingColorUseCase from '@/core/application/Parts/ChoosingColorUseCase'
-
-interface PartsInterface {
-  type: PlaceValueType
-  qtdParts: number
-  setQtdParts: React.Dispatch<React.SetStateAction<number>>
-  limitationReference: React.RefObject<HTMLDivElement>
-}
 
 const chossingColorUseCase = new ChoosingColorUseCase()
 
 export default function Parts({
   type,
-  qtdParts,
-  setQtdParts,
+  amount,
+  setAmount,
   limitationReference,
 }: PartsInterface) {
   const draggingPartUseCase = new DraggingPartUseCase()
 
-  const [isInside, setIsInside] = useState(false)
-  const size = 75
+  const [detecting, setDetecting] = useState(false)
+
+  const aspectRatio = 1
 
   return (
     <motion.div
+      id={`${type}`}
       drag
       dragConstraints={limitationReference}
       dragControls={draggingPartUseCase.controls}
@@ -47,17 +43,19 @@ export default function Parts({
       onDragEnd={(event, info) => {
         draggingPartUseCase.handleDragginEnd(
           info,
-          type,
-          qtdParts,
-          isInside,
-          setIsInside,
-          setQtdParts,
+          type.toString(),
+          amount,
+          setAmount,
+          detecting,
+          setDetecting,
         )
       }}
       style={{
         zIndex: `1`,
-        width: `${size}px`,
-        height: `${size}px`,
+        width: '4%',
+        paddingTop: `${4 / aspectRatio}%`,
+        maxWidth: `6%`,
+        minWidth: `4%`,
         position: `absolute`,
         touchAction: `none`,
         borderRadius: '50%',

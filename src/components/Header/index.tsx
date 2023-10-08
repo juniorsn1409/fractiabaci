@@ -7,6 +7,7 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export default function Header() {
@@ -18,12 +19,15 @@ export default function Header() {
         fontSize: `25px`,
         alignItems: `center`,
         justifyContent: `space-between`,
-        color: `var(--preto-ebano)`,
-        backgroundColor: `var(--braco-paz)`,
+        backgroundColor: `var(--branco-paz)`,
       }}
     >
-      Fracti Abacus
+      <Link
+        href="/"
+        style={{ textDecoration: 'none', color: 'var(--preto-ebano)' }}
+      >
+        Fracti Abacus
+      </Link>
     </motion.div>
   )
-  // return <div className="headerContainer">Fracti Abacus</div>
 }

@@ -7,14 +7,7 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 
 import { Dispatch, SetStateAction } from 'react'
-
-interface AbacusBehaviorInterface {
-  addingParts(
-    parts: string[],
-    setParts: Dispatch<SetStateAction<string[]>>,
-  ): void
-  // * canAddingParts(parts: string[]): boolean
-}
+import AbacusBehaviorInterface from '@/core/domain/interfaces/AbacusBehaviorInterface'
 
 class AbacusBehaviorUseCase implements AbacusBehaviorInterface {
   // MARK: - Public methods
@@ -25,14 +18,6 @@ class AbacusBehaviorUseCase implements AbacusBehaviorInterface {
     const newParts = Date.now().toString()
     setParts([...parts, newParts])
   }
-
-  // *canAddingParts(parts: string[]): boolean {
-  // *  if (parts.length > 9) {
-  // *    return true
-  // *  } else {
-  // *    return false
-  // *  }
-  // *}
 }
 
 export default AbacusBehaviorUseCase

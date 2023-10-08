@@ -1,11 +1,13 @@
-//  S# SEVERITY
+// S# SEVERITY
 //
-//  Main/index.tsx
-//  Presentation
+// Main/index.tsx
+// Presentation
 //
-//  Created by Edson Júnior Ananias de Lima on 01/10/23.
-//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+// Created by Edson Júnior Ananias de Lima on 01/10/23.
+// Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
+
+'use client'
 
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -13,7 +15,8 @@ import { motion } from 'framer-motion'
 import Parts from '@/components/Parts'
 import DecimalPlace from '@/components/DecimalPlace'
 
-import { PlaceValueType } from '@/core/domain/PlaceValueType'
+import { PlaceValueType } from '@/core/domain/models/PlaceValueType'
+
 import AbacusBehaviorUseCase from '@/core/application/Abacus/AbacusBehaviorUseCase'
 import ChoosingColorUseCase from '@/core/application/Parts/ChoosingColorUseCase'
 
@@ -23,24 +26,21 @@ const choosingColorUseCase = new ChoosingColorUseCase()
 export default function Main() {
   const limitationReference = useRef(null)
 
-  const [qtdHundred, setQtdHundred] = useState(0)
+  const [amountHundred, setAmountHundred] = useState(0)
   const [partsHundred, setPartsHundred] = useState<string[]>([])
-
-  const [qtdTen, setQtdTen] = useState(0)
-  const [partsTen, setPartsTen] = useState<string[]>([])
-
-  const [qtdUnit, setQtdUnit] = useState(0)
-  const [partsUnit, setPartsUnit] = useState<string[]>([])
-
-  const addingPartsHundred = () => {
+  const addingHundred = () => {
     abacusBehaviorUseCase.addingParts(partsHundred, setPartsHundred)
   }
 
-  const addingPartsTen = () => {
+  const [amountTen, setAmountTen] = useState(0)
+  const [partsTen, setPartsTen] = useState<string[]>([])
+  const addingTen = () => {
     abacusBehaviorUseCase.addingParts(partsTen, setPartsTen)
   }
 
-  const addingPartsUnit = () => {
+  const [amountUnit, setAmountUnit] = useState(0)
+  const [partsUnit, setPartsUnit] = useState<string[]>([])
+  const addingUnit = () => {
     abacusBehaviorUseCase.addingParts(partsUnit, setPartsUnit)
   }
 
@@ -49,50 +49,66 @@ export default function Main() {
       <motion.div
         ref={limitationReference}
         style={{
-          width: `100%`,
-          height: `550px`,
-          display: `flex`,
-          overflow: `hidden`,
-          borderRadius: `5px`,
-          marginBottom: `10px`,
-          backgroundColor: `var(--braco-isabeline)`,
+          width: '100%',
+          height: '600px',
+          display: 'flex',
+          overflow: 'hidden',
+          borderRadius: '5px',
+          marginBottom: '10px',
+          backgroundColor: 'var(--braco-isabeline)',
         }}
       >
-        <DecimalPlace type={PlaceValueType.hundred} parts={qtdHundred} />
-        <DecimalPlace type={PlaceValueType.ten} parts={qtdTen} />
-        <DecimalPlace type={PlaceValueType.unit} parts={qtdUnit} />
+        <motion.div
+          id="delet"
+          style={{
+            width: '5%',
+            height: '95%',
+            margin: '1%',
+            display: 'flex',
+            borderRadius: '8px',
+            alignItems: 'center',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            transition: 'background-color 0.3s',
+            backgroundColor: '#262626',
+          }}
+        ></motion.div>
+
+        <DecimalPlace type={PlaceValueType.hundred} amount={amountHundred} />
+        <DecimalPlace type={PlaceValueType.ten} amount={amountTen} />
+        <DecimalPlace type={PlaceValueType.unit} amount={amountUnit} />
 
         <motion.div
           style={{
-            width: `5%`,
-            height: `95%`,
-            margin: `1%`,
-            display: `flex`,
-            borderRadius: `8px`,
-            alignItems: `center`,
-            flexDirection: `column`,
-            justifyContent: `center`,
-            transition: `background-color 0.3s`,
-            backgroundColor: `var(--braco-isabeline)`,
+            width: '5%',
+            height: '95%',
+            margin: '1%',
+            display: 'flex',
+            borderRadius: '8px',
+            alignItems: 'center',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            transition: 'background-color 0.3s',
+            backgroundColor: 'var(--braco-isabeline)',
           }}
         >
           <motion.div
             style={{
-              width: `100%`,
-              height: `33.3%`,
-              borderTopLeftRadius: `8px`,
-              borderTopRightRadius: `8px`,
+              width: '100%',
+              height: '33.3333%',
+              borderTopLeftRadius: '8px',
+              borderTopRightRadius: '8px',
               backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
                 PlaceValueType.unit,
               )}`,
             }}
           >
-            {partsUnit.map((PartsId) => (
+            {partsUnit.map((part, index) => (
               <Parts
-                key={PartsId}
+                key={`${part}-${index}`}
                 type={PlaceValueType.unit}
-                qtdParts={qtdUnit}
-                setQtdParts={setQtdUnit}
+                amount={amountUnit}
+                setAmount={setAmountUnit}
                 limitationReference={limitationReference}
               />
             ))}
@@ -100,50 +116,49 @@ export default function Main() {
 
           <motion.div
             style={{
-              width: `100%`,
-              height: `33.3%`,
+              width: '100%',
+              height: '33.3333%',
               backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
                 PlaceValueType.ten,
               )}`,
             }}
           >
-            {partsTen.map((PartsId) => (
+            {partsTen.map((part, index) => (
               <Parts
-                key={PartsId}
+                key={`${part}-${index}`}
                 type={PlaceValueType.ten}
-                qtdParts={qtdTen}
-                setQtdParts={setQtdTen}
+                amount={amountTen}
+                setAmount={setAmountTen}
                 limitationReference={limitationReference}
               />
             ))}
           </motion.div>
-
           <motion.div
             style={{
-              width: `100%`,
-              height: `33.3%`,
-              borderBottomLeftRadius: `8px`,
-              borderBottomRightRadius: `8px`,
+              width: '100%',
+              height: '33.3333%',
+              borderBottomLeftRadius: '8px',
+              borderBottomRightRadius: '8px',
               backgroundColor: `${choosingColorUseCase.colorDecimalPlace(
                 PlaceValueType.hundred,
               )}`,
             }}
           >
-            {partsHundred.map((PartsId) => (
+            {partsHundred.map((part, index) => (
               <Parts
-                key={PartsId}
+                key={`${part}-${index}`}
                 type={PlaceValueType.hundred}
-                qtdParts={qtdHundred}
-                setQtdParts={setQtdHundred}
+                amount={amountHundred}
+                setAmount={setAmountHundred}
                 limitationReference={limitationReference}
               />
             ))}
           </motion.div>
         </motion.div>
       </motion.div>
-      <button onClick={addingPartsHundred}>Adicionar Peça Cenena</button>
-      <button onClick={addingPartsTen}>Adicionar Peça Dezena</button>
-      <button onClick={addingPartsUnit}>Adicionar Peça Unidade</button>
+      <button onClick={addingHundred}>Adicionar Centena</button>
+      <button onClick={addingTen}>Adicionar Peça Dezeba</button>
+      <button onClick={addingUnit}>Adicionar Peça Unidade</button>
     </>
   )
 }

@@ -1,7 +1,6 @@
 //  S# SEVERITY
 //
 //  not-found.tsx
-//  Presentation
 //
 //  Created by Edson Júnior Ananias de Lima on 30/09/23.
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
@@ -14,7 +13,7 @@ export default function NotFound() {
     <>
       <div>
         <p>404</p>
-        <h1>página não encontrada</h1>
+        <h1>Página não encontrada</h1>
         <p>Lamentamos, mas não conseguimos encontrar a página que procura.</p>
         <div>
           <Link href="/">Voltar para Página Inicial</Link>

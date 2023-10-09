@@ -8,10 +8,18 @@
 
 import { Dispatch, SetStateAction } from 'react'
 
+import { PlaceValueType } from '@/core/domain/models/PlaceValueType'
+import PartsInterface from './PartsInterface'
+
 interface AbacusBehaviorInterface {
   addingParts(
-    parts: string[],
-    setParts: Dispatch<SetStateAction<string[]>>,
+    index: number,
+    type: PlaceValueType,
+    amount: number,
+    setAmount: React.Dispatch<React.SetStateAction<number>>,
+    parts: PartsInterface[],
+    setParts: Dispatch<SetStateAction<PartsInterface[]>>,
+    limitationReference: React.RefObject<HTMLDivElement>,
   ): void
 }
 

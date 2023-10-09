@@ -7,7 +7,10 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
+import { Dispatch, SetStateAction } from 'react'
 import { useDragControls, PanInfo } from 'framer-motion'
+
+import PartsInterface from '@/core/domain/interfaces/PartsInterface'
 import DraggingPartUseCaseInterface from '@/core/domain/interfaces/DraggingPartUseCaseInterface'
 
 class DraggingPartUseCase implements DraggingPartUseCaseInterface {
@@ -54,9 +57,16 @@ class DraggingPartUseCase implements DraggingPartUseCaseInterface {
     }
   }
 
-  public handleDelet(info: PanInfo): boolean {
+  public handleDelet(
+    info: PanInfo,
+    index: number,
+    parts: PartsInterface[],
+    setParts: Dispatch<SetStateAction<PartsInterface[]>>,
+  ): void {
     const isDetectingDelete = this.detecting(info, 'delet')
-    return isDetectingDelete
+    if (isDetectingDelete) {
+      setParts(parts.splice(index))
+    }
   }
 }
 

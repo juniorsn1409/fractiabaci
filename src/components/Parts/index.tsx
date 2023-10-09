@@ -15,12 +15,15 @@ import PartsInterface from '@/core/domain/interfaces/PartsInterface'
 import DraggingPartUseCase from '@/core/application/Parts/DraggingPartUseCase'
 import ChoosingColorUseCase from '@/core/application/Abacus/ChoosingColorUseCase'
 
-const chossingColorUseCase = new ChoosingColorUseCase()
+const choosingColorUseCase = new ChoosingColorUseCase()
 
 export default function Parts({
+  index,
   type,
   amount,
   setAmount,
+  parts,
+  setParts,
   limitationReference,
 }: PartsInterface) {
   const draggingPartUseCase = new DraggingPartUseCase()
@@ -49,6 +52,7 @@ export default function Parts({
           detecting,
           setDetecting,
         )
+        draggingPartUseCase.handleDelet(info, index, parts, setParts)
       }}
       style={{
         zIndex: `1`,
@@ -59,7 +63,7 @@ export default function Parts({
         position: `absolute`,
         touchAction: `none`,
         borderRadius: '50%',
-        backgroundColor: `${chossingColorUseCase.colorParts(type)}`,
+        backgroundColor: `${choosingColorUseCase.colorParts(type)}`,
       }}
     />
   )

@@ -12,11 +12,14 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
+import PartsInterface from '@/core/domain/interfaces/PartsInterface'
+import { PlaceValueType } from '@/core/domain/models/PlaceValueType'
+
+import AbacusManager from '@/core/domain/models/AbacusManager'
+import DraggingPartUseCase from '@/core/application/Parts/DraggingPartUseCase'
+
 import Parts from '@/components/Parts'
 import DecimalPlace from '@/components/DecimalPlace'
-
-import { PlaceValueType } from '@/core/domain/models/PlaceValueType'
-import AbacusManager from '@/core/domain/models/AbacusManager'
 
 const abacusManager = new AbacusManager()
 
@@ -24,24 +27,30 @@ export default function Main() {
   const limitationReference = useRef(null)
 
   const [amountHundred, setAmountHundred] = useState(0)
-  const [partsHundred, setPartsHundred] = useState<string[]>([])
-  const addingHundred = () => {
-    abacusManager.abacusBehaviorUseCase.addingParts(
-      partsHundred,
-      setPartsHundred,
-    )
-  }
-
   const [amountTen, setAmountTen] = useState(0)
-  const [partsTen, setPartsTen] = useState<string[]>([])
-  const addingTen = () => {
-    abacusManager.abacusBehaviorUseCase.addingParts(partsTen, setPartsTen)
-  }
-
   const [amountUnit, setAmountUnit] = useState(0)
-  const [partsUnit, setPartsUnit] = useState<string[]>([])
-  const addingUnit = () => {
-    abacusManager.abacusBehaviorUseCase.addingParts(partsUnit, setPartsUnit)
+
+  const [partsHundred, setPartsHundred] = useState<PartsInterface[]>([])
+  const [partsTen, setPartsTen] = useState<PartsInterface[]>([])
+  const [partsUnit, setPartsUnit] = useState<PartsInterface[]>([])
+
+  const addPart = (
+    type: PlaceValueType,
+    amountState: number,
+    setAmountState: React.Dispatch<React.SetStateAction<number>>,
+    partsState: PartsInterface[],
+    setPartsState: React.Dispatch<React.SetStateAction<PartsInterface[]>>,
+  ) => {
+    const index = partsState.length
+    abacusManager.abacusBehaviorUseCase.addingParts(
+      index,
+      type,
+      amountState,
+      setAmountState,
+      partsState,
+      setPartsState,
+      limitationReference,
+    )
   }
 
   return (
@@ -106,9 +115,12 @@ export default function Main() {
             {partsUnit.map((part, index) => (
               <Parts
                 key={`${part}-${index}`}
+                index={index}
                 type={PlaceValueType.unit}
                 amount={amountUnit}
                 setAmount={setAmountUnit}
+                parts={partsHundred}
+                setParts={setPartsHundred}
                 limitationReference={limitationReference}
               />
             ))}
@@ -126,9 +138,12 @@ export default function Main() {
             {partsTen.map((part, index) => (
               <Parts
                 key={`${part}-${index}`}
+                index={index}
                 type={PlaceValueType.ten}
                 amount={amountTen}
                 setAmount={setAmountTen}
+                parts={partsTen}
+                setParts={setPartsTen}
                 limitationReference={limitationReference}
               />
             ))}
@@ -147,18 +162,57 @@ export default function Main() {
             {partsHundred.map((part, index) => (
               <Parts
                 key={`${part}-${index}`}
+                index={index}
                 type={PlaceValueType.hundred}
                 amount={amountHundred}
                 setAmount={setAmountHundred}
+                parts={partsUnit}
+                setParts={setPartsUnit}
                 limitationReference={limitationReference}
               />
             ))}
           </motion.div>
         </motion.div>
       </motion.div>
-      <button onClick={addingHundred}>Adicionar Centena</button>
-      <button onClick={addingTen}>Adicionar Peça Dezeba</button>
-      <button onClick={addingUnit}>Adicionar Peça Unidade</button>
+      <button
+        onClick={() =>
+          addPart(
+            PlaceValueType.hundred,
+            amountHundred,
+            setAmountHundred,
+            partsHundred,
+            setPartsHundred,
+          )
+        }
+      >
+        Adicionar Centena
+      </button>
+      <button
+        onClick={() =>
+          addPart(
+            PlaceValueType.ten,
+            amountTen,
+            setAmountTen,
+            partsTen,
+            setPartsTen,
+          )
+        }
+      >
+        Adicionar Peça Dezena
+      </button>
+      <button
+        onClick={() =>
+          addPart(
+            PlaceValueType.unit,
+            amountUnit,
+            setAmountUnit,
+            partsUnit,
+            setPartsUnit,
+          )
+        }
+      >
+        Adicionar Peça Unidade
+      </button>
     </>
   )
 }

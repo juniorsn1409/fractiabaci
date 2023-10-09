@@ -8,11 +8,15 @@
 //
 
 import { PlaceValueType } from '@/core/domain/models/PlaceValueType'
+import { Dispatch, SetStateAction } from 'react'
 
 interface PartsInterface {
+  index: number
   type: PlaceValueType
   amount: number
   setAmount: React.Dispatch<React.SetStateAction<number>>
+  parts: PartsInterface[]
+  setParts: Dispatch<SetStateAction<PartsInterface[]>>
   limitationReference: React.RefObject<HTMLDivElement>
 }
 

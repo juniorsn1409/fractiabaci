@@ -1,13 +1,13 @@
 //  S# SEVERITY
 //
-//  PlaceValueType.tsx
+//  CustomTypesModel.tsx
 //  Domain
 //
 //  Created by Edson Júnior Ananias de Lima on 30/09/23.
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-export const enum PlaceValueType {
+export enum PlaceValueType {
   unit,
   ten,
   hundred,
@@ -15,6 +15,12 @@ export const enum PlaceValueType {
   tenThousand,
   hundredThousand,
   millions,
+}
+
+export enum PositionType {
+  top,
+  middle,
+  bottom,
 }
 
 export const Descriptions: Record<PlaceValueType, string> = {

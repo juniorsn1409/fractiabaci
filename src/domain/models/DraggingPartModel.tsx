@@ -1,6 +1,6 @@
 //  S# SEVERITY
 //
-//  DraggingPartUseCaseInterface.tsx
+//  DraggingPartModel.tsx
 //  Domain
 //
 //  Created by Edson Júnior Ananias de Lima on 05/10/23.
@@ -9,9 +9,8 @@
 
 import { DragControls, PanInfo } from 'framer-motion'
 
-interface DraggingPartUseCaseInterface {
-  controls: DragControls
-  dragging(event: React.PointerEvent): void
+export interface DraggingPartModel {
+  dragging(event: React.PointerEvent, controls: DragControls): void
   detecting(info: PanInfo, type: string): boolean
   handleDragginEnd(
     info: PanInfo,
@@ -22,5 +21,3 @@ interface DraggingPartUseCaseInterface {
     setDetecting: React.Dispatch<React.SetStateAction<boolean>>,
   ): void
 }
-
-export default DraggingPartUseCaseInterface

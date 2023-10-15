@@ -126,11 +126,9 @@ table {
   border-spacing: 0;
 }
 
-/*Aboce css reset*/
-
 :root {
   --branco-paz: #ffffff;
-  --braco-isabeline: #f4f3ee;
+  --branco-isabeline: #f4f3ee;
   --cinza-harpia: #3c3c3c;
   --preto-ebano: #0a0f0d;
   --vermelho-ucari: #ff6464;

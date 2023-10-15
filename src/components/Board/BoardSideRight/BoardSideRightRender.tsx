@@ -6,7 +6,7 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 import { ReactNode } from 'react'
-import { motion, MotionValue } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import { ChoosingColorUseCase } from '@/application/useCases/ChoosingColorUseCase'
 
@@ -25,14 +25,7 @@ export const BoardSideRightRender: React.FC<BoardSideRightRenderProps> = ({
   type,
   position,
 }) => {
-  const borderTopLeftRadius: MotionValue =
-    position === PositionType.top ? '8px' : '0px'
-  const borderTopRightRadius: MotionValue =
-    position === PositionType.top ? '8px' : '0px'
-  const borderBottomLeftRadius: MotionValue =
-    position === PositionType.bottom ? '8px' : '0px'
-  const borderBottomRightRadius: MotionValue =
-    position === PositionType.bottom ? '8px' : '0px'
+  const borderRadius = position === PositionType.top ? '8px' : '0px'
 
   return (
     <motion.div
@@ -40,10 +33,12 @@ export const BoardSideRightRender: React.FC<BoardSideRightRenderProps> = ({
       style={{
         width: '100%',
         height: '33.3333%',
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomLeftRadius,
-        borderBottomRightRadius,
+        borderTopLeftRadius: borderRadius,
+        borderTopRightRadius: borderRadius,
+        borderBottomLeftRadius:
+          position === PositionType.bottom ? '8px' : '0px',
+        borderBottomRightRadius:
+          position === PositionType.bottom ? '8px' : '0px',
         backgroundColor: `${choosingColor.colorDecimalPlace(type)}`,
       }}
     >

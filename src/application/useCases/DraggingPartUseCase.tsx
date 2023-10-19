@@ -56,4 +56,19 @@ export class DraggingPartUseCase implements DraggingPartModel {
       console.log(`Detecting Side Delet`)
     }
   }
+
+  // handleDelet(
+  //   info: PanInfo,
+  //   index: number,
+  //   parts: PartsInterface[],
+  //   setParts: Dispatch<SetStateAction<PartsInterface[]>>,
+  // ): void {
+  //   const isDetectingDelete = this.detecting(info, 'delet')
+  //   if (isDetectingDelete) {
+  //     console.log(detecting delet)
+  //     const newParts = parts.filter((parts, i) => i !== index)
+  //     setParts(newParts)
+  //   }
+  //   console.log(parts: ${parts})
+  // }
 }

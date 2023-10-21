@@ -6,6 +6,14 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
+import { Main } from '@/components/Main'
+import { Footer } from '@/components/Footer'
+
 export default function App() {
-  return <div>App</div>
+  return (
+    <>
+      <Main></Main>
+      <Footer></Footer>
+    </>
+  )
 }

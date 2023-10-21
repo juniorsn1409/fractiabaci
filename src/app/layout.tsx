@@ -9,7 +9,11 @@
 import type { Metadata } from 'next'
 
 import { Poppins } from 'next/font/google'
+
 import { ReactNode } from 'react'
+
+import { Background } from '@/components/Background'
+import { Header } from '@/components/Header'
 
 import './../../public/globals.css'
 
@@ -26,7 +30,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <Background>
+          <Header />
+          {children}
+        </Background>
+      </body>
     </html>
   )
 }

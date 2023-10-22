@@ -8,24 +8,36 @@
 
 'use client'
 
-import { useScreenStore } from '@/stores/useScreenStore'
 import { motion, useDragControls } from 'framer-motion'
 
-export function Bead() {
+import { BeadModel } from '@/domain/BeadModel'
+
+import { useScreenStore } from '@/stores/useScreenStore'
+
+import { DraggingUseCase } from '@/application/DraggingUseCase'
+import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
+
+const chossingColor = new ChoosingColorUseCase()
+const draggingBead = new DraggingUseCase()
+
+export const Bead: React.FC<BeadModel> = ({ id, type }) => {
   const controls = useDragControls()
+
   const { screen } = useScreenStore()
+
   return (
     <motion.div
+      id={`${id}`}
       drag
       dragControls={controls}
       dragConstraints={screen.size}
       dragElastic={0.1}
       dragListener={true}
-      onPointerDown={() => {
-        console.log(`onPointerDown`)
+      onPointerDown={(event) => {
+        draggingBead.dragging(event, controls)
       }}
       onDragEnd={() => {
-        console.log(`onDragEnd`)
+        console.log()
       }}
       style={{
         zIndex: 1,
@@ -36,7 +48,7 @@ export function Bead() {
         position: 'absolute',
         touchAction: 'none',
         borderRadius: '50%',
-        backgroundColor: `var(--vermelho-ucari)`,
+        backgroundColor: `${chossingColor.colorBead(type)}`,
       }}
     />
   )

@@ -6,13 +6,18 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-import { ReactNode } from 'react'
+'use client'
 
-interface BoardSideRightProps {
-  children?: ReactNode
-}
+import { Bead } from '@/components/Bead'
+import { PlaceValueType, PositionType } from '@/domain/CustomTypesModel'
+import { useAbacusStore } from '@/stores/useBeadStore'
+import { BoardSideRightRender } from './BoardSideRightRender'
 
-export const BoardSideRight: React.FC<BoardSideRightProps> = ({ children }) => {
+export const BoardSideRight = () => {
+  const {
+    beads: { unit, ten, hundred },
+  } = useAbacusStore()
+
   return (
     <div
       id={`add`}
@@ -28,7 +33,30 @@ export const BoardSideRight: React.FC<BoardSideRightProps> = ({ children }) => {
         transition: 'background-color 0.3s',
       }}
     >
-      {children}
+      <BoardSideRightRender
+        type={PlaceValueType.unit}
+        position={PositionType.top}
+      >
+        {unit.map((bead) => (
+          <Bead key={bead.id} id={bead.id} type={bead.type} />
+        ))}
+      </BoardSideRightRender>
+      <BoardSideRightRender
+        type={PlaceValueType.ten}
+        position={PositionType.middle}
+      >
+        {ten.map((bead) => (
+          <Bead key={bead.id} id={bead.id} type={bead.type} />
+        ))}
+      </BoardSideRightRender>
+      <BoardSideRightRender
+        type={PlaceValueType.hundred}
+        position={PositionType.bottom}
+      >
+        {hundred.map((bead) => (
+          <Bead key={bead.id} id={bead.id} type={bead.type} />
+        ))}
+      </BoardSideRightRender>
     </div>
   )
 }

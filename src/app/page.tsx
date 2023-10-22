@@ -10,11 +10,11 @@ import { Board } from '@/components/Board'
 import { BoardDecimalPlace } from '@/components/Board/BoardDecimalPlace'
 import { BoardSideLeft } from '@/components/Board/BoardSideLeft'
 import { BoardSideRight } from '@/components/Board/BoardSideRight'
-import { BoardSideRightRender } from '@/components/Board/BoardSideRight/BoardSideRightRender'
+import { ButtonBead } from '@/components/ButtonBead'
 import { Footer } from '@/components/Footer'
 import { Main } from '@/components/Main'
 
-import { PlaceValueType, PositionType } from '@/domain/CustomTypesModel'
+import { PlaceValueType } from '@/domain/CustomTypesModel'
 
 export default function App() {
   return (
@@ -25,21 +25,19 @@ export default function App() {
           <BoardDecimalPlace type={PlaceValueType.hundred} />
           <BoardDecimalPlace type={PlaceValueType.ten} />
           <BoardDecimalPlace type={PlaceValueType.unit} />
-          <BoardSideRight>
-            <BoardSideRightRender
-              type={PlaceValueType.unit}
-              position={PositionType.top}
-            ></BoardSideRightRender>
-            <BoardSideRightRender
-              type={PlaceValueType.ten}
-              position={PositionType.middle}
-            ></BoardSideRightRender>
-            <BoardSideRightRender
-              type={PlaceValueType.hundred}
-              position={PositionType.bottom}
-            ></BoardSideRightRender>
-          </BoardSideRight>
+          <BoardSideRight />
         </Board>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <ButtonBead type={PlaceValueType.unit} />
+          <ButtonBead type={PlaceValueType.ten} />
+          <ButtonBead type={PlaceValueType.hundred} />
+        </div>
       </Main>
       <Footer></Footer>
     </>

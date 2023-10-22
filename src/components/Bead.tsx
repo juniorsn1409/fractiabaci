@@ -14,10 +14,10 @@ import { BeadModel } from '@/domain/BeadModel'
 
 import { useScreenStore } from '@/stores/useScreenStore'
 
-import { DraggingUseCase } from '@/application/DraggingUseCase'
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
+import { DraggingUseCase } from '@/application/DraggingUseCase'
 
-const chossingColor = new ChoosingColorUseCase()
+const choosingColor = new ChoosingColorUseCase()
 const draggingBead = new DraggingUseCase()
 
 export const Bead: React.FC<BeadModel> = ({ id, type }) => {
@@ -48,7 +48,7 @@ export const Bead: React.FC<BeadModel> = ({ id, type }) => {
         position: 'absolute',
         touchAction: 'none',
         borderRadius: '50%',
-        backgroundColor: `${chossingColor.colorBead(type)}`,
+        backgroundColor: `${choosingColor.colorBead(type)}`,
       }}
     />
   )

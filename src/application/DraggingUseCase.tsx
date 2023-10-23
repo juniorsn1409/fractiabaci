@@ -8,31 +8,39 @@
 
 import { PanInfo, DragControls } from 'framer-motion'
 
-export class DraggingUseCase {
-  detecting(info: PanInfo, type: string): boolean {
-    const decimalPlace = document.getElementById(type)
+export function detecting(info: PanInfo, type: string): boolean {
+  const decimalPlace = document.getElementById(type)
 
-    if (decimalPlace) {
-      const decimalPlaceRect = decimalPlace.getBoundingClientRect()
-      const { point } = info
-      return (
-        point.x >= decimalPlaceRect.left &&
-        point.x <= decimalPlaceRect.right &&
-        point.y >= decimalPlaceRect.top &&
-        point.y <= decimalPlaceRect.bottom
-      )
-    }
-    return false
+  if (decimalPlace) {
+    const decimalPlaceRect = decimalPlace.getBoundingClientRect()
+    const { point } = info
+    return (
+      point.x >= decimalPlaceRect.left &&
+      point.x <= decimalPlaceRect.right &&
+      point.y >= decimalPlaceRect.top &&
+      point.y <= decimalPlaceRect.bottom
+    )
   }
+  return false
+}
 
-  dragging(event: React.PointerEvent, controls: DragControls): void {
-    controls.start(event, { snapToCursor: true })
-  }
+export function dragging(
+  event: React.PointerEvent,
+  controls: DragControls,
+): void {
+  controls.start(event, { snapToCursor: true })
+}
 
-  handleDelet(info: PanInfo): boolean {
-    if (this.detecting(info, 'delet')) {
-      return true
-    }
-    return false
+export function handleCounting(info: PanInfo, type: string): boolean {
+  if (detecting(info, type)) {
+    return true
   }
+  return false
+}
+
+export function handleDelet(info: PanInfo): boolean {
+  if (detecting(info, 'delet')) {
+    return true
+  }
+  return false
 }

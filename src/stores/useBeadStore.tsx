@@ -20,6 +20,7 @@ type BeadProps = {
 type ActionsProps = {
   add: (bead: BeadModel, type: PlaceValueType) => void
   remove: (beadId: number, type: PlaceValueType) => void
+  cleanBead: (type: PlaceValueType) => void
 }
 
 type StoreProps = {
@@ -60,7 +61,6 @@ export const useAbacusStore = create<StoreProps>((set) => ({
             },
           }))
           break
-        // Adicione mais casos aqui conforme necessário para os outros valores de PlaceValueType
         default:
           break
       }
@@ -91,7 +91,36 @@ export const useAbacusStore = create<StoreProps>((set) => ({
             },
           }))
           break
-        // Adicione mais casos aqui conforme necessário para os outros valores de PlaceValueType
+        default:
+          break
+      }
+    },
+    cleanBead: (type: PlaceValueType) => {
+      switch (type) {
+        case PlaceValueType.unit:
+          set((state) => ({
+            beads: {
+              ...state.beads,
+              unit: [],
+            },
+          }))
+          break
+        case PlaceValueType.ten:
+          set((state) => ({
+            beads: {
+              ...state.beads,
+              ten: [],
+            },
+          }))
+          break
+        case PlaceValueType.hundred:
+          set((state) => ({
+            beads: {
+              ...state.beads,
+              hundred: [],
+            },
+          }))
+          break
         default:
           break
       }

@@ -34,9 +34,9 @@ export default function App() {
             justifyContent: 'space-between',
           }}
         >
-          <ButtonBead type={PlaceValueType.unit} />
-          <ButtonBead type={PlaceValueType.ten} />
           <ButtonBead type={PlaceValueType.hundred} />
+          <ButtonBead type={PlaceValueType.ten} />
+          <ButtonBead type={PlaceValueType.unit} />
         </div>
       </Main>
       <Footer></Footer>

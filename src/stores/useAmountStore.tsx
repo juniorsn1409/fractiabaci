@@ -19,6 +19,7 @@ type AmountProps = {
 type ActionsProps = {
   increase: (type: PlaceValueType) => void
   decrease: (type: PlaceValueType) => void
+  cleanAmount: (type: PlaceValueType) => void
 }
 
 type StoreProps = {
@@ -84,6 +85,35 @@ export const useAmountStore = create<StoreProps>((set) => ({
               amount: {
                 ...state.amount,
                 hundred: Math.max(0, state.amount.hundred - 1),
+              },
+            }
+          default:
+            return state
+        }
+      })
+    },
+    cleanAmount(type: PlaceValueType) {
+      set((state) => {
+        switch (type) {
+          case PlaceValueType.unit:
+            return {
+              amount: {
+                ...state.amount,
+                unit: Math.max(0, 0),
+              },
+            }
+          case PlaceValueType.ten:
+            return {
+              amount: {
+                ...state.amount,
+                ten: Math.max(0, 0),
+              },
+            }
+          case PlaceValueType.hundred:
+            return {
+              amount: {
+                ...state.amount,
+                hundred: Math.max(0, 0),
               },
             }
           default:

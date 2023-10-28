@@ -10,14 +10,9 @@
 
 import { Bead } from '@/components/Bead'
 import { PlaceValueType, PositionType } from '@/domain/CustomTypesModel'
-import { useAbacusStore } from '@/stores/useBeadStore'
 import { BoardSideRightRender } from './BoardSideRightRender'
 
 export const BoardSideRight = () => {
-  const {
-    beads: { unit, ten, hundred },
-  } = useAbacusStore()
-
   return (
     <div
       id={`add`}
@@ -36,27 +31,15 @@ export const BoardSideRight = () => {
       <BoardSideRightRender
         type={PlaceValueType.unit}
         position={PositionType.top}
-      >
-        {unit.map((bead) => (
-          <Bead key={bead.id} id={bead.id} type={bead.type} />
-        ))}
-      </BoardSideRightRender>
+      ></BoardSideRightRender>
       <BoardSideRightRender
         type={PlaceValueType.ten}
         position={PositionType.middle}
-      >
-        {ten.map((bead) => (
-          <Bead key={bead.id} id={bead.id} type={bead.type} />
-        ))}
-      </BoardSideRightRender>
+      ></BoardSideRightRender>
       <BoardSideRightRender
         type={PlaceValueType.hundred}
         position={PositionType.bottom}
-      >
-        {hundred.map((bead) => (
-          <Bead key={bead.id} id={bead.id} type={bead.type} />
-        ))}
-      </BoardSideRightRender>
+      ></BoardSideRightRender>
     </div>
   )
 }

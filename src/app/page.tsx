@@ -27,17 +27,6 @@ export default function App() {
           <BoardDecimalPlace type={PlaceValueType.unit} />
           <BoardSideRight />
         </Board>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
-          <ButtonBead type={PlaceValueType.hundred} />
-          <ButtonBead type={PlaceValueType.ten} />
-          <ButtonBead type={PlaceValueType.unit} />
-        </div>
       </Main>
       <Footer></Footer>
     </>

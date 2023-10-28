@@ -10,15 +10,11 @@
 
 import { Descriptions } from '@/domain/CustomTypesModel'
 import { DecimalPlaceModel } from '@/domain/DecimalPlaceModel'
-
-import { AmountUseCase } from '@/application/AmountUseCase'
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 
 const choosingColor = new ChoosingColorUseCase()
 
 export const BoardDecimalPlace = ({ type }: DecimalPlaceModel) => {
-  const amount = AmountUseCase(type)
-
   return (
     <div
       id={`${type}`}
@@ -42,7 +38,7 @@ export const BoardDecimalPlace = ({ type }: DecimalPlaceModel) => {
           transition: `1.5s ease-in-out`,
         }}
       >
-        {amount}
+        0
       </h1>
       <span
         style={{

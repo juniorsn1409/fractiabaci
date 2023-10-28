@@ -6,8 +6,6 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-'use client'
-
 import { ReactNode } from 'react'
 
 interface BoardProps {

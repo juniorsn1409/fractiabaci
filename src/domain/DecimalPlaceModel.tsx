@@ -10,4 +10,5 @@ import { PlaceValueType } from '@/domain/CustomTypesModel'
 
 export type DecimalPlaceModel = {
   type: PlaceValueType
+  amount: number
 }

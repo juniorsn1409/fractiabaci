@@ -8,11 +8,13 @@
 
 'use client'
 
-import { Bead } from '@/components/Bead'
-import { PlaceValueType, PositionType } from '@/domain/CustomTypesModel'
-import { BoardSideRightRender } from './BoardSideRightRender'
+import { ReactNode } from 'react'
 
-export const BoardSideRight = () => {
+interface BoardSideRightProps {
+  children?: ReactNode
+}
+
+export const BoardSideRight: React.FC<BoardSideRightProps> = ({ children }) => {
   return (
     <div
       id={`add`}
@@ -28,18 +30,7 @@ export const BoardSideRight = () => {
         transition: 'background-color 0.3s',
       }}
     >
-      <BoardSideRightRender
-        type={PlaceValueType.unit}
-        position={PositionType.top}
-      ></BoardSideRightRender>
-      <BoardSideRightRender
-        type={PlaceValueType.ten}
-        position={PositionType.middle}
-      ></BoardSideRightRender>
-      <BoardSideRightRender
-        type={PlaceValueType.hundred}
-        position={PositionType.bottom}
-      ></BoardSideRightRender>
+      {children}
     </div>
   )
 }

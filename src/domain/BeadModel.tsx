@@ -8,8 +8,13 @@
 //
 
 import { PlaceValueType } from '@/domain/CustomTypesModel'
+import { Dispatch, SetStateAction } from 'react'
 
 export type BeadModel = {
-  id: number
+  id: string
   type: PlaceValueType
+  beads: BeadModel[]
+  setBeads: Dispatch<SetStateAction<BeadModel[]>>
+  amount: number
+  setAmount: Dispatch<SetStateAction<number>>
 }

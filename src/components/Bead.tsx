@@ -8,6 +8,7 @@
 
 'use client'
 
+import { useState } from 'react'
 import { motion, useDragControls } from 'framer-motion'
 
 import { BeadModel } from '@/domain/BeadModel'
@@ -15,20 +16,25 @@ import { BeadModel } from '@/domain/BeadModel'
 import { useScreenStore } from '@/stores/useScreenStore'
 
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
-
-import {
-  dragging,
-  handleCounting,
-  handleDelet,
-} from '@/application/DraggingUseCase'
-import { PlaceValueType } from '@/domain/CustomTypesModel'
+import { DraggingUseCase } from '@/application/DraggingUseCase'
 
 const choosingColor = new ChoosingColorUseCase()
+const draggingBead = new DraggingUseCase()
 
-export const Bead: React.FC<BeadModel> = ({ id, type }) => {
+export const Bead: React.FC<BeadModel> = ({
+  id,
+  type,
+  beads,
+  setBeads,
+  amount,
+  setAmount,
+}) => {
   const controls = useDragControls()
   const { screen } = useScreenStore()
 
+  const [isInside, setIsInside] = useState(false)
+
+  console.log(`Bead ${id}`)
   return (
     <motion.div
       id={`${id}`}
@@ -38,14 +44,18 @@ export const Bead: React.FC<BeadModel> = ({ id, type }) => {
       dragElastic={0.1}
       dragListener={true}
       onPointerDown={(event) => {
-        dragging(event, controls)
+        draggingBead.dragging(event, controls)
       }}
       onDragEnd={(event, info) => {
-        if (handleCounting(info, type.toString())) {
-          console.log(`[BAED] `)
-        } else if (!handleCounting(info, type.toString())) {
-          console.log(`[BAED] `)
-        }
+        draggingBead.handleCounting(
+          info,
+          type.toString(),
+          amount,
+          setAmount,
+          isInside,
+          setIsInside,
+        )
+        draggingBead.handleDelet(info, id, beads, setBeads)
       }}
       style={{
         zIndex: 1,

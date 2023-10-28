@@ -14,7 +14,7 @@ import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 
 const choosingColor = new ChoosingColorUseCase()
 
-export const BoardDecimalPlace = ({ type }: DecimalPlaceModel) => {
+export const BoardDecimalPlace = ({ type, amount }: DecimalPlaceModel) => {
   return (
     <div
       id={`${type}`}
@@ -38,7 +38,7 @@ export const BoardDecimalPlace = ({ type }: DecimalPlaceModel) => {
           transition: `1.5s ease-in-out`,
         }}
       >
-        0
+        {amount}
       </h1>
       <span
         style={{

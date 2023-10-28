@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--braco-isabeline);
+  }
+  
+/* Main*/
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 55%;
+    background-color: var(--branco-isabeline);
+  }
+  
+
+  /* Logo*/
+.logo-container {
+    padding: 25px;
+    font-size: 25px;
+  }
+  /* Header*/
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 7%;
+    justify-content: space-between;
+    background-color: var(--branco-isabeline);
+  }
+
+  /* Footer*/
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background-color: var(--branco-isabeline);
+  }
+
+  /* Bead */
+.bead-container {
+    z-index: 1;
+    width: 7%;
+    padding-top: 7%;
+    max-width: 7%;
+    min-width: 4%;
+    position: absolute;
+    touch-action: none;
+    border-radius: 50%;
+  }
+  
+  /* ele que trabalha a cor fora dos containes Background */
+.background-container {
+    /* Exemplo
+    width: 100%;
+    height: auto;
+    background-color: inherit; 
+    display: grid-template-columns;
+    min-Height: 700px;
+    align-items: center; 
+    */
+    width: 100vw;
+    height: 100vh;
+    display: grid-template-columns;
+    background-color: inherit; 
+    min-Height: 300px;
+}
+
+  /* Contenier branco, onde esta todo abacus dentro */
+  .board-container {
+    width: 100%;
+    margin: auto;
+    height: 70%;
+    min-width: 100px;
+    min-height: 50px;
+    display: flex;
+    width: clamp(200px, 100%, 10100px);
+    overflow: hidden;
+    flex-direction: grid-template-columns;
+    /* flex: 0 0 200px; */
+    border-Radius: 5px;
+    justify-Content:center;
+    background-Color: var(--branco-paz);
+  }
+
+/* BoardSideLeft apagador, preto*/
+.board-side-left {
+    width: 8%;
+    height: 95%;
+    margin: 1%;
+    display: flex;
+    border-Radius: 8px;
+    align-Items: center;
+    flex-Direction: column;
+    justify-Content: center;
+    transition: background-color 0.3s;
+    background-Color: var(--cinza-harpia);
+  }
+  /* cores, BoardDecimalPlace cetena,dezena,unidade*/
+.board-decimal-place {
+    height: 95%;
+    display: grid;
+    width: 27.333%;
+    margin: 1%;
+    display: flex;
+    border-Radius: 8px;
+    background-Color: var(--your-color);
+    align-Items: center;
+    flex-Direction: column;
+    justify-Content: center;
+    transition: background-color 0.3s;
+    /*grid-template-columns: repeat(auto-fill,minmax(150px, 1rf));*/
+  }
+  
+   /* texto dentro da quantidade numero centena, dezena, unidade */
+  .board-decimal-place h1 {
+    font-Size: 70px;
+    margin-Bottom: 16px;
+    transition: 1.5s ease-in-out;
+  }
+  
+   /* texto dentro centena, dezena, unidade */
+  .board-decimal-place span {
+    font-Size: 20px;
+    transition: 1.5s ease-in-out;
+  }
+
+  /*cores BoardSideRight, onde sera adicionado as fixas */
+.board-side-right {
+    width: 8%;
+    height: 95%;
+    margin: 1%;
+    display: flex;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    align-Items: center;
+    flex-Direction: column;
+    justify-Content: center;
+    transition: background-color 0.3s;
+    
+    
+  }
+  
+ 
+  
+  
+  
+

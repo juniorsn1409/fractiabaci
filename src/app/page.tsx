@@ -7,7 +7,7 @@
 //
 
 'use client'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { BeadModel } from '@/domain/BeadModel'
@@ -56,6 +56,28 @@ export default function App() {
       setHundred((prevHundred) => [...prevHundred, newBead])
     }
   }
+
+  useEffect(() => {
+    if (amountUnit > 9) {
+      setUnit([])
+      setAmountUnit(0)
+      onAddBead(PlaceValueType.ten, ten, setTen, amountTen, setAmountTen)
+    }
+    if (amountTen > 9) {
+      setTen([])
+      setAmountTen(0)
+      onAddBead(
+        PlaceValueType.hundred,
+        hundred,
+        setHundred,
+        amountHundred,
+        setAmountHundred,
+      )
+    }
+    if (amountHundred > 9) {
+      console.log(`hundred limite maximo atingido`)
+    }
+  }, [amountUnit, amountTen, amountHundred, ten, hundred])
 
   return (
     <>

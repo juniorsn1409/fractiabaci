@@ -6,10 +6,10 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
+import { Dispatch, SetStateAction } from 'react'
 import { PanInfo, DragControls } from 'framer-motion'
 
 import { BeadModel } from '@/domain/BeadModel'
-import { Dispatch, SetStateAction } from 'react'
 
 export class DraggingUseCase {
   public detecting(info: PanInfo, type: string): boolean {

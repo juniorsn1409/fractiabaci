@@ -29,12 +29,11 @@ export const Bead: React.FC<BeadModel> = ({
   amount,
   setAmount,
 }) => {
+  const [isInside, setIsInside] = useState(false)
+
   const controls = useDragControls()
   const { screen } = useScreenStore()
 
-  const [isInside, setIsInside] = useState(false)
-
-  console.log(`Bead ${id}`)
   return (
     <motion.div
       id={`${id}`}

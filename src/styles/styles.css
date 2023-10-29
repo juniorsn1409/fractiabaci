@@ -16,13 +16,12 @@ body {
     background-color: var(--branco-isabeline);
   }
   
-
-  /* Logo*/
+/* Logo*/
 .logo-container {
     padding: 25px;
     font-size: 25px;
   }
-  /* Header*/
+/* Header*/
 .header-container {
     display: flex;
     align-items: center;
@@ -32,7 +31,7 @@ body {
     background-color: var(--branco-isabeline);
   }
 
-  /* Footer*/
+/* Footer*/
 .footer-container {
     display: flex;
     justify-content: center;
@@ -42,8 +41,10 @@ body {
     background-color: var(--branco-isabeline);
   }
 
-  /* Bead */
+/* Bead */
 .bead-container {
+    transition-timing-function: linear;
+    pointer-events: auto;
     z-index: 1;
     width: 7%;
     padding-top: 7%;
@@ -54,7 +55,7 @@ body {
     border-radius: 50%;
   }
   
-  /* ele que trabalha a cor fora dos containes Background */
+/* ele que trabalha a cor fora dos containes Background */
 .background-container {
     /* Exemplo
     width: 100%;
@@ -101,6 +102,18 @@ body {
     transition: background-color 0.3s;
     background-Color: var(--cinza-harpia);
   }
+
+  .board-side-left:hover{
+    filter:blur(1px);
+    transform: scale(0.9, 0.9);
+  }
+ .board-side-left> * {
+    pointer-events: auto-fill;
+  }
+  .board-side-left:hover > *:hover {
+      transform: scale(1.1, 1.1);
+      filter: none;
+  }
   /* cores, BoardDecimalPlace cetena,dezena,unidade*/
 .board-decimal-place {
     height: 95%;
@@ -116,7 +129,20 @@ body {
     transition: background-color 0.3s;
     /*grid-template-columns: repeat(auto-fill,minmax(150px, 1rf));*/
   }
-  
+
+  .board-decimal-place:hover{    
+    filter: blur(0.3px);
+    transform: scale(1,1);
+  }
+
+  .board-decimal-place > * {
+    pointer-events: auto;
+  }
+
+  .board-decimal-place:hover > *:hover {
+      transform: scale(2.1, 2.1);
+      filter: none;
+  }
    /* texto dentro da quantidade numero centena, dezena, unidade */
   .board-decimal-place h1 {
     font-Size: 70px;
@@ -144,8 +170,6 @@ body {
     flex-Direction: column;
     justify-Content: center;
     transition: background-color 0.3s;
-    
-    
   }
   
  

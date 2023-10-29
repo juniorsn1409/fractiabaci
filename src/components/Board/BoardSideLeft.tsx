@@ -13,5 +13,5 @@ export const BoardSideLeft = () => {
       id={`delet`}
       className="board-side-left"
     ></div>
-  )
+  );
 }

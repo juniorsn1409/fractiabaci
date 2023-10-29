@@ -18,27 +18,16 @@ const choosingColor = new ChoosingColorUseCase()
 export const BoardDecimalPlace = ({ type, amount }: DecimalPlaceModel) => {
   return (
     <div
-      id={`${type}`}
+      id={`${type.toString()}`}
       className="board-decimal-place"
       style={{
         backgroundColor: `${choosingColor.colorDecimalPlace(type)}`,
       }}
     >
-      <h1
-        style={{
-          fontSize: `200px`,
-          marginBottom: `16px`,
-          transition: `1.5s ease-in-out`,
-        }}
-      >
+      <h1>
         {amount}
       </h1>
-      <span
-        style={{
-          fontSize: `50px`,
-          transition: `1.5s ease-in-out`,
-        }}
-      >
+      <span>
         {`${Descriptions[type]}`}
       </span>
     </div>

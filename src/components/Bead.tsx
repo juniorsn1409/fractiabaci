@@ -8,8 +8,8 @@
 
 'use client'
 
-import { motion, useDragControls } from 'framer-motion'
 import { useState } from 'react'
+import { motion, useDragControls } from 'framer-motion'
 
 import { BeadModel } from '@/domain/BeadModel'
 
@@ -18,7 +18,7 @@ import { useScreenStore } from '@/stores/useScreenStore'
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 import { DraggingUseCase } from '@/application/DraggingUseCase'
 
-import '../styles/styles.css'
+
 
 const choosingColor = new ChoosingColorUseCase()
 const draggingBead = new DraggingUseCase()

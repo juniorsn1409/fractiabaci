@@ -6,9 +6,9 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-import { ReactNode } from 'react'
-import '../../styles/styles.css'
 'use client'
+
+import '../../styles/styles.css'
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'

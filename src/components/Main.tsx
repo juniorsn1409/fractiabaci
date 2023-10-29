@@ -7,6 +7,9 @@
 //
 
 import { ReactNode } from 'react'
+import '../styles/styles.css';
+
+
 
 interface MainProps {
   children?: ReactNode
@@ -15,15 +18,7 @@ interface MainProps {
 export const Main: React.FC<MainProps> = ({ children }) => {
   return (
     <main
-      style={{
-        display: 'flex',
-        flexDirection: `column`,
-        justifyContent: `center`,
-        alignItems: `center`,
-        width: `100%`,
-        height: `73%`,
-        backgroundColor: `var(--branco-isabeline)`,
-      }}
+    className="main-container"
     >
       {children}
     </main>

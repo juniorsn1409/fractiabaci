@@ -18,6 +18,8 @@ import { useScreenStore } from '@/stores/useScreenStore'
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 import { DraggingUseCase } from '@/application/DraggingUseCase'
 
+import '../styles/styles.css';
+
 const choosingColor = new ChoosingColorUseCase()
 const draggingBead = new DraggingUseCase()
 
@@ -38,6 +40,7 @@ export const Bead: React.FC<BeadModel> = ({
   return (
     <motion.div
       id={`${id}`}
+      className="bead-container"
       drag
       dragControls={controls}
       dragConstraints={screen.size}

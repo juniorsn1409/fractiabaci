@@ -11,6 +11,7 @@
 import { Descriptions } from '@/domain/CustomTypesModel'
 import { DecimalPlaceModel } from '@/domain/DecimalPlaceModel'
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
+import '../../styles/styles.css'
 
 const choosingColor = new ChoosingColorUseCase()
 
@@ -18,17 +19,9 @@ export const BoardDecimalPlace = ({ type, amount }: DecimalPlaceModel) => {
   return (
     <div
       id={`${type}`}
+      className="board-decimal-place"
       style={{
-        height: '95%',
-        width: '27.333%',
-        margin: '1%',
-        display: 'flex',
-        borderRadius: '8px',
         backgroundColor: `${choosingColor.colorDecimalPlace(type)}`,
-        alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        transition: 'background-color 0.3s',
       }}
     >
       <h1

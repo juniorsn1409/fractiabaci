@@ -7,6 +7,7 @@
 //
 
 import { ReactNode } from 'react'
+import '../../styles/styles.css'
 
 interface BoardProps {
   children?: ReactNode
@@ -15,16 +16,7 @@ interface BoardProps {
 export const Board: React.FC<BoardProps> = ({ children }) => {
   return (
     <div
-      style={{
-        width: '95%',
-        height: '70%',
-        minWidth: '1000px',
-        minHeight: '500px',
-        display: 'flex',
-        overflow: 'hidden',
-        borderRadius: '5px',
-        backgroundColor: 'var(--branco-paz)',
-      }}
+    className="board-container"
     >
       {children}
     </div>

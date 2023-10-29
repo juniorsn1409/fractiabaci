@@ -12,6 +12,8 @@ import { ReactNode } from 'react'
 
 import { useScreenStore } from '@/stores/useScreenStore'
 
+import '../styles/styles.css';
+
 type BackgroundProps = {
   children?: ReactNode
 }
@@ -23,13 +25,7 @@ export const Background: React.FC<BackgroundProps> = ({ children }) => {
   return (
     <div
       ref={size as React.RefObject<HTMLDivElement>}
-      style={{
-        width: `100vw`,
-        height: `100vh`,
-        minWidth: '1000px',
-        minHeight: '700px',
-        backgroundColor: `var(--braco-isabeline)`,
-      }}
+      className="background-container"
     >
       {children}
     </div>

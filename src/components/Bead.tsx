@@ -18,7 +18,7 @@ import { useScreenStore } from '@/stores/useScreenStore'
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 import { DraggingUseCase } from '@/application/DraggingUseCase'
 
-import '../styles/styles.css';
+import '../styles/styles.css'
 
 const choosingColor = new ChoosingColorUseCase()
 const draggingBead = new DraggingUseCase()

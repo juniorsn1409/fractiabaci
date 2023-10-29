@@ -12,7 +12,7 @@ import { ReactNode } from 'react'
 
 import { useScreenStore } from '@/stores/useScreenStore'
 
-import '../styles/styles.css';
+import '../styles/styles.css'
 
 type BackgroundProps = {
   children?: ReactNode

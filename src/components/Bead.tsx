@@ -8,8 +8,8 @@
 
 'use client'
 
-import { useState } from 'react'
 import { motion, useDragControls } from 'framer-motion'
+import { useState } from 'react'
 
 import { BeadModel } from '@/domain/BeadModel'
 
@@ -31,12 +31,11 @@ export const Bead: React.FC<BeadModel> = ({
   amount,
   setAmount,
 }) => {
+  const [isInside, setIsInside] = useState(false)
+
   const controls = useDragControls()
   const { screen } = useScreenStore()
 
-  const [isInside, setIsInside] = useState(false)
-
-  console.log(`Bead ${id}`)
   return (
     <motion.div
       id={`${id}`}

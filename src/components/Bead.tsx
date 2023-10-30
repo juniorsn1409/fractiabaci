@@ -61,10 +61,10 @@ export const Bead: React.FC<BeadModel> = ({
       }}
       style={{
         zIndex: 1,
-        width: '7%',
-        paddingTop: '7%',
-        maxWidth: '7%',
-        minWidth: '4%',
+        width: '4%',
+        paddingTop: '4%',
+        maxWidth: '4%',
+        minWidth: '2%',
         position: 'absolute',
         touchAction: 'none',
         borderRadius: '50%',

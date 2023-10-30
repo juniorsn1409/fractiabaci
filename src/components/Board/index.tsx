@@ -11,6 +11,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useCanAddStore } from '@/stores/useCanAddStore'
+
 import { BeadModel } from '@/domain/BeadModel'
 import { PlaceValueType, PositionType } from '@/domain/CustomTypesModel'
 
@@ -30,6 +32,10 @@ export const Board = () => {
   const [amountUnit, setAmountUnit] = useState<number>(0)
   const [unit, setUnit] = useState<BeadModel[]>([])
 
+  const {
+    actions: { setTrue, setFalse },
+  } = useCanAddStore()
+
   useEffect(() => {
     if (amountUnit > 9) {
       if (amountTen < 9 || amountHundred < 9) {
@@ -44,7 +50,7 @@ export const Board = () => {
 
     if (amountTen > 9) {
       if (amountHundred < 9) {
-        console.log(`[UNIT] ten: ${amountTen}`)
+        console.log(`[TEN] ten: ${amountTen}`)
         setTen([])
         setAmountTen(0)
         onAddBead(
@@ -59,10 +65,10 @@ export const Board = () => {
       }
     }
 
-    if (amountHundred > 9) {
+    if (amountHundred === 9) {
       console.log(`[Hundred Notification]`)
     }
-  }, [amountUnit, amountTen, amountHundred, ten, hundred])
+  }, [amountUnit, amountTen, amountHundred, ten, hundred, setFalse, setTrue])
 
   const onAddBead = (
     type: PlaceValueType,

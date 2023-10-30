@@ -41,7 +41,7 @@ export class DraggingUseCase {
     setIsInside: React.Dispatch<React.SetStateAction<boolean>>,
   ): void {
     const isDetecting = this.detecting(info, type)
-    if (isDetecting && !isInside && amount < 10) {
+    if (isDetecting && !isInside && amount <= 9) {
       setIsInside(true)
       setAmount(amount + 1)
     } else if (!isDetecting && isInside && amount >= 0) {

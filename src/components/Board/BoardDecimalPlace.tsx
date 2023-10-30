@@ -8,9 +8,9 @@
 
 'use client'
 
+import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 import { Descriptions } from '@/domain/CustomTypesModel'
 import { DecimalPlaceModel } from '@/domain/DecimalPlaceModel'
-import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 
 const choosingColor = new ChoosingColorUseCase()
 

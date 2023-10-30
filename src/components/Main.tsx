@@ -7,20 +7,12 @@
 //
 
 import { ReactNode } from 'react'
-import '../styles/styles.css';
-
-
+import '../styles/styles.css'
 
 interface MainProps {
   children?: ReactNode
 }
 
 export const Main: React.FC<MainProps> = ({ children }) => {
-  return (
-    <main
-    className="main-container"
-    >
-      {children}
-    </main>
-  )
+  return <main className="main-container">{children}</main>
 }

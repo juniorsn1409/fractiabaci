@@ -18,8 +18,6 @@ import { useScreenStore } from '@/stores/useScreenStore'
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 import { DraggingUseCase } from '@/application/DraggingUseCase'
 
-
-
 const choosingColor = new ChoosingColorUseCase()
 const draggingBead = new DraggingUseCase()
 

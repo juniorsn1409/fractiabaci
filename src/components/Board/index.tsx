@@ -92,9 +92,7 @@ export const Board = () => {
   }
 
   return (
-    <div
-    className="board-container"
-    >
+    <div className="board-container">
       <BoardSideLeft />
       <BoardDecimalPlace type={PlaceValueType.hundred} amount={amountHundred} />
       <BoardDecimalPlace type={PlaceValueType.ten} amount={amountTen} />

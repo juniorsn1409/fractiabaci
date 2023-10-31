@@ -11,9 +11,7 @@ import '../styles/styles.css'
 
 export const Logo = () => {
   return (
-    <h1
-    className="logo-container"
-    >
+    <h1 className="logo-container">
       <Link
         href="/"
         style={{ textDecoration: 'none', color: 'var(--preto-ebano)' }}

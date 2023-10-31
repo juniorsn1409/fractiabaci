@@ -24,12 +24,8 @@ export const BoardDecimalPlace = ({ type, amount }: DecimalPlaceModel) => {
         backgroundColor: `${choosingColor.colorDecimalPlace(type)}`,
       }}
     >
-      <h1>
-        {amount}
-      </h1>
-      <span>
-        {`${Descriptions[type]}`}
-      </span>
+      <h1>{amount}</h1>
+      <span>{`${Descriptions[type]}`}</span>
     </div>
   )
 }

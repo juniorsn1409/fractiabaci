@@ -17,10 +17,7 @@ interface BoardSideRightProps {
 
 export const BoardSideRight: React.FC<BoardSideRightProps> = ({ children }) => {
   return (
-    <div
-      id={`add`}
-      className="board-side-right"
-    >
+    <div id={`add`} className="board-side-right">
       {children}
     </div>
   )

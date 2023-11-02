@@ -7,6 +7,7 @@
 //
 
 import { ReactNode } from 'react'
+import '../styles/styles.css'
 
 import '../styles/styles.css'
 

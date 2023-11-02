@@ -9,7 +9,6 @@
 import { ReactNode } from 'react'
 
 import { Logo } from '@/components/Logo'
-
 import '../styles/styles.css'
 
 interface HeaderProps {

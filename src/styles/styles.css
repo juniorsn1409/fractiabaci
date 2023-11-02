@@ -185,7 +185,14 @@ body {
     transition: background-color 0.3s;
   }
   
- 
+  @media screen and (max-width: 768px) {
+    /* Estilos específicos para telas menores (por exemplo, smartphones) */
+    .logo-container {
+      font-size: 4vw;
+    }
+
+  }
+  
   
   
   

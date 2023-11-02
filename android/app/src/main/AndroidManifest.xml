@@ -15,7 +15,8 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBarLaunch"
             android:launchMode="singleTask"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait"> <!-- Defina a orientação para "portrait" -->
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +24,7 @@
             </intent-filter>
 
         </activity>
+
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -8,8 +8,8 @@
 
 'use client'
 
-import { motion, useDragControls } from 'framer-motion'
 import { useState } from 'react'
+import { motion, useDragControls } from 'framer-motion'
 
 import { BeadModel } from '@/domain/BeadModel'
 
@@ -43,6 +43,7 @@ export const Bead: React.FC<BeadModel> = ({
   return (
     <motion.div
       id={`${id}`}
+      className="bead-container"
       drag
       dragControls={controls}
       dragConstraints={screen.size}
@@ -97,10 +98,10 @@ export const Bead: React.FC<BeadModel> = ({
       }}
       style={{
         zIndex: 1,
-        width: '7%',
-        paddingTop: '7%',
-        maxWidth: '7%',
-        minWidth: '4%',
+        width: '4%',
+        paddingTop: '4%',
+        maxWidth: '4%',
+        minWidth: '2%',
         position: 'absolute',
         touchAction: 'none',
         borderRadius: '50%',

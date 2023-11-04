@@ -7,23 +7,12 @@
 //
 
 import { ReactNode } from 'react'
+import '../styles/styles.css'
 
 interface FooterProps {
   children?: ReactNode
 }
 
 export const Footer: React.FC<FooterProps> = ({ children }) => {
-  return (
-    <footer
-      style={{
-        justifyContent: `center`,
-        alignItems: `center`,
-        width: `100%`,
-        height: `20%`,
-        backgroundColor: `var(--branco-isabeline)`,
-      }}
-    >
-      {children}
-    </footer>
-  )
+  return <footer className="footer-container">{children}</footer>
 }

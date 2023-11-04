@@ -7,15 +7,11 @@
 //
 
 import Link from 'next/link'
+import '../styles/styles.css'
 
 export const Logo = () => {
   return (
-    <h1
-      style={{
-        padding: `25px`,
-        fontSize: `25px`,
-      }}
-    >
+    <h1 className="logo-container">
       <Link
         href="/"
         style={{ textDecoration: 'none', color: 'var(--preto-ebano)' }}

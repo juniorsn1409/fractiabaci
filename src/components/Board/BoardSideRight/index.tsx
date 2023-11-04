@@ -9,6 +9,7 @@
 'use client'
 
 import { ReactNode } from 'react'
+import '../../../styles/styles.css'
 
 interface BoardSideRightProps {
   children?: ReactNode
@@ -16,20 +17,7 @@ interface BoardSideRightProps {
 
 export const BoardSideRight: React.FC<BoardSideRightProps> = ({ children }) => {
   return (
-    <div
-      id={`add`}
-      style={{
-        width: '8%',
-        height: '95%',
-        margin: '1%',
-        display: 'flex',
-        borderRadius: '8px',
-        alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        transition: 'background-color 0.3s',
-      }}
-    >
+    <div id={`add`} className="board-side-right">
       {children}
     </div>
   )

@@ -8,6 +8,8 @@
 
 'use client'
 
+import '../../styles/styles.css'
+
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -118,18 +120,7 @@ export const Board = () => {
   }
 
   return (
-    <div
-      style={{
-        width: '95%',
-        height: '70%',
-        minWidth: '1000px',
-        minHeight: '500px',
-        display: 'flex',
-        overflow: 'hidden',
-        borderRadius: '5px',
-        backgroundColor: 'var(--branco-paz)',
-      }}
-    >
+    <div className="board-container">
       <BoardSideLeft />
       <BoardDecimalPlace type={PlaceValueType.hundred} amount={amountHundred} />
       <BoardDecimalPlace type={PlaceValueType.ten} amount={amountTen} />

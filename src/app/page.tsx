@@ -1,15 +1,22 @@
-'use client'
+//  S# SEVERITY
+//
+//  page.tsx
+//
+//  Created by Edson Júnior Ananias de Lima on 30/09/23.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
 
-import Header from '@/components/Header'
-import Main from '@/components/Main'
+import { Board } from '@/components/Board'
+import { Footer } from '@/components/Footer'
+import { Main } from '@/components/Main'
 
 export default function App() {
   return (
-    <div id="background">
-      <Header />
-      <div id="mainBackground">
-        <Main />
-      </div>
-    </div>
+    <>
+      <Main>
+        <Board />
+      </Main>
+      <Footer></Footer>
+    </>
   )
 }

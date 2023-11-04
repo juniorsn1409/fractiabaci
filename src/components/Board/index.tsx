@@ -42,7 +42,17 @@ export const Board = () => {
         console.log(`[UNIT] unit: ${amountTen}`)
         setUnit([])
         setAmountUnit(0)
-        onAddBead(PlaceValueType.ten, ten, setTen, amountTen, setAmountTen)
+        onAddBead(
+          PlaceValueType.ten,
+          ten,
+          setTen,
+          amountUnit,
+          setAmountUnit,
+          amountTen,
+          setAmountTen,
+          amountHundred,
+          setAmountHundred,
+        )
       } else {
         console.log(`[Unit Notification]`)
       }
@@ -57,6 +67,10 @@ export const Board = () => {
           PlaceValueType.hundred,
           hundred,
           setHundred,
+          amountUnit,
+          setAmountUnit,
+          amountTen,
+          setAmountTen,
           amountHundred,
           setAmountHundred,
         )
@@ -74,16 +88,24 @@ export const Board = () => {
     type: PlaceValueType,
     beads: BeadModel[],
     setBeads: Dispatch<SetStateAction<BeadModel[]>>,
-    amount: number,
-    setAmount: Dispatch<SetStateAction<number>>,
+    amountUnit: number,
+    setAmountUnit: Dispatch<SetStateAction<number>>,
+    amountTen: number,
+    setAmountTen: Dispatch<SetStateAction<number>>,
+    amountHundred: number,
+    setAmountHundred: Dispatch<SetStateAction<number>>,
   ) => {
     const newBead = {
       id: uuidv4(),
       type,
       beads,
       setBeads,
-      amount,
-      setAmount,
+      amountUnit,
+      setAmountUnit,
+      amountTen,
+      setAmountTen,
+      amountHundred,
+      setAmountHundred,
     }
 
     if (type === PlaceValueType.unit) {
@@ -123,6 +145,10 @@ export const Board = () => {
               setUnit,
               amountUnit,
               setAmountUnit,
+              amountTen,
+              setAmountTen,
+              amountHundred,
+              setAmountHundred,
             )
           }
         >
@@ -133,8 +159,12 @@ export const Board = () => {
               type={bead.type}
               beads={unit}
               setBeads={setUnit}
-              amount={amountUnit}
-              setAmount={setAmountUnit}
+              amountUnit={amountUnit}
+              setAmountUnit={setAmountUnit}
+              amountTen={amountTen}
+              setAmountTen={setAmountTen}
+              amountHundred={amountHundred}
+              setAmountHundred={setAmountHundred}
             />
           ))}
         </BoardSideRightRender>
@@ -142,7 +172,17 @@ export const Board = () => {
           type={PlaceValueType.ten}
           position={PositionType.middle}
           onAddBead={() =>
-            onAddBead(PlaceValueType.ten, ten, setTen, amountTen, setAmountTen)
+            onAddBead(
+              PlaceValueType.ten,
+              ten,
+              setTen,
+              amountUnit,
+              setAmountUnit,
+              amountTen,
+              setAmountTen,
+              amountHundred,
+              setAmountHundred,
+            )
           }
         >
           {ten.map((bead) => (
@@ -152,8 +192,12 @@ export const Board = () => {
               type={bead.type}
               beads={ten}
               setBeads={setTen}
-              amount={amountTen}
-              setAmount={setAmountTen}
+              amountUnit={amountUnit}
+              setAmountUnit={setAmountUnit}
+              amountTen={amountTen}
+              setAmountTen={setAmountTen}
+              amountHundred={amountHundred}
+              setAmountHundred={setAmountHundred}
             />
           ))}
         </BoardSideRightRender>
@@ -165,6 +209,10 @@ export const Board = () => {
               PlaceValueType.hundred,
               hundred,
               setHundred,
+              amountUnit,
+              setAmountUnit,
+              amountTen,
+              setAmountTen,
               amountHundred,
               setAmountHundred,
             )
@@ -177,8 +225,12 @@ export const Board = () => {
               type={bead.type}
               beads={hundred}
               setBeads={setHundred}
-              amount={amountHundred}
-              setAmount={setAmountHundred}
+              amountUnit={amountUnit}
+              setAmountUnit={setAmountUnit}
+              amountTen={amountTen}
+              setAmountTen={setAmountTen}
+              amountHundred={amountHundred}
+              setAmountHundred={setAmountHundred}
             />
           ))}
         </BoardSideRightRender>

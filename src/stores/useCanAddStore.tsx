@@ -20,7 +20,7 @@ type AcceptProps = {
 type ActionsProps = {
   setTrue: (type: PlaceValueType) => void
   setFalse: (type: PlaceValueType) => void
-  // canAdd: (type: PlaceValueType) => boolean
+  canAdd: (type: PlaceValueType) => boolean
 }
 
 type StoreProps = {
@@ -28,7 +28,7 @@ type StoreProps = {
   actions: ActionsProps
 }
 
-export const useCanAddStore = create<StoreProps>((set) => ({
+export const useCanAddStore = create<StoreProps>((set, get) => ({
   canAdd: {
     acceptUnit: true,
     acceptTen: true,
@@ -99,17 +99,17 @@ export const useCanAddStore = create<StoreProps>((set) => ({
         }
       })
     },
-    // canAdd: (type: PlaceValueType) => {
-    //   switch (type) {
-    //     case PlaceValueType.unit:
-    //       return state.canAdd.acceptUnit
-    //     case PlaceValueType.ten:
-    //       return true
-    //     case PlaceValueType.hundred:
-    //       return true
-    //     default:
-    //       return false
-    //   }
-    // },
+    canAdd: (type: PlaceValueType) => {
+      switch (type) {
+        case PlaceValueType.unit:
+          return get().canAdd.acceptUnit
+        case PlaceValueType.ten:
+          return get().canAdd.acceptTen
+        case PlaceValueType.hundred:
+          return get().canAdd.acceptHundred
+        default:
+          return false
+      }
+    },
   },
 }))

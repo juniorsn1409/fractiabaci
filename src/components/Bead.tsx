@@ -13,7 +13,6 @@ import { useState } from 'react'
 
 import { BeadModel } from '@/domain/BeadModel'
 
-import { useCanAddStore } from '@/stores/useCanAddStore'
 import { useScreenStore } from '@/stores/useScreenStore'
 
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
@@ -28,18 +27,18 @@ export const Bead: React.FC<BeadModel> = ({
   type,
   beads,
   setBeads,
-  amount,
-  setAmount,
+  amountUnit,
+  setAmountUnit,
+  amountTen,
+  setAmountTen,
+  amountHundred,
+  setAmountHundred,
 }) => {
   console.log(`Renderizou`)
-  const [isInside, setIsInside] = useState(false)
+  const [inside, setInside] = useState(false)
 
   const controls = useDragControls()
   const { screen } = useScreenStore()
-
-  const {
-    canAdd: { acceptUnit, acceptTen, acceptHundred },
-  } = useCanAddStore()
 
   return (
     <motion.div
@@ -53,22 +52,47 @@ export const Bead: React.FC<BeadModel> = ({
         draggingBead.dragging(event, controls)
       }}
       onDragEnd={(event, info) => {
-        if (type === PlaceValueType.unit) {
-          console.log(`[BEAD] acceptUnit: ${acceptUnit}`)
-        } else if (type === PlaceValueType.ten) {
-          console.log(`[BEAD] acceptTen: ${acceptTen}`)
-        } else if (type === PlaceValueType.hundred) {
-          console.log(`[BEAD] acceptHundred: ${acceptHundred}`)
+        const detecting = draggingBead.detecting(info, type.toString())
+
+        switch (type) {
+          case PlaceValueType.unit:
+            if (detecting && !inside) {
+              if (
+                amountUnit !== 9 ||
+                (amountTen !== 9 && amountHundred !== 9)
+              ) {
+                setInside(true)
+                draggingBead.increase(amountUnit, setAmountUnit)
+              }
+            } else if (!detecting && inside) {
+              setInside(false)
+              draggingBead.decrease(amountUnit, setAmountUnit)
+            }
+            break
+          case PlaceValueType.ten:
+            if (detecting && !inside) {
+              if (amountTen !== 9 || amountHundred !== 9) {
+                setInside(true)
+                draggingBead.increase(amountTen, setAmountTen)
+              }
+            } else if (!detecting && inside) {
+              setInside(false)
+              draggingBead.decrease(amountTen, setAmountTen)
+            }
+            break
+          case PlaceValueType.hundred:
+            if (detecting && !inside) {
+              if (amountHundred !== 9) {
+                setInside(true)
+                draggingBead.increase(amountHundred, setAmountHundred)
+              }
+            } else if (!detecting && inside) {
+              setInside(false)
+              draggingBead.decrease(amountHundred, setAmountHundred)
+            }
+            break
         }
 
-        draggingBead.handleCounting(
-          info,
-          type.toString(),
-          amount,
-          setAmount,
-          isInside,
-          setIsInside,
-        )
         draggingBead.handleDelet(info, id, beads, setBeads)
       }}
       style={{

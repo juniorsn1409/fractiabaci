@@ -50,6 +50,20 @@ export class DraggingUseCase {
     }
   }
 
+  public increase(
+    amount: number,
+    setAmount: React.Dispatch<React.SetStateAction<number>>,
+  ): void {
+    setAmount(amount + 1)
+  }
+
+  public decrease(
+    amount: number,
+    setAmount: React.Dispatch<React.SetStateAction<number>>,
+  ): void {
+    setAmount(amount - 1)
+  }
+
   public handleDelet(
     info: PanInfo,
     id: string,

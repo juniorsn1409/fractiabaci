@@ -14,6 +14,10 @@ export type BeadModel = {
   type: PlaceValueType
   beads: BeadModel[]
   setBeads: Dispatch<SetStateAction<BeadModel[]>>
-  amount: number
-  setAmount: Dispatch<SetStateAction<number>>
+  amountUnit: number
+  setAmountUnit: Dispatch<SetStateAction<number>>
+  amountTen: number
+  setAmountTen: Dispatch<SetStateAction<number>>
+  amountHundred: number
+  setAmountHundred: Dispatch<SetStateAction<number>>
 }

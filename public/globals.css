@@ -126,23 +126,21 @@ table {
   border-spacing: 0;
 }
 
-/*Acima Reset do CSS */
-
 :root {
   --branco-paz: #ffffff;
-  --braco-isabeline: #F4F3EE;
+  --braco-isabeline: #f4f3ee;
   --cinza-harpia: #3c3c3c;
-  --preto-ebano: #0A0F0D;
+  --preto-ebano: #0a0f0d;
   --vermelho-ucari: #ff6464;
-  --vermelho-urucum: #FF0000;
-  --vermelho-guara: #9B0000;
-  --azul-ararinha: #00C8FF;
-  --azul-atlatico: #183EFF;
-  --azul-petroleo: #00008C;
-  --amarelo-ipe: #FFFF00;
-  --amarelo-sol: #FFD000;
-  --amarelo-mel: #FF7D00;
-  --verde-mandacaru: #00F537;
-  --verde-amazonia: #00D000;
+  --vermelho-urucum: #ff0000;
+  --vermelho-guara: #9b0000;
+  --azul-ararinha: #00c8ff;
+  --azul-atlatico: #183eff;
+  --azul-petroleo: #00008c;
+  --amarelo-ipe: #ffff00;
+  --amarelo-sol: #ffd000;
+  --amarelo-mel: #ff7d00;
+  --verde-mandacaru: #00f537;
+  --verde-amazonia: #00d000;
   --verde-quartzo: #009600;
 }

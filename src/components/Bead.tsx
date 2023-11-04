@@ -58,10 +58,7 @@ export const Bead: React.FC<BeadModel> = ({
         switch (type) {
           case PlaceValueType.unit:
             if (detecting && !inside) {
-              if (
-                amountUnit !== 9 ||
-                (amountTen !== 9 && amountHundred !== 9)
-              ) {
+              if (amountUnit !== 9 || amountTen !== 9 || amountHundred !== 9) {
                 setInside(true)
                 draggingBead.increase(amountUnit, setAmountUnit)
               }

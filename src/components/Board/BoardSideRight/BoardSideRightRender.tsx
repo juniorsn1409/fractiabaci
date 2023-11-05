@@ -19,7 +19,7 @@ export const BoardSideRightRender: React.FC<BoardSideRightRenderProps> = ({
   position,
   onAddBead,
 }) => {
-  const borderRadius = position === PositionType.top ? '8px' : '0px'
+  const borderRadius = position === PositionType.center ? '8px' : '0px'
 
   return (
     <div

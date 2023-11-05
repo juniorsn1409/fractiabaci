@@ -6,6 +6,7 @@
   --azul-ararinha: #48D1CC;
   --azul-atlatico: 	#008080;
   --amarelo-ipe: 	#FFD700;
+  --cinza-harpia: #8B7E66;
   animation: brilhar 2s infinite;
 }
 @keyframes brilhar {
@@ -119,7 +120,7 @@ body {
     */
     border-Radius: 5px;
     justify-Content:center;
-    background-Color:#414444;
+    background-Color:	#6C7B8B;
   }
 .board-side-left {
     width: 8%;
@@ -129,9 +130,9 @@ body {
     border-Radius: 8px;
     align-Items: center;
     flex-Direction: column;
-    border: 2px solid #000;
+    border: 1px solid #998a8a;
     justify-Content: center;
-    animation: glow 2s infinite; 
+    animation: glow 59s infinite; 
     transition: background-color 0.3s;
     background-Color: var(--cinza-harpia);
   }
@@ -146,33 +147,32 @@ body {
       transform: scale(1.1, 1.1);
       filter: none;
   }
-
-
 .board-decimal-place {
     height: auto;
     display: grid;
     width: 30.333%;
     margin: 1%;
     display: flex;
-    border-Radius: 8px;
+    border-Radius: 3px;
     background-Color: var(--your-color);
     align-Items: center;
     flex-Direction: column;
     justify-Content: center;
     transition: background-color 0.3s;
-    border: 1px solid #000;
-    animation: glow 2s infinite; 
+    border: 0.2px solid #000;
+    animation: glow 59s infinite; 
     /*grid-template-columns: repeat(auto-fill,minmax(150px, 1rf));*/
   }
   @keyframes glow {
     0% {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 5px rgba(255, 253, 253, 0.938);
     }
+    
     50% {
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.877);
     }
     100% {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 5px rgba(255, 253, 253, 0.5);
     }
   }
   .board-decimal-place:hover{    
@@ -183,17 +183,15 @@ body {
       transform: scale(2.1, 2.1);
       filter: none;
   }
- 
 .board-decimal-place h1 {
-  font-size: 5vw; /* Usando vw em vez de px */
+  font-size: 5vw; 
   margin-bottom: 2vw; 
   transition: 0.5s ease-in-out;
   position: relative;
   top: 35%;
 }
-
 .board-decimal-place span {
-  font-size: 1.4vw; /* Usando vw em vez de px */
+  font-size: 1.4vw; 
   transition: 0.5s ease-in-out;
   position: relative;
   top: 33%;
@@ -210,4 +208,3 @@ body {
     flex-Direction: column;
     justify-Content: center;
   }
-

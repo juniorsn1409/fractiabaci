@@ -6,7 +6,7 @@
   --azul-ararinha: #48D1CC;
   --azul-atlatico: 	#008080;
   --amarelo-ipe: 	#FFD700;
-  --cinza-harpia: #8B7E66;
+  --cinza-harpia: #bebdba;
   animation: brilhar 2s infinite;
 }
 @keyframes brilhar {
@@ -14,6 +14,7 @@
     --amarelo-sol: #DAA520;
     --vermelho-urucum: #B22222;
     --azul-atlatico: 	#008080;
+    
   }
   50% {
     --amarelo-sol: #DAA520; 
@@ -22,7 +23,7 @@
     --vermelho-urucum: #8B0000; 
     --azul-atlatico: #2E8B57;
     --azul-atlatico: #5F9EA0;
-
+    
   }
   100% {
     --amarelo-sol: #B8860B;
@@ -31,6 +32,7 @@
     --vermelho-urucum: 	#B22222;
     --azul-atlatico: #3CB371;
     --azul-atlatico: 	#008080;
+    
   }
 }
 
@@ -89,6 +91,7 @@ body {
     position: absolute;
     touch-action: none;
     border-radius: 50%;
+    opacity : 0.759;
   }
 .background-container {
     /* Exemplo

@@ -15,8 +15,8 @@ import { ReactNode } from 'react'
 import { Background } from '@/components/Background'
 import { Header } from '@/components/Header'
 
-import './../styles/styles.css'
-import './../../public/globals.css'
+import '@/styles/reset.css'
+import '@/styles/globals.css'
 
 const font = Poppins({
   weight: '500',

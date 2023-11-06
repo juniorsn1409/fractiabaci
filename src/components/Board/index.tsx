@@ -17,8 +17,8 @@ import { BeadModel } from '@/domain/BeadModel'
 import { PlaceValueType, PositionType } from '@/domain/CustomTypesModel'
 
 import { Bead } from '@/components/Bead'
-import { BoardDecimalPlace } from '@/components/Board/BoardDecimalPlace'
-import { BoardSideLeft } from '@/components/Board/BoardSideLeft'
+import { BoardDecimalPlace } from '@/components/Board/BoardDecimalPlace/BoardDecimalPlace'
+import { BoardSideLeft } from '@/components/Board/BoardSideLeft/BoardSideLeft'
 import { BoardSideRight } from '@/components/Board/BoardSideRight'
 import { BoardSideRightRender } from '@/components/Board/BoardSideRight/BoardSideRightRender'
 

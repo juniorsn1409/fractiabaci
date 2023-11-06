@@ -10,8 +10,8 @@
 
 import { Descriptions } from '@/domain/CustomTypesModel'
 import { DecimalPlaceModel } from '@/domain/DecimalPlaceModel'
+
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
-import '../../styles/styles.css'
 
 const choosingColor = new ChoosingColorUseCase()
 

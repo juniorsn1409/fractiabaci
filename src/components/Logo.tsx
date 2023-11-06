@@ -7,7 +7,6 @@
 //
 
 import Link from 'next/link'
-import '../styles/styles.css'
 
 export const Logo = () => {
   return (

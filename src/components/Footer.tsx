@@ -7,7 +7,6 @@
 //
 
 import { ReactNode } from 'react'
-import '../styles/styles.css'
 
 interface FooterProps {
   children?: ReactNode

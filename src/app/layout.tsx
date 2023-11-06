@@ -15,6 +15,7 @@ import { ReactNode } from 'react'
 import { Background } from '@/components/Background'
 import { Header } from '@/components/Header'
 
+import './../styles/styles.css'
 import './../../public/globals.css'
 
 const font = Poppins({

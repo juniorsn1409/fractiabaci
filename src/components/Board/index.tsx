@@ -8,8 +8,6 @@
 
 'use client'
 
-import '../../styles/styles.css'
-
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 

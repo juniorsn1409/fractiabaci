@@ -8,11 +8,11 @@
 
 'use client'
 
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 import { useScreenStore } from '@/stores/useScreenStore'
 
-import '../styles/styles.css'
+import '../styles/dark.css'
 
 type BackgroundProps = {
   children?: ReactNode
@@ -22,6 +22,7 @@ export const Background: React.FC<BackgroundProps> = ({ children }) => {
   const {
     screen: { size },
   } = useScreenStore()
+
   return (
     <div
       ref={size as React.RefObject<HTMLDivElement>}

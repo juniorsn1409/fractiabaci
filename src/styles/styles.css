@@ -14,13 +14,6 @@
     --azul-atlatico: 	#008080;
   }
 }
-
-body {
-  background: radial-gradient(circle at 50% 50%,#777b7b 10%, #3d3b3b);
-  color: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-}
 .main-container {
   display: flex;
   color: rgb(13, 11, 53);
@@ -36,13 +29,14 @@ body {
 .logo-container {
   font-size: 2vw;
   padding: 1%;
+  display:flex;
   position: relative;
   margin-bottom: 1vw; 
   transition: 0.5s ease-in-out;
   top: 3vw;
   
   }
-.header-container {
+.header-container  {
     display: flex;
     align-items: center;
     width: 100%;
@@ -50,6 +44,8 @@ body {
     justify-content: space-between;
     /*background-color: var(--branco-isabeline);*/
   }
+
+  
 .footer-container {
     display: flex;
     justify-content: center;

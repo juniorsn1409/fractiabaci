@@ -6,11 +6,9 @@
   border-Radius: 8px;
   align-Items: center;
   flex-Direction: column;
-  /* border: 1px solid #998a8a; */
   justify-Content: center;
-  /* animation: glow 59s infinite;  */
-  /* transition: background-color 0.3s; */
   background-Color: var(--cinza-harpia);
+  color: black;
 }
 .sideLeft:hover{
   /* filter:blur(1px); */
@@ -25,5 +23,5 @@
 }
 
 .icon {
-  font-size: 50px;
+  font-size: 4vw;
 }

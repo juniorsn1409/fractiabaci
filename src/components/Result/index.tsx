@@ -8,6 +8,8 @@
 
 import styles from './index.module.css'
 
+import '../../styles/styles.css'
+
 type ResultModel = {
   numbers: number
 }

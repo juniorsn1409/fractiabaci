@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 :root {
   --amarelo-sol: #B8860B;
   --vermelho-urucum: #B22222;
   --azul-ararinha: #48D1CC;
   --azul-atlatico: 	#008080;
   --amarelo-ipe: 	#FFD700;
-  --cinza-harpia: #dbd9d5;
+  --cinza-harpia: #f8f8f8;
+  
   animation: brilhar 3s infinite;
 }
 @keyframes brilhar {
@@ -16,7 +18,7 @@
 }
 .main-container {
   display: flex;
-  color: rgb(13, 11, 53);
+  color: black; 
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -26,6 +28,11 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.main-container {
+  color: inherit; 
+}
+
 .logo-container {
   font-size: 2vw;
   padding: 1%;
@@ -44,6 +51,7 @@
     justify-content: space-between;
     /*background-color: var(--branco-isabeline);*/
   }
+  
 
   
 .footer-container {
@@ -72,8 +80,8 @@
   
   }
   .bead-container:hover{
-    filter:blur(3px);
-    transform: scale(2, 2);
+    filter:blur(1px);
+    transform: scale(1, 1);
   }
   .bead-container> * {
     pointer-events: auto;
@@ -152,6 +160,7 @@
       filter: none;
   }
 .board-decimal-place h1 {
+  color: black; 
   font-size: 5vw; 
   margin-bottom: 2vw; 
   transition: 0.5s ease-in-out;
@@ -159,12 +168,14 @@
   top: 35%;
 }
 .board-decimal-place span {
+  color: black; 
   font-size: 1.4vw; 
   transition: 0.5s ease-in-out;
   position: relative;
   top: 33%;
 }
 .board-side-right {
+    color: black; 
     width: 10%;
     height: auto;
     margin: 1%;

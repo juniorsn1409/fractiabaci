@@ -167,10 +167,10 @@
 }
 .board-decimal-place span {
   color: black; 
-  font-size: 1.4vw; 
+  font-size: 2vw; 
   transition: 0.5s ease-in-out;
   position: relative;
-  top: 33%;
+  top: 28%;
 }
 .board-side-right {
     color: black; 

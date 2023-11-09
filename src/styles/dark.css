@@ -11,8 +11,6 @@
 	--primary-t: hsla(var(--hue),90%,50%,0);
 	--trans-dur: 0.3s;
 	font-size: 1vw;
-	margin-left: 40px;
-	
 }
 
 body,
@@ -43,7 +41,7 @@ body {
 	align-items: center;
 	position: absolute;
 	margin-bottom: 1vw; 
-	margin-left: 89%;
+	margin-left: 92%;
 	top: 3vw;
 	
 }

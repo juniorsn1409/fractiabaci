@@ -4,6 +4,10 @@ import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 
 import { PlaceValueType, PositionType } from '@/domain/CustomTypesModel'
 
+import styles from './index.module.css'
+
+import { FaPlus } from 'react-icons/fa'
+
 const choosingColor = new ChoosingColorUseCase()
 
 interface BoardSideRightRenderProps {
@@ -34,12 +38,16 @@ export const BoardSideRightRender: React.FC<BoardSideRightRenderProps> = ({
         borderBottomRightRadius:
           position === PositionType.bottom ? '8px' : '0px',
         backgroundColor: `${choosingColor.colorDecimalPlace(type)}`,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
       onDoubleClick={() => {
         onAddBead(type)
       }}
     >
       {children}
+      <FaPlus className={`${styles.icon}`}></FaPlus>
     </div>
   )
 }

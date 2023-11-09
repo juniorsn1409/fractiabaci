@@ -9,6 +9,7 @@
 'use client'
 
 import { useState } from 'react'
+
 import { motion, useDragControls } from 'framer-motion'
 
 import { BeadModel } from '@/domain/BeadModel'

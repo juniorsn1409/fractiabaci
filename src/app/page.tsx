@@ -8,12 +8,14 @@
 
 import { Board } from '@/components/Board'
 import { Footer } from '@/components/Footer'
+import { Instructions } from '@/components/Instructions'
 import { Main } from '@/components/Main'
 
 export default function App() {
   return (
     <>
       <Main>
+        <Instructions />
         <Board />
       </Main>
       <Footer></Footer>

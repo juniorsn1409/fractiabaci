@@ -19,7 +19,7 @@ export const BoardDecimalPlace = ({ type, amount }: DecimalPlaceModel) => {
   return (
     <div
       id={`${type.toString()}`}
-      className="board-decimal-place"
+      className="board-decimal-place "
       style={{
         backgroundColor: `${choosingColor.colorDecimalPlace(type)}`,
       }}

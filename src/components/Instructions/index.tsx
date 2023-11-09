@@ -8,7 +8,6 @@
 
 import styles from './index.module.css'
 
-
 import '../../styles/styles.css'
 
 export const Instructions = () => {
@@ -16,7 +15,7 @@ export const Instructions = () => {
     <div className={`${styles.container}`}>
       <div className={`${styles.left}`}></div>
       <div className={`${styles.mid}`}>
-        <h1>Valor Posicional Numérico</h1>
+        <h1>Valor Posicional Numerico</h1>
       </div>
       <div className={`${styles.right}`}>
         <h1>Duplo Clique Para Adicionar</h1>

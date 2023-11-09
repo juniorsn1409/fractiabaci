@@ -10,8 +10,6 @@
 
 import { useState } from 'react'
 import { BiSolidAdjust } from 'react-icons/bi'
-import { AiFillAlert } from 'react-icons/Ai'
-
 import '../styles/dark.css'
 
 export const SwitchMode = () => {
@@ -32,7 +30,6 @@ export const SwitchMode = () => {
           onChange={toggleDarkMode}
         />
         <span className="switch__label"></span>
-        <AiFillAlert />
         <BiSolidAdjust style={{ marginLeft: '5px' }} />
       </label>
     </>

@@ -1,0 +1,23 @@
+.container {
+  width: 98%;
+  display: flex;
+}
+
+.left {
+  width: 10%;
+  justify-content: flex-end;
+  text-align: center;
+}
+
+.mid {
+  width: 80%; 
+  text-align: center;
+  font-size:40px;
+}
+
+.right {
+  width: 10%;
+  justify-content: flex-end;
+  text-align: center;
+  font-size:20px;
+}

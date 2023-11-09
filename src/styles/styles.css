@@ -1,16 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--cor-de-fundo); 
+:root {
+  --amarelo-sol: #B8860B;
+  --vermelho-urucum: #B22222;
+  --azul-ararinha: #48D1CC;
+  --azul-atlatico: 	#008080;
+  --amarelo-ipe: 	#FFD700;
+  --cinza-harpia: #dbd9d5;
+  animation: brilhar 3s infinite;
 }
-
-/* Main */
+@keyframes brilhar {
+  0% {
+    --vermelho-urucum: #B22222;
+    --azul-atlatico: 	#008080;
+  }
+}
 .main-container {
   display: flex;
+  color: rgb(13, 11, 53);
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -20,30 +26,26 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
-
-  
-/* Logo*/
 .logo-container {
   font-size: 2vw;
   padding: 1%;
+  display:flex;
   position: relative;
   margin-bottom: 1vw; 
   transition: 0.5s ease-in-out;
   top: 3vw;
+  
   }
-
-
-/* Header*/
-.header-container {
+.header-container  {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 7%;
+    height: 5%;
     justify-content: space-between;
-    background-color: var(--branco-isabeline);
+    /*background-color: var(--branco-isabeline);*/
   }
 
-/* Footer*/
+  
 .footer-container {
     display: flex;
     justify-content: center;
@@ -52,96 +54,95 @@ body {
     height: 20%;
     background-color: var(--branco-isabeline);
   }
-
-/* Bead */
 .bead-container {
     transition-timing-function: linear;
+    border: 0.1px solid #000;
+    animation: anime 2s infinite; 
+    opacity: 0.800;
     pointer-events: auto;
     z-index: 1;
     width: 7%;
     padding-top: 7%;
     max-width: 7%;
+    overflow: hidden;
     min-width: 4%;
     position: absolute;
     touch-action: none;
     border-radius: 50%;
-  }
   
-/* ele que trabalha a cor fora dos containes Background */
+  }
+  .bead-container:hover{
+    filter:blur(3px);
+    transform: scale(2, 2);
+  }
+  .bead-container> * {
+    pointer-events: auto;
+  }
+  .bead-container:hover > *:hover {
+      transform: scale(2.1, 2.1);
+      filter: none;
+  }
+
+  @keyframes anime {
+    0% {
+      box-shadow: 0 0 10px rgba(1, 1, 126, 0.938);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.877);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+  }
 .background-container {
-    /* Exemplo
-    width: 100%;
-    height: auto;
-    background-color: inherit; 
-    display: grid-template-columns;
-    min-Height: 700px;
-    align-items: center; 
-    */
     width: 100vw;
     height: 100vh;
     display: grid-template-columns;
     background-color: inherit; 
     min-Height: 300px;
 }
-
-  /* Contenier branco, onde esta todo abacus dentro */
   .board-container {
-    width: 100%;
+    width: 98%;
     margin: auto;
-    height: 70%;
-    min-width: 100px;
-    min-height: 50px;
+    height: 90%;
+    min-width: 80%;
+    min-height: 80%;
     display: flex;
-    width: clamp(200px, 100%, 10100px);
+    /* width: clamp(200px, 100%, 10100px); */
     overflow: hidden;
     flex-direction: grid-template-columns;
-    /* flex: 0 0 200px; */
+    /* flex: 0 0 200px;*/
     border-Radius: 5px;
     justify-Content:center;
-    background-Color: var(--branco-paz);
+    background-Color:	rgb(26, 47, 66);
   }
 
-/* BoardSideLeft apagador, preto*/
-.board-side-left {
-    width: 8%;
-    height: 95%;
-    margin: 1%;
-    display: flex;
-    border-Radius: 8px;
-    align-Items: center;
-    flex-Direction: column;
-    justify-Content: center;
-    transition: background-color 0.3s;
-    background-Color: var(--cinza-harpia);
-  }
-
-  .board-side-left:hover{
-    filter:blur(1px);
-    transform: scale(0.9, 0.9);
-  }
- .board-side-left> * {
-    pointer-events: auto-fill;
-  }
-  .board-side-left:hover > *:hover {
-      transform: scale(1.1, 1.1);
-      filter: none;
-  }
-  /* cores, BoardDecimalPlace cetena,dezena,unidade*/
 .board-decimal-place {
-    height: 95%;
+    height: auto;
     display: grid;
     width: 30.333%;
     margin: 1%;
     display: flex;
-    border-Radius: 8px;
+    border-Radius: 3px;
     background-Color: var(--your-color);
     align-Items: center;
     flex-Direction: column;
     justify-Content: center;
     transition: background-color 0.3s;
-    /*grid-template-columns: repeat(auto-fill,minmax(150px, 1rf));*/
+    border: 0.2px solid #000;
+    animation: glow 59s infinite; 
   }
-
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 5px rgba(255, 253, 253, 0.938);
+    }
+    50% {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.877);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(255, 253, 253, 0.5);
+    }
+  }
   .board-decimal-place:hover{    
     filter: blur(0.3px);
     transform: scale(1,1);
@@ -150,50 +151,28 @@ body {
       transform: scale(2.1, 2.1);
       filter: none;
   }
-/* texto dentro da quantidade numero centena, dezena, unidade */
 .board-decimal-place h1 {
-  font-size: 5vw; /* Usando vw em vez de px */
-  margin-bottom: 1vw; 
+  font-size: 5vw; 
+  margin-bottom: 2vw; 
   transition: 0.5s ease-in-out;
   position: relative;
   top: 35%;
 }
-
-/* texto dentro centena, dezena, unidade */
 .board-decimal-place span {
-  font-size: 1.4vw; /* Usando vw em vez de px */
+  font-size: 1.4vw; 
   transition: 0.5s ease-in-out;
   position: relative;
   top: 33%;
 }
-
-
-  /*cores BoardSideRight, onde sera adicionado as fixas */
 .board-side-right {
     width: 10%;
-    height: 95%;
+    height: auto;
     margin: 1%;
-    gap: 0.2%;
+    gap: 0.8%;
     display: flex;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-Radius: 8px;
+    border: 1px solid #000;
     align-Items: center;
     flex-Direction: column;
     justify-Content: center;
-    transition: background-color 0.3s;
   }
-  
-  @media screen and (max-width: 768px) {
-    /* Estilos específicos para telas menores (por exemplo, smartphones) */
-    .logo-container {
-      font-size: 4vw;
-    }
-
-  }
-  
-  
-  
-  
-

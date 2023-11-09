@@ -8,6 +8,7 @@
 
 import styles from './index.module.css'
 
+
 import '../../styles/styles.css'
 
 export const Instructions = () => {

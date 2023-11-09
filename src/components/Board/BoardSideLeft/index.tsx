@@ -6,7 +6,7 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-import { FaRegTrashAlt } from 'react-icons/fa'
+import { VscTrash } from 'react-icons/vsc'
 
 import '@/styles/styles.css'
 import styles from './index.module.css'
@@ -14,7 +14,7 @@ import styles from './index.module.css'
 export const BoardSideLeft = () => {
   return (
     <div id={`delet`} className={`${styles.sideLeft}`}>
-      <FaRegTrashAlt className={`${styles.icon}`} />
+      <VscTrash className={`${styles.icon}`} />
     </div>
   )
 }

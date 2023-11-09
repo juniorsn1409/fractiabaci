@@ -9,7 +9,9 @@
 'use client'
 
 import { useState } from 'react'
-import { BiSolidAdjust } from 'react-icons/bi'
+import { RiContrast2Fill } from 'react-icons/ri'
+import { LuSun } from 'react-icons/lu'
+import styles from './SwitchMode.module.css'
 import '../styles/dark.css'
 
 export const SwitchMode = () => {
@@ -30,7 +32,8 @@ export const SwitchMode = () => {
           onChange={toggleDarkMode}
         />
         <span className="switch__label"></span>
-        <BiSolidAdjust />
+        <RiContrast2Fill />
+        <LuSun className={`${styles.sun}`}></LuSun>
       </label>
     </>
   )

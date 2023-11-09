@@ -8,9 +8,8 @@
 
 import { ReactNode } from 'react'
 
-import '../styles/styles.css'
-
 import '../styles/dark.css'
+import '../styles/styles.css'
 
 interface HeaderProps {
   children?: ReactNode

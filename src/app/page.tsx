@@ -7,8 +7,11 @@
 //
 
 import { Board } from '@/components/Board'
+
 import { Footer } from '@/components/Footer'
-import { Instructions } from '@/components/Instructions/Instructions'
+
+import { Instructions } from '@/components/Instructions'
+
 import { Main } from '@/components/Main'
 
 export default function App() {

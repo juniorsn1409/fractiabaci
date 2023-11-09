@@ -19,12 +19,11 @@ export const SwitchMode = () => {
 
   const toggleDarkMode = () => {
     setDarkMode(!isDarkMode)
-    
   }
 
   return (
     <>
-      <label className="switch" >
+      <label className="switch">
         <input
           className="switch__input"
           type="checkbox"
@@ -32,11 +31,10 @@ export const SwitchMode = () => {
           checked={isDarkMode}
           onChange={toggleDarkMode}
         />
-        <span className="switch__label"></span><AiFillAlert />
-        <BiSolidAdjust  style={{ marginLeft: '5px' }} />
-        
+        <span className="switch__label"></span>
+        <AiFillAlert />
+        <BiSolidAdjust style={{ marginLeft: '5px' }} />
       </label>
     </>
   )
 }
-

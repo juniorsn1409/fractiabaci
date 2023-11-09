@@ -30,7 +30,7 @@ export const SwitchMode = () => {
           onChange={toggleDarkMode}
         />
         <span className="switch__label"></span>
-        <BiSolidAdjust style={{ marginLeft: '5px' }} />
+        <BiSolidAdjust />
       </label>
     </>
   )

@@ -11,6 +11,8 @@
 	--primary-t: hsla(var(--hue),90%,50%,0);
 	--trans-dur: 0.3s;
 	font-size: 1vw;
+	margin-left: 40px;
+	
 }
 
 body,
@@ -39,9 +41,10 @@ body {
 	display: flex;
 	gap: 0.5em;
 	align-items: center;
-	position: relative;
+	position: absolute;
 	margin-bottom: 1vw; 
-	top: 4vw;
+	margin-left: 89%;
+	top: 3vw;
 	
 }
 .switch__input {

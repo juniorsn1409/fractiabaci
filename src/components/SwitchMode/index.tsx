@@ -9,10 +9,12 @@
 'use client'
 
 import { useState } from 'react'
-import { RiContrast2Fill } from 'react-icons/ri'
+
 import { LuSun } from 'react-icons/lu'
-import styles from './SwitchMode.module.css'
-import '../styles/dark.css'
+import { RiContrast2Fill } from 'react-icons/ri'
+
+import styles from './index.module.css'
+import '@/styles/dark.css'
 
 export const SwitchMode = () => {
   const [isDarkMode, setDarkMode] = useState(false)
@@ -33,7 +35,7 @@ export const SwitchMode = () => {
         />
         <span className="switch__label"></span>
         <RiContrast2Fill />
-        <LuSun className={`${styles.sun}`}></LuSun>
+        <LuSun className={`${styles.sun}`} />
       </label>
     </>
   )

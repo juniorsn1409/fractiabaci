@@ -1,0 +1,12 @@
+.icon {
+  font-size: 1.5vw;
+  
+}
+.hand{
+  display: flex;
+	gap: 0.5em;
+	align-items: center;
+	position: absolute;
+	margin-bottom: -4vw; 
+  font-size:2vw;
+}

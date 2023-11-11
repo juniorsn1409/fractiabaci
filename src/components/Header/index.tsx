@@ -14,10 +14,5 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ children }) => {
-  return (
-    <header className="header-container">
-      <Logo />
-      {children}
-    </header>
-  )
+  return <header className={`header-container`}>{children}</header>
 }

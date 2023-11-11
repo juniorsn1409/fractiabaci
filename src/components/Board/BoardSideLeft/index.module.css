@@ -1,0 +1,27 @@
+.sideLeft {
+  width: 8%;
+  height: auto;
+  margin: 1%;
+  display: flex;
+  border-Radius: 8px;
+  align-Items: center;
+  flex-Direction: column;
+  justify-Content: center;
+  background-Color: var(--cinza-harpia);
+  color: black;
+}
+.sideLeft:hover{
+  /* filter:blur(1px); */
+  /* transform: scale(0.9, 0.9); */
+}
+.sideLeft> * {
+  /* pointer-events: auto-fill; */
+}
+.sideLeft:hover > *:hover {
+    /* transform: scale(1.1, 1.1);
+    filter: none; */
+}
+
+.icon {
+  font-size: 4vw;
+}

@@ -13,7 +13,7 @@ export const Logo = () => {
     <h1 className="logo-container">
       <Link
         href="/"
-        style={{ textDecoration: 'none', color: 'var(--preto-ebano)' }}
+        style={{ textDecoration: 'none', color: 'var(--preto-isabeline)' }}
       >
         Fracti Abacus
       </Link>

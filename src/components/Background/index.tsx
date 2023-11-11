@@ -21,6 +21,7 @@ export const Background: React.FC<BackgroundProps> = ({ children }) => {
   const {
     screen: { size },
   } = useScreenStore()
+
   return (
     <div
       ref={size as React.RefObject<HTMLDivElement>}

@@ -21,6 +21,7 @@ import { BoardDecimalPlace } from '@/components/Board/BoardDecimalPlace/BoardDec
 import { BoardSideLeft } from '@/components/Board/BoardSideLeft/BoardSideLeft'
 import { BoardSideRight } from '@/components/Board/BoardSideRight'
 import { BoardSideRightRender } from '@/components/Board/BoardSideRight/BoardSideRightRender'
+import { Result } from '@/components/Result'
 
 export const Board = () => {
   const [amountHundred, setAmountHundred] = useState<number>(0)
@@ -31,6 +32,8 @@ export const Board = () => {
 
   const [amountUnit, setAmountUnit] = useState<number>(0)
   const [unit, setUnit] = useState<BeadModel[]>([])
+
+  const [result, setResult] = useState<number>(0)
 
   const {
     actions: { setTrue, setFalse },
@@ -82,6 +85,8 @@ export const Board = () => {
     if (amountHundred === 9) {
       console.log(`[Hundred Notification]`)
     }
+
+    setResult(amountUnit + amountTen * 10 + amountHundred * 100)
   }, [amountUnit, amountTen, amountHundred, ten, hundred, setFalse, setTrue])
 
   const onAddBead = (
@@ -117,113 +122,123 @@ export const Board = () => {
     }
   }
 
+  // const sumAmount = () => {
+  //   const newAmount = amountUnit + amountTen * 10 + amountHundred * 100
+  //   return newAmount
+  // }
   return (
-    <div className="board-container">
-      <BoardSideLeft />
-      <BoardDecimalPlace type={PlaceValueType.hundred} amount={amountHundred} />
-      <BoardDecimalPlace type={PlaceValueType.ten} amount={amountTen} />
-      <BoardDecimalPlace type={PlaceValueType.unit} amount={amountUnit} />
-      <BoardSideRight>
-        <BoardSideRightRender
-          type={PlaceValueType.unit}
-          position={PositionType.top}
-          onAddBead={() =>
-            onAddBead(
-              PlaceValueType.unit,
-              unit,
-              setUnit,
-              amountUnit,
-              setAmountUnit,
-              amountTen,
-              setAmountTen,
-              amountHundred,
-              setAmountHundred,
-            )
-          }
-        >
-          {unit.map((bead) => (
-            <Bead
-              key={bead.id}
-              id={bead.id}
-              type={bead.type}
-              beads={unit}
-              setBeads={setUnit}
-              amountUnit={amountUnit}
-              setAmountUnit={setAmountUnit}
-              amountTen={amountTen}
-              setAmountTen={setAmountTen}
-              amountHundred={amountHundred}
-              setAmountHundred={setAmountHundred}
-            />
-          ))}
-        </BoardSideRightRender>
-        <BoardSideRightRender
-          type={PlaceValueType.ten}
-          position={PositionType.middle}
-          onAddBead={() =>
-            onAddBead(
-              PlaceValueType.ten,
-              ten,
-              setTen,
-              amountUnit,
-              setAmountUnit,
-              amountTen,
-              setAmountTen,
-              amountHundred,
-              setAmountHundred,
-            )
-          }
-        >
-          {ten.map((bead) => (
-            <Bead
-              key={bead.id}
-              id={bead.id}
-              type={bead.type}
-              beads={ten}
-              setBeads={setTen}
-              amountUnit={amountUnit}
-              setAmountUnit={setAmountUnit}
-              amountTen={amountTen}
-              setAmountTen={setAmountTen}
-              amountHundred={amountHundred}
-              setAmountHundred={setAmountHundred}
-            />
-          ))}
-        </BoardSideRightRender>
-        <BoardSideRightRender
+    <>
+      <div className="board-container">
+        <BoardSideLeft />
+        <BoardDecimalPlace
           type={PlaceValueType.hundred}
-          position={PositionType.bottom}
-          onAddBead={() =>
-            onAddBead(
-              PlaceValueType.hundred,
-              hundred,
-              setHundred,
-              amountUnit,
-              setAmountUnit,
-              amountTen,
-              setAmountTen,
-              amountHundred,
-              setAmountHundred,
-            )
-          }
-        >
-          {hundred.map((bead) => (
-            <Bead
-              key={bead.id}
-              id={bead.id}
-              type={bead.type}
-              beads={hundred}
-              setBeads={setHundred}
-              amountUnit={amountUnit}
-              setAmountUnit={setAmountUnit}
-              amountTen={amountTen}
-              setAmountTen={setAmountTen}
-              amountHundred={amountHundred}
-              setAmountHundred={setAmountHundred}
-            />
-          ))}
-        </BoardSideRightRender>
-      </BoardSideRight>
-    </div>
+          amount={amountHundred}
+        />
+        <BoardDecimalPlace type={PlaceValueType.ten} amount={amountTen} />
+        <BoardDecimalPlace type={PlaceValueType.unit} amount={amountUnit} />
+        <BoardSideRight>
+          <BoardSideRightRender
+            type={PlaceValueType.unit}
+            position={PositionType.top}
+            onAddBead={() =>
+              onAddBead(
+                PlaceValueType.unit,
+                unit,
+                setUnit,
+                amountUnit,
+                setAmountUnit,
+                amountTen,
+                setAmountTen,
+                amountHundred,
+                setAmountHundred,
+              )
+            }
+          >
+            {unit.map((bead) => (
+              <Bead
+                key={bead.id}
+                id={bead.id}
+                type={bead.type}
+                beads={unit}
+                setBeads={setUnit}
+                amountUnit={amountUnit}
+                setAmountUnit={setAmountUnit}
+                amountTen={amountTen}
+                setAmountTen={setAmountTen}
+                amountHundred={amountHundred}
+                setAmountHundred={setAmountHundred}
+              />
+            ))}
+          </BoardSideRightRender>
+          <BoardSideRightRender
+            type={PlaceValueType.ten}
+            position={PositionType.middle}
+            onAddBead={() =>
+              onAddBead(
+                PlaceValueType.ten,
+                ten,
+                setTen,
+                amountUnit,
+                setAmountUnit,
+                amountTen,
+                setAmountTen,
+                amountHundred,
+                setAmountHundred,
+              )
+            }
+          >
+            {ten.map((bead) => (
+              <Bead
+                key={bead.id}
+                id={bead.id}
+                type={bead.type}
+                beads={ten}
+                setBeads={setTen}
+                amountUnit={amountUnit}
+                setAmountUnit={setAmountUnit}
+                amountTen={amountTen}
+                setAmountTen={setAmountTen}
+                amountHundred={amountHundred}
+                setAmountHundred={setAmountHundred}
+              />
+            ))}
+          </BoardSideRightRender>
+          <BoardSideRightRender
+            type={PlaceValueType.hundred}
+            position={PositionType.bottom}
+            onAddBead={() =>
+              onAddBead(
+                PlaceValueType.hundred,
+                hundred,
+                setHundred,
+                amountUnit,
+                setAmountUnit,
+                amountTen,
+                setAmountTen,
+                amountHundred,
+                setAmountHundred,
+              )
+            }
+          >
+            {hundred.map((bead) => (
+              <Bead
+                key={bead.id}
+                id={bead.id}
+                type={bead.type}
+                beads={hundred}
+                setBeads={setHundred}
+                amountUnit={amountUnit}
+                setAmountUnit={setAmountUnit}
+                amountTen={amountTen}
+                setAmountTen={setAmountTen}
+                amountHundred={amountHundred}
+                setAmountHundred={setAmountHundred}
+              />
+            ))}
+          </BoardSideRightRender>
+        </BoardSideRight>
+      </div>
+      <Result numbers={result} />
+    </>
   )
 }

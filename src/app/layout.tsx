@@ -14,6 +14,8 @@ import { ReactNode } from 'react'
 
 import { Background } from '@/components/Background'
 import { Header } from '@/components/Header'
+import { Logo } from '@/components/Logo'
+import { SwitchMode } from '@/components/SwitchMode'
 
 import '@/styles/reset.css'
 import '@/styles/globals.css'
@@ -33,7 +35,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-br">
       <body className={font.className}>
         <Background>
-          <Header />
+          <Header>
+            <Logo />
+            <SwitchMode />
+          </Header>
           {children}
         </Background>
       </body>

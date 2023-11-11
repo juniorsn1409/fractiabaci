@@ -71,11 +71,11 @@
     padding-top: 7%;
     max-width: 7%;
     overflow: hidden;
+    cursor: grab;
     min-width: 4%;
     position: absolute;
     touch-action: none;
     border-radius: 50%;
-  
   }
   .bead-container:hover{
     filter:blur(1px);
@@ -114,10 +114,8 @@
     min-width: 80%;
     min-height: 80%;
     display: flex;
-    /* width: clamp(200px, 100%, 10100px); */
     overflow: hidden;
     flex-direction: grid-template-columns;
-    /* flex: 0 0 200px;*/
     border-Radius: 5px;
     justify-Content:center;
     background-Color:	rgb(26, 47, 66);
@@ -129,6 +127,7 @@
     width: 30.333%;
     margin: 1%;
     display: flex;
+    cursor: pointer;
     border-Radius: 3px;
     background-Color: var(--your-color);
     align-Items: center;
@@ -176,9 +175,10 @@
     color: black; 
     width: 10%;
     height: auto;
-    margin: 1%;
+    margin: 1%; 
     gap: 0.8%;
     display: flex;
+    cursor: pointer;
     border-Radius: 8px;
     border: 1px solid #000;
     align-Items: center;

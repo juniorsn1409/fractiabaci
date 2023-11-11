@@ -8,10 +8,12 @@
 
 import { ReactNode } from 'react'
 
-interface MainProps {
+import styles from './index.module.css'
+
+type MainProps = {
   children?: ReactNode
 }
 
 export const Main: React.FC<MainProps> = ({ children }) => {
-  return <main className="main-container">{children}</main>
+  return <main className={`${styles.main}`}>{children}</main>
 }

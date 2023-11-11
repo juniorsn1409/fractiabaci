@@ -7,12 +7,13 @@
 //
 
 import { ReactNode } from 'react'
-import { Logo } from '@/components/Logo'
 
-interface HeaderProps {
+import styles from './index.module.css'
+
+type HeaderProps = {
   children?: ReactNode
 }
 
 export const Header: React.FC<HeaderProps> = ({ children }) => {
-  return <header className={`header-container`}>{children}</header>
+  return <header className={`${styles.header}`}>{children}</header>
 }

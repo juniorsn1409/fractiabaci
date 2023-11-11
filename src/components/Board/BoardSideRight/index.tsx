@@ -9,15 +9,16 @@
 'use client'
 
 import { ReactNode } from 'react'
-import '../../../styles/styles.css'
 
-interface BoardSideRightProps {
+import styles from './index.module.css'
+
+type BoardSideRightProps = {
   children?: ReactNode
 }
 
 export const BoardSideRight: React.FC<BoardSideRightProps> = ({ children }) => {
   return (
-    <div id={`add`} className="board-side-right">
+    <div id={`add`} className={`${styles.sideRight}`}>
       {children}
     </div>
   )

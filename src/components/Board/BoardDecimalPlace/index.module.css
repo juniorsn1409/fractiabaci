@@ -1,0 +1,50 @@
+
+.decimalPlace {
+  height: auto;
+  display: grid;
+  width: 30.333%;
+  margin: 1%;
+  display: flex;
+  border-Radius: 3px;
+  background-Color: var(--your-color);
+  align-Items: center;
+  flex-Direction: column;
+  justify-Content: center;
+  transition: background-color 0.3s;
+  border: 0.2px solid #000;
+  animation: glow 59s infinite; 
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 253, 253, 0.938);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.877);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 253, 253, 0.5);
+  }
+}
+.decimalPlace:hover{    
+  filter: blur(0.3px);
+  transform: scale(1,1);
+}
+.decimalPlace:hover > *:hover {
+    transform: scale(2.1, 2.1);
+    filter: none;
+}
+.decimalPlace h1 {
+color: black; 
+font-size: 5vw; 
+margin-bottom: 2vw; 
+transition: 0.5s ease-in-out;
+position: relative;
+top: 35%;
+}
+.decimalPlace span {
+color: black; 
+font-size: 2vw; 
+transition: 0.5s ease-in-out;
+position: relative;
+top: 28%;
+}

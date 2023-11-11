@@ -9,9 +9,12 @@
 'use client'
 
 import { Descriptions } from '@/domain/CustomTypesModel'
+
 import { DecimalPlaceModel } from '@/domain/DecimalPlaceModel'
 
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
+
+import styles from './index.module.css'
 
 const choosingColor = new ChoosingColorUseCase()
 
@@ -19,7 +22,7 @@ export const BoardDecimalPlace = ({ type, amount }: DecimalPlaceModel) => {
   return (
     <div
       id={`${type.toString()}`}
-      className="board-decimal-place "
+      className={`${styles.decimalPlace}`}
       style={{
         backgroundColor: `${choosingColor.colorDecimalPlace(type)}`,
       }}

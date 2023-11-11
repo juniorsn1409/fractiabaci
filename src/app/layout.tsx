@@ -14,6 +14,7 @@ import { ReactNode } from 'react'
 
 import '@/styles/reset.css'
 import '@/styles/globals.css'
+import '@/styles/dark.css'
 
 const font = Poppins({
   weight: '500',

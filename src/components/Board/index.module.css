@@ -5,11 +5,9 @@
   min-width: 80%;
   min-height: 80%;
   display: flex;
-  /* width: clamp(200px, 100%, 10100px); */
   overflow: hidden;
   flex-direction: grid-template-columns;
-  /* flex: 0 0 200px;*/
-  border-Radius: 5px;
-  justify-Content:center;
-  background-Color:	rgb(26, 47, 66);
+  border-radius: 5px;
+  justify-content: center;
+  background-color: rgb(26, 47, 66);
 }

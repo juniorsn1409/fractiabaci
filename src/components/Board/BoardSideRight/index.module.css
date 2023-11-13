@@ -2,9 +2,10 @@
   color: black; 
   width: 10%;
   height: auto;
-  margin: 1%;
+  margin: 1%; 
   gap: 0.8%;
   display: flex;
+  cursor: pointer;
   border-Radius: 8px;
   border: 1px solid #000;
   align-Items: center;

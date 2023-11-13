@@ -1,29 +1,28 @@
-
 .bead {
   transition-timing-function: linear;
   border: 0.1px solid #000;
-  animation: anime 2s infinite; 
-  opacity: 0.800;
+  animation: anime 2s infinite;
+  opacity: 0.8;
   pointer-events: auto;
   z-index: 1;
   width: 7%;
   padding-top: 7%;
   max-width: 7%;
   overflow: hidden;
+  cursor: grab;
   min-width: 4%;
   position: absolute;
   touch-action: none;
   border-radius: 50%;
-
 }
-.bead:hover{
-  filter:blur(1px);
+.bead:hover {
+  filter: blur(1px);
   transform: scale(1, 1);
 }
-.bead> * {
+.bead > * {
   pointer-events: auto;
 }
 .bead:hover > *:hover {
-    transform: scale(2.1, 2.1);
-    filter: none;
+  transform: scale(2.1, 2.1);
+  filter: none;
 }

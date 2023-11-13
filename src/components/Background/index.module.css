@@ -2,6 +2,6 @@
   width: 100vw;
   height: 100vh;
   display: grid-template-columns;
-  background-color: inherit; 
-  min-Height: 300px;
+  background-color: inherit;
+  min-height: 300px;
 }

@@ -8,7 +8,6 @@
 
 import { VscTrash } from 'react-icons/vsc'
 
-import '@/styles/styles.css'
 import styles from './index.module.css'
 
 export const BoardSideLeft = () => {

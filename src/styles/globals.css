@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
 :root {
   --branco-paz: #ffffff;
   --braco-isabeline: #f4f3ee;
@@ -15,4 +17,33 @@
   --verde-mandacaru: #00f537;
   --verde-amazonia: #00d000;
   --verde-quartzo: #009600;
+}
+
+:root {
+  --amarelo-sol: #b8860b;
+  --vermelho-urucum: #b22222;
+  --azul-ararinha: #48d1cc;
+  --azul-atlatico: #008080;
+  --amarelo-ipe: #ffd700;
+  --cinza-harpia: #f8f8f8;
+
+  animation: brilhar 3s infinite;
+}
+@keyframes brilhar {
+  0% {
+    --vermelho-urucum: #b22222;
+    --azul-atlatico: #008080;
+  }
+}
+
+@keyframes anime {
+  0% {
+    box-shadow: 0 0 10px rgba(1, 1, 126, 0.938);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.877);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
 }

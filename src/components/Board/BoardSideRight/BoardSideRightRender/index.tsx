@@ -8,7 +8,7 @@ import styles from './index.module.css'
 
 import { FaPlus } from 'react-icons/fa'
 
-import { TbHandClick } from 'react-icons/tb'
+// import { TbHandClick } from 'react-icons/tb'
 
 const choosingColor = new ChoosingColorUseCase()
 
@@ -51,7 +51,7 @@ export const BoardSideRightRender: React.FC<BoardSideRightRenderProps> = ({
     >
       {children}
       <FaPlus className={`${styles.icon}`}></FaPlus>
-      <TbHandClick className={`${styles.hand}`}></TbHandClick>
+      {/* <TbHandClick className={`${styles.hand}`}></TbHandClick> */}
     </div>
   )
 }

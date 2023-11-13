@@ -12,13 +12,15 @@ import { useState } from 'react'
 
 import { motion, useDragControls } from 'framer-motion'
 
-import { BeadModel } from '@/domain/BeadModel'
-
 import { useScreenStore } from '@/stores/useScreenStore'
+
+import { PlaceValueType } from '@/domain/CustomTypesModel'
+import { BeadModel } from '@/domain/BeadModel'
 
 import { ChoosingColorUseCase } from '@/application/ChoosingColorUseCase'
 import { DraggingUseCase } from '@/application/DraggingUseCase'
-import { PlaceValueType } from '@/domain/CustomTypesModel'
+
+import styles from './index.module.css'
 
 const choosingColor = new ChoosingColorUseCase()
 const draggingBead = new DraggingUseCase()
@@ -44,7 +46,7 @@ export const Bead: React.FC<BeadModel> = ({
   return (
     <motion.div
       id={`${id}`}
-      className="bead-container"
+      className={`${styles.bead}`}
       drag
       dragControls={controls}
       dragConstraints={screen.size}

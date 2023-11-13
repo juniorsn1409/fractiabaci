@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --branco-paz: #ffffff;
+  --braco-isabeline: #f4f3ee;
+  --cinza-harpia: #3c3c3c;
+  --preto-ebano: #0a0f0d;
+  --vermelho-ucari: #ff6464;
+  --vermelho-urucum: #ff0000;
+  --vermelho-guara: #9b0000;
+  --azul-ararinha: #00c8ff;
+  --azul-atlatico: #183eff;
+  --azul-petroleo: #00008c;
+  --amarelo-ipe: #ffff00;
+  --amarelo-sol: #ffd000;
+  --amarelo-mel: #ff7d00;
+  --verde-mandacaru: #00f537;
+  --verde-amazonia: #00d000;
+  --verde-quartzo: #009600;
+}
+
+:root {
+  --amarelo-sol: #b8860b;
+  --vermelho-urucum: #b22222;
+  --azul-ararinha: #48d1cc;
+  --azul-atlatico: #008080;
+  --amarelo-ipe: #ffd700;
+  --cinza-harpia: #f8f8f8;
+
+  animation: brilhar 3s infinite;
+}
+@keyframes brilhar {
+  0% {
+    --vermelho-urucum: #b22222;
+    --azul-atlatico: #008080;
+  }
+}
+
+@keyframes anime {
+  0% {
+    box-shadow: 0 0 10px rgba(1, 1, 126, 0.938);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.877);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}

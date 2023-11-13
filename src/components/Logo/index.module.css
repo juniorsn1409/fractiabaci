@@ -1,0 +1,15 @@
+.logo {
+  font-size: 2vw;
+  padding: 1%;
+  display:flex;
+  position: relative;
+  margin-bottom: 1vw; 
+  transition: 0.5s ease-in-out;
+  top: 3vw;
+  
+  }
+
+.link {
+  text-decoration: none;
+  color: var(--preto-isabeline);
+}

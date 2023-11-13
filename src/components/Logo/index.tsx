@@ -8,15 +8,12 @@
 
 import Link from 'next/link'
 
-import '../styles/styles.css'
+import styles from './index.module.css'
 
 export const Logo = () => {
   return (
-    <h1 className="logo-container">
-      <Link
-        href="/"
-        style={{ textDecoration: 'none', color: 'var(--preto-isabeline)' }}
-      >
+    <h1 className={`${styles.logo}`}>
+      <Link className={`${styles.link}`} href="/">
         Fracti Abacus
       </Link>
     </h1>

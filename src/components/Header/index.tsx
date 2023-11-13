@@ -8,13 +8,12 @@
 
 import { ReactNode } from 'react'
 
-import '../styles/dark.css'
-import '../styles/styles.css'
+import styles from './index.module.css'
 
-interface HeaderProps {
+type HeaderProps = {
   children?: ReactNode
 }
 
 export const Header: React.FC<HeaderProps> = ({ children }) => {
-  return <header className={`header-container`}>{children}</header>
+  return <header className={`${styles.header}`}>{children}</header>
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
 //
 
-import { DragControls, PanInfo } from 'framer-motion'
 import { Dispatch, SetStateAction } from 'react'
+import { DragControls, PanInfo } from 'framer-motion'
 
 import { BeadModel } from '@/domain/BeadModel'
 

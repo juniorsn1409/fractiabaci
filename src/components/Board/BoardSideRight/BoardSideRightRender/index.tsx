@@ -8,6 +8,8 @@ import styles from './index.module.css'
 
 import { FaPlus } from 'react-icons/fa'
 
+// import { TbHandClick } from 'react-icons/tb'
+
 const choosingColor = new ChoosingColorUseCase()
 
 interface BoardSideRightRenderProps {
@@ -41,6 +43,7 @@ export const BoardSideRightRender: React.FC<BoardSideRightRenderProps> = ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        userSelect: 'none',
       }}
       onDoubleClick={() => {
         onAddBead(type)
@@ -48,6 +51,7 @@ export const BoardSideRightRender: React.FC<BoardSideRightRenderProps> = ({
     >
       {children}
       <FaPlus className={`${styles.icon}`}></FaPlus>
+      {/* <TbHandClick className={`${styles.hand}`}></TbHandClick> */}
     </div>
   )
 }

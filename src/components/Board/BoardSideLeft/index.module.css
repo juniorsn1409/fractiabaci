@@ -3,27 +3,39 @@
   height: auto;
   margin: 1%;
   display: flex;
+  cursor: pointer;
   border-Radius: 8px;
   align-Items: center;
   flex-Direction: column;
-  /* border: 1px solid #998a8a; */
   justify-Content: center;
-  /* animation: glow 59s infinite;  */
-  /* transition: background-color 0.3s; */
   background-Color: var(--cinza-harpia);
+  color: black;
+  animation: Animationhand 59s infinite; 
 }
 .sideLeft:hover{
-  /* filter:blur(1px); */
-  /* transform: scale(0.9, 0.9); */
+  filter:blur(1px); 
+  transform: scale(0.9, 0.9);
+  background-color: brown; 
 }
 .sideLeft> * {
-  /* pointer-events: auto-fill; */
+  pointer-events: auto-fill; 
 }
 .sideLeft:hover > *:hover {
-    /* transform: scale(1.1, 1.1);
-    filter: none; */
+  transform: scale(1.1, 1.1);
+  filter: none; 
+}
+.icon {
+  font-size: 4vw;
 }
 
-.icon {
-  font-size: 50px;
+@keyframes Animationhand {
+  0% {
+    box-shadow: 0 0 10px rgba(1, 1, 126, 0.938);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.877);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
 }

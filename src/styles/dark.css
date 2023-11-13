@@ -1,5 +1,4 @@
 *{
-	
 }
 :root {
 	--hue: 223;
@@ -10,8 +9,9 @@
 	--primary: hsl(var(--hue),90%,50%);
 	--primary-t: hsla(var(--hue),90%,50%,0);
 	--trans-dur: 0.3s;
-	font-size: 20px;
+	font-size: 1vw;
 }
+
 body,
 input {
 	font: 1em/1.5 sans-serif;
@@ -25,7 +25,6 @@ body {
 		background-color var(--trans-dur),
 		color var(--trans-dur);
 }
-
 .icon {
 	display: flex;
 	align-items: center;
@@ -39,9 +38,12 @@ body {
 	display: flex;
 	gap: 0.5em;
 	align-items: center;
-	top:35px;
+	position: absolute;
+	margin-bottom: 1vw; 
+	margin-left: 92%;
+	top: 3vw;
+	
 }
-
 .switch__input {
 	background-color: hsla(var(--hue),10%,10%,0.1);
 	border-radius: 0.75em;
@@ -56,11 +58,9 @@ body {
 	height: 1.5em;
 	transition: box-shadow var(--trans-dur);
 	-webkit-appearance: none;
+	cursor: pointer;
 	appearance: none;
 }
-
-
-
 .switch__input:before {
 	background-color: var(--primary);
 	border-radius: 50%;

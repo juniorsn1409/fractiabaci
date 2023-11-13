@@ -13,5 +13,9 @@ type ResultModel = {
 }
 
 export const Result = ({ numbers }: ResultModel) => {
-  return <div className={`${styles.result}`}> Total: {numbers}</div>
+  return (
+    <div className={`${styles.result}`}>
+      <span className={`${styles.unselectable}`}>Total: {numbers}</span>
+    </div>
+  )
 }

@@ -8,8 +8,6 @@
 
 'use client'
 
-import '../../styles/styles.css'
-
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -24,6 +22,8 @@ import { BoardSideLeft } from '@/components/Board/BoardSideLeft'
 import { BoardSideRight } from '@/components/Board/BoardSideRight'
 import { BoardSideRightRender } from '@/components/Board/BoardSideRight/BoardSideRightRender'
 import { Result } from '@/components/Result'
+
+import styles from './index.module.css'
 
 export const Board = () => {
   const [amountHundred, setAmountHundred] = useState<number>(0)
@@ -123,14 +123,9 @@ export const Board = () => {
       setHundred((prevHundred) => [...prevHundred, newBead])
     }
   }
-
-  // const sumAmount = () => {
-  //   const newAmount = amountUnit + amountTen * 10 + amountHundred * 100
-  //   return newAmount
-  // }
   return (
     <>
-      <div className="board-container">
+      <div className={`${styles.board}`}>
         <BoardSideLeft />
         <BoardDecimalPlace
           type={PlaceValueType.hundred}

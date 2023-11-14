@@ -33,11 +33,7 @@
     "zustand": "^4.4.4"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@capacitor/cli": "^5.4.0",
-=======
     "@capacitor/cli": "^5.5.1",
->>>>>>> develop
     "@rocketseat/eslint-config": "^2.1.0",
     "@types/uuid": "^9.0.6",
     "autoprefixer": "^10.4.15",

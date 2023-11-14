@@ -1,14 +1,8 @@
 # Fracti Abacus
 
-  
-
 ## Getting Started
 
-  
-
 ### Before starting the development server, ensure you have installed the dependencies. Run the following command:
-
-  
 
 ```bash
 
@@ -25,7 +19,6 @@ pnpm install
 
 ### Once the dependencies are installed, you can start the development server:
 
-  
 ```bash
 
 npm run dev
@@ -39,7 +32,6 @@ yarn dev
 pnpm dev
 ```
   
-
 Open http://localhost:3000 with your browser to see the result.
 
 ### Deploy on Vercel
@@ -49,6 +41,7 @@ The project is deployed and accessible at https://fracti-abacus.vercel.app/.
 Access the application on Android: Fracti Abacus - [App Center Distribution Groups](https://install.appcenter.ms/users/eananias14/apps/fracti-abacus/distribution_groups/users/releases/4) 
 
 ### Dependencies
+
 #### Main Dependencies
  - @capacitor/android (^5.5.1)
  - @capacitor/core (^5.5.1)

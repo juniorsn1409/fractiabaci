@@ -1,34 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fracti Abacus
 
 ## Getting Started
 
-First, run the development server:
+### Before starting the development server, ensure you have installed the dependencies. Run the following command:
 
 ```bash
-npm run dev
+
+npm install
+
 # or
-yarn dev
+
+yarn
+
 # or
-pnpm dev
+
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Once the dependencies are installed, you can start the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+npm run dev
 
-## Learn More
+# or
 
-To learn more about Next.js, take a look at the following resources:
+yarn dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# or
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+pnpm dev
+```
+  
+Open http://localhost:3000 with your browser to see the result.
 
-## Deploy on Vercel
+### Deploy on Vercel
+The project is deployed and accessible at https://fracti-abacus.vercel.app/.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### APK on App Center
+Access the application on Android: Fracti Abacus - [App Center Distribution Groups](https://install.appcenter.ms/users/eananias14/apps/fracti-abacus/distribution_groups/users/releases/4) 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Dependencies
+
+#### Main Dependencies
+ - @capacitor/android (^5.5.1)
+ - @capacitor/core (^5.5.1)
+ - @react-icons/all-files (^4.1.0)
+ - @rocketseat/eslint-config (^2.1.0)
+ - @types/node (20.5.9)
+ - @types/react (18.2.21)
+ - @types/react-dom (18.2.7)
+ - autoprefixer (^10.4.15)
+ - eslint (8.48.0)
+ - eslint-config-next (13.4.19)
+ - framer-motion (^10.16.4)
+ - next (13.4.19)
+ - postcss (^8.4.28)
+ - react (18.2.0)
+ - react-dom (18.2.0)
+ - react-icons (^4.11.0)
+ - react-native-orientation (^3.1.3)
+ - react-native-orientation-locker (^1.5.0)
+ - typescript (5.2.2)
+ - uuid (^9.0.1)
+ - zustand (^4.4.4)
+
+#### Development Dependencies
+ - @capacitor/cli (^5.5.1)
+ - @rocketseat/eslint-config (^2.1.0)
+ - @types/uuid (^9.0.6)
+ - autoprefixer (^10.4.15)
+ - eslint (^8.48.0)
+ - postcss (^8.4.28)

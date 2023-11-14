@@ -1,11 +1,20 @@
+//  S# SEVERITY
+//
+//  layout.tsx
+//
+//  Created by Edson Júnior Ananias de Lima on 30/09/23.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+
 import type { Metadata } from 'next'
 
 import { Poppins } from 'next/font/google'
+
 import { ReactNode } from 'react'
 
-import StyledJsxRegistry from './registry'
-
-import './../../public/globals.css'
+import '@/styles/reset.css'
+import '@/styles/globals.css'
+import '@/styles/dark.css'
 
 const font = Poppins({
   weight: '500',
@@ -20,11 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
-      <body className={font.className}>
-        <StyledJsxRegistry>
-          {children}
-        </StyledJsxRegistry>
-      </body>
+      <body className={font.className}>{children}</body>
     </html>
   )
 }

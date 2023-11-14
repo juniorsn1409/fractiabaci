@@ -3,5 +3,5 @@
   height: 100vh;
   display: grid-template-columns;
   background-color: inherit;
-  min-height: 300px;
+  min-height: 200px;
 }

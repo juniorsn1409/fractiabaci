@@ -1,6 +1,6 @@
 
 .decimalPlace {
-  height: auto;
+  height: 23.5vw;
   display: grid;
   width: 30.333%;
   margin: 1%;
@@ -39,12 +39,12 @@ font-size: 5vw;
 margin-bottom: 2vw; 
 transition: 0.5s ease-in-out;
 position: relative;
-top: 35%;
+top: 11vw;
 }
 .decimalPlace span {
 color: black; 
 font-size: 2vw; 
 transition: 0.5s ease-in-out;
 position: relative;
-top: 28%;
+top: -14.5vw;
 }

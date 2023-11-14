@@ -1,16 +1,10 @@
 .result {
   display: flex;
-  padding: 1em;
   cursor: pointer;
   font-size: 2rem; 
   justify-content: center;
-  align-items: center; 
-  background-color: #888888; 
-  border: 2px solid #ccc; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  align-items: center;  
   transition: 0.2s ease-in-out;
-  animation: Animation 59s infinite; 
   pointer-events: none;
 }
 

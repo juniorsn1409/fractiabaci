@@ -38,7 +38,7 @@ Open http://localhost:3000 with your browser to see the result.
 The project is deployed and accessible at https://fracti-abacus.vercel.app/.
 
 ### APK on App Center
-Access the application on Android: Fracti Abacus - [App Center Distribution Groups](https://install.appcenter.ms/users/eananias14/apps/fracti-abacus/distribution_groups/users/releases/4) 
+Access the application on Android: Fracti Abacus - [App Center Distribution Groups](https://install.appcenter.ms/users/eananias14/apps/fracti-abacus/distribution_groups/users/releases/5) 
 
 ### Dependencies
 

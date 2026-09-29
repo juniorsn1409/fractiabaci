@@ -1,0 +1,367 @@
+/*
+//  S# SEVERITY
+//
+//  FreeAbacus.module.css
+//
+//  Created by Edson Júnior Ananias de Lima on 28/09/26.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+*/
+
+.page {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--fa-ground);
+  color: var(--fa-ink);
+  font-family: var(--fa-font-body-stack);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.main {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 32px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 40px 24px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Painel da esquerda                                                 */
+/* ------------------------------------------------------------------ */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: 28px;
+}
+
+.introText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--fa-font-display-stack);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fa-muted);
+}
+
+.touch {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .mouse {
+    display: none;
+  }
+
+  .touch {
+    display: inline;
+  }
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 12px 12px 8px;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.stepNumber {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--fa-hint-bg);
+  color: var(--fa-brand-text);
+  font-family: var(--fa-font-display-stack);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stepText {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.challenge {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 28px;
+  background: var(--fa-brand);
+  color: #ffffff;
+  box-shadow: 0 7px 0 var(--fa-brand-shadow), 0 14px 28px rgba(72, 48, 110, 0.18);
+}
+
+.challengeKicker {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+}
+
+.challengeTitle {
+  font-family: var(--fa-font-display-stack);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--fa-action);
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  box-shadow: 0 6px 0 var(--fa-action-shadow),
+    0 14px 22px rgba(15, 102, 54, 0.22),
+    inset 0 3px 4px rgba(255, 255, 255, 0.25);
+  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out;
+}
+
+.cta:hover {
+  color: #ffffff;
+  filter: brightness(1.05);
+}
+
+.cta:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--fa-action-shadow);
+}
+
+.cta:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Quadro + total                                                     */
+/* ------------------------------------------------------------------ */
+
+.work {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.boardWrap {
+  height: clamp(460px, calc(100vh - 252px), 760px);
+}
+
+.totalStrip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 92px;
+}
+
+.totalGroup {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.totalLabel {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--fa-muted);
+}
+
+.tiles {
+  display: flex;
+  gap: 8px;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 68px;
+  border-radius: 18px;
+  font-family: var(--fa-font-display-stack);
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hundred {
+  background: var(--fa-hundred);
+  color: var(--fa-hundred-text);
+  box-shadow: 0 5px 0 #c98e0a;
+}
+
+.ten {
+  background: var(--fa-ten);
+  color: var(--fa-ten-text);
+  box-shadow: 0 5px 0 var(--fa-ten-label);
+}
+
+.unit {
+  background: var(--fa-unit);
+  color: var(--fa-unit-text);
+  box-shadow: 0 5px 0 var(--fa-unit-label);
+}
+
+.equals {
+  font-family: var(--fa-font-display-stack);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--fa-muted);
+}
+
+.clear {
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: 16px;
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Responsivo                                                         */
+/* ------------------------------------------------------------------ */
+
+/* Telas médias: quadro em cima, painel embaixo (lado a lado). */
+@media (max-width: 1100px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .work {
+    order: 1;
+  }
+
+  .panel {
+    order: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .boardWrap {
+    height: 560px;
+  }
+}
+
+/* Celular: quadro primeiro; como usar e desafio depois. */
+@media (max-width: 767px) {
+  /* Respiro para a barra de abas fixa do SiteHeader. */
+  .main {
+    gap: 20px;
+    padding: 16px 16px
+      calc(28px + var(--fa-tabbar-h, 84px) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .toast {
+    right: 16px;
+    bottom: calc(
+      12px + var(--fa-tabbar-h, 84px) + env(safe-area-inset-bottom, 0px)
+    );
+    width: auto;
+  }
+
+  .panel {
+    display: flex;
+  }
+
+  .boardWrap {
+    height: 440px;
+  }
+
+  .work {
+    gap: 14px;
+  }
+
+  .totalStrip {
+    gap: 12px;
+    min-height: 0;
+  }
+
+  .totalGroup {
+    gap: 10px;
+  }
+
+  .totalLabel {
+    font-size: 15px;
+  }
+
+  .tiles {
+    gap: 6px;
+  }
+
+  .tile {
+    width: 40px;
+    height: 50px;
+    border-radius: 14px;
+    font-size: 32px;
+  }
+
+  .equals {
+    font-size: 18px;
+  }
+
+  .clear {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+}

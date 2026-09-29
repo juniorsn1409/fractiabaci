@@ -1,0 +1,28 @@
+.track {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--fa-radius-pill);
+  background: var(--fa-track);
+  box-shadow: var(--fa-shadow-track);
+}
+
+.fill {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--fa-radius-pill);
+  background: var(--fa-progress);
+  box-shadow: var(--fa-shadow-fill);
+}
+
+.shine {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 30%;
+  height: 5px;
+  border-radius: var(--fa-radius-pill);
+  background: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}

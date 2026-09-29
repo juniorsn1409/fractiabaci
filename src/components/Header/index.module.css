@@ -1,0 +1,9 @@
+.header  {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 1vw;
+  justify-content: space-between;
+  /*background-color: var(--branco-isabeline);*/
+
+}

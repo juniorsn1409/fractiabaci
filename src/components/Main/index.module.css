@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  color: black; 
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 32vw;
+  background-color: var(--branco-isabeline);
+  position: relative;
+  top: 25vw;
+  transform: translateY(-50%);
+}
+
+.main {
+  color: inherit; 
+}

@@ -1,0 +1,498 @@
+/*
+//  S# SEVERITY
+//
+//  AbacusBoard.module.css
+//
+//  Created by Edson Júnior Ananias de Lima on 28/09/26.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+*/
+
+/* ------------------------------------------------------------------ */
+/*  Quadro: Lixeira | Centenas | Dezenas | Unidades | Potes            */
+/* ------------------------------------------------------------------ */
+
+.board {
+  /* Tamanhos dos discos (lidos também pelo JS para o hit-test). */
+  --ab-disc: 52px;
+  --ab-gap: 12px;
+  --ab-source: 76px;
+  --ab-ghost: 60px;
+
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 100px repeat(3, minmax(0, 1fr)) 128px;
+  grid-template-rows: minmax(0, 1fr);
+  grid-template-areas: 'trash hundred ten unit sources';
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  padding: 16px;
+  border-radius: 32px;
+  background: var(--fa-surface);
+  color: var(--fa-ink);
+  box-shadow: var(--fa-shadow-clay);
+  font-family: var(--fa-font-body-stack);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dragging,
+.dragging * {
+  cursor: grabbing !important;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Lixeira                                                            */
+/* ------------------------------------------------------------------ */
+
+.trash {
+  grid-area: trash;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  border-radius: 24px;
+  background: var(--fa-hover);
+  color: var(--fa-disabled-text);
+  font-size: 13px;
+  font-weight: 800;
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+.trashHover {
+  background: var(--fa-unit-tint);
+  color: var(--fa-unit-label);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Colunas                                                            */
+/* ------------------------------------------------------------------ */
+
+.column {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 0;
+  padding: 18px 12px 16px;
+  border-radius: 24px;
+}
+
+/* Sombra interna no pseudo-elemento para não brigar com o pulse. */
+.column::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.column.hundred {
+  grid-area: hundred;
+  background: var(--fa-hundred-tint);
+  color: var(--fa-hundred-label);
+}
+
+.column.hundred::after {
+  box-shadow: inset 0 4px 10px rgba(160, 110, 0, 0.12);
+}
+
+.column.ten {
+  grid-area: ten;
+  background: var(--fa-ten-tint);
+  color: var(--fa-ten-label);
+}
+
+.column.ten::after {
+  box-shadow: inset 0 4px 10px rgba(20, 60, 160, 0.12);
+}
+
+.column.unit {
+  grid-area: unit;
+  background: var(--fa-unit-tint);
+  color: var(--fa-unit-label);
+}
+
+.column.unit::after {
+  box-shadow: inset 0 4px 10px rgba(160, 30, 40, 0.12);
+}
+
+/* Destaques enquanto arrasta. */
+.hoverOk {
+  outline: 4px dashed var(--fa-brand);
+  outline-offset: -8px;
+}
+
+.hoverNo {
+  outline: 4px dashed var(--fa-node-lock-text, #b8afa0);
+  outline-offset: -8px;
+  filter: saturate(0.5);
+}
+
+.heading {
+  font-family: var(--fa-font-display-stack);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/*
+ * Área de discos da coluna (entre o título e o contador). Os discos ficam
+ * soltos aqui, exatamente onde a criança solta; nada é reorganizado.
+ */
+.field {
+  position: relative;
+  flex: 1 1 auto;
+  align-self: stretch;
+  min-height: 0;
+}
+
+.count {
+  font-family: var(--fa-font-display-stack);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.disc {
+  cursor: grab;
+  touch-action: none;
+}
+
+.locked .disc,
+.locked .sourceGrab {
+  cursor: default;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Potes                                                              */
+/* ------------------------------------------------------------------ */
+
+.sources {
+  grid-area: sources;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 0;
+  padding: 12px 0 18px;
+  border-radius: 24px;
+  background: var(--fa-surface-sunken);
+}
+
+.sourcesTitle {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--fa-disabled-text);
+}
+
+.sourceItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.sourceItem.hundred {
+  color: var(--fa-hundred-label);
+}
+
+.sourceItem.ten {
+  color: var(--fa-ten-label);
+}
+
+.sourceItem.unit {
+  color: var(--fa-unit-label);
+}
+
+.sourcePile {
+  position: relative;
+  width: var(--ab-source);
+  height: var(--ab-source);
+}
+
+/* Disco "de baixo" do pote, sugerindo uma pilha infinita. */
+.sourceShadow {
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.sourceGrab {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.sourceLabel {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Discos soltos e fantasma                                           */
+/* ------------------------------------------------------------------ */
+
+/* Disco posicionado pelo centro (x/y em % da coluna ou do quadro). */
+.placed {
+  position: absolute;
+  z-index: 1;
+  width: var(--ab-disc);
+  height: var(--ab-disc);
+  margin-left: calc(var(--ab-disc) / -2);
+  margin-top: calc(var(--ab-disc) / -2);
+}
+
+/* Solto no quadro, por cima das colunas. */
+.loose {
+  z-index: 6;
+}
+
+/* Enquanto é arrastado, o lugar fica vazio (o fantasma segue o dedo). */
+.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.settle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Reconhecido: anel fininho na cor da casa + sombra um pouco mais forte. */
+.recognized[data-tone='hundred'] {
+  box-shadow: 0 0 0 2.5px var(--fa-surface), 0 0 0 5px var(--fa-hundred),
+    0 5px 10px rgba(43, 35, 64, 0.22), var(--fa-disc-shadow-hundred);
+}
+
+.recognized[data-tone='ten'] {
+  box-shadow: 0 0 0 2.5px var(--fa-surface), 0 0 0 5px var(--fa-ten),
+    0 5px 10px rgba(43, 35, 64, 0.22), var(--fa-disc-shadow-ten);
+}
+
+.recognized[data-tone='unit'] {
+  box-shadow: 0 0 0 2.5px var(--fa-surface), 0 0 0 5px var(--fa-unit),
+    0 5px 10px rgba(43, 35, 64, 0.22), var(--fa-disc-shadow-unit);
+}
+
+/* Na coluna errada: fica solto, um pouco apagado. */
+.wrong {
+  opacity: 0.72;
+  filter: saturate(0.7);
+}
+
+/* Anel que se espalha quando o disco é reconhecido ("encaixou!"). */
+.ring {
+  position: absolute;
+  inset: -7px;
+  border: 3px solid currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 14px currentColor;
+  pointer-events: none;
+}
+
+.ring.hundred {
+  color: var(--fa-hundred);
+}
+
+.ring.ten {
+  color: var(--fa-ten);
+}
+
+.ring.unit {
+  color: var(--fa-unit);
+}
+
+/* Brilho no centro da coluna quando 10 discos se juntam. */
+.burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: calc(var(--ab-disc) * 2);
+  height: calc(var(--ab-disc) * 2);
+  margin-left: calc(var(--ab-disc) * -1);
+  margin-top: calc(var(--ab-disc) * -1);
+  border-radius: 50%;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.burst.hundred {
+  color: var(--fa-hundred);
+}
+
+.burst.ten {
+  color: var(--fa-ten);
+}
+
+.burst.unit {
+  color: var(--fa-unit);
+}
+
+.ghost {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: var(--ab-ghost);
+  height: var(--ab-ghost);
+  margin-left: calc(var(--ab-ghost) / -2);
+  margin-top: calc(var(--ab-ghost) / -2);
+  pointer-events: none;
+  filter: drop-shadow(0 16px 14px rgba(43, 35, 64, 0.28));
+}
+
+.ghostDisc {
+  cursor: grabbing;
+}
+
+/* Pílula do reagrupamento, centrada na borda de cima do quadro. */
+.flashWrap {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  z-index: 8;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.flash {
+  padding: 8px 18px;
+  border-radius: var(--fa-radius-pill);
+  background: var(--fa-brand);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 4px 0 var(--fa-brand-shadow);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Responsivo                                                         */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1180px) {
+  .board {
+    --ab-disc: 42px;
+    --ab-gap: 8px;
+    --ab-source: 64px;
+    --ab-ghost: 52px;
+
+    grid-template-columns: 84px repeat(3, minmax(0, 1fr)) 108px;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .column {
+    padding: 14px 8px 12px;
+  }
+
+  .heading {
+    font-size: 19px;
+  }
+
+  .count {
+    font-size: 34px;
+  }
+}
+
+/* Celular: colunas lado a lado ocupando a largura; lixeira + potes embaixo. */
+@media (max-width: 767px) {
+  .board {
+    --ab-disc: 34px;
+    --ab-gap: 4px;
+    --ab-source: 48px;
+    --ab-ghost: 42px;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'hundred ten unit'
+      'trash sources sources';
+    gap: 8px;
+    min-height: 380px;
+    padding: 8px;
+    border-radius: 28px;
+  }
+
+  .column {
+    gap: 6px;
+    padding: 10px 4px 8px;
+    border-radius: 20px;
+  }
+
+  .heading {
+    font-size: 15px;
+  }
+
+  .count {
+    font-size: 24px;
+  }
+
+  .trash {
+    flex-direction: row;
+    gap: 6px;
+    min-height: 76px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+
+  .trash svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .sources {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 18px 4px 6px;
+    border-radius: 20px;
+  }
+
+  .sourcesTitle {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .sourceItem {
+    gap: 2px;
+  }
+
+  .sourceShadow {
+    left: 3px;
+    top: 4px;
+  }
+
+  .sourceLabel {
+    font-size: 11px;
+  }
+
+  .flash {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+}

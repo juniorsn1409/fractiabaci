@@ -1,0 +1,13 @@
+.board {
+  width: 98%;
+  height: 23.5vw;
+  height: 20vw;
+  min-width: 80%;
+  min-height: 80%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: grid-template-columns;
+  border-radius: 5px;
+  justify-content: center;
+  background-color: rgb(26, 47, 66);
+}

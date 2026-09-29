@@ -1,0 +1,7 @@
+.sun{
+    display: flex;
+    margin-left:-28px;
+    position: absolute;
+    font-size:1vw;
+    cursor: pointer;
+  }

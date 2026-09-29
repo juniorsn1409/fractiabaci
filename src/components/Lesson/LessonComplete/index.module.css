@@ -1,0 +1,77 @@
+.complete {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 40px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--fa-font-display-stack);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--fa-ink);
+}
+
+.stars {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.star {
+  fill: var(--fa-hundred);
+  stroke: #e0a100;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 4px 0 rgba(190, 120, 0, 0.35));
+}
+
+.star:nth-child(2) {
+  width: 80px;
+  height: 80px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.statLabel {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--fa-muted);
+}
+
+.statValue {
+  font-family: var(--fa-font-display-stack);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.xp {
+  color: var(--fa-brand-text);
+}
+
+.accuracy {
+  color: var(--fa-action);
+}
+
+.cta {
+  margin-top: auto;
+}

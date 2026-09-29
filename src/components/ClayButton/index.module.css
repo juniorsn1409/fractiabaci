@@ -1,0 +1,62 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--fa-touch-min);
+  padding: 0 28px;
+  border: 0;
+  border-radius: var(--fa-radius-md);
+  font-family: var(--fa-font-body-stack);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 0.08s ease-out;
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--fa-brand);
+  outline-offset: 3px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.primary {
+  background: var(--fa-action);
+  color: #ffffff;
+  box-shadow: var(--fa-shadow-cta);
+}
+
+.primary:active {
+  box-shadow: var(--fa-shadow-cta-pressed);
+}
+
+.secondary {
+  background: var(--fa-surface);
+  color: var(--fa-brand-text);
+  box-shadow: var(--fa-shadow-secondary);
+}
+
+.secondary:active {
+  box-shadow: var(--fa-shadow-secondary-pressed);
+}
+
+.disabled {
+  background: var(--fa-disabled-bg);
+  color: var(--fa-disabled-text);
+  box-shadow: 0 6px 0 var(--fa-disabled-shadow);
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

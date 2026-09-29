@@ -1,0 +1,212 @@
+/*
+//  S# SEVERITY
+//
+//  not-found.module.css
+//
+//  Created by Edson Júnior Ananias de Lima on 28/09/26.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+*/
+
+.page {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 24px 16px;
+  color: var(--fa-ink);
+  font-family: var(--fa-font-body-stack);
+}
+
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+  padding: 40px 32px 36px;
+  border-radius: 32px;
+  background: var(--fa-surface);
+  text-align: center;
+  box-shadow: var(--fa-shadow-clay);
+}
+
+.number {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 4px;
+}
+
+.digit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.digitValue {
+  font-family: var(--fa-font-display-stack);
+  font-size: 88px;
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.hundred {
+  color: var(--fa-hundred);
+  text-shadow: 0 5px 0 #c98f00;
+}
+
+.ten {
+  color: var(--fa-ten);
+  text-shadow: 0 5px 0 var(--fa-ten-label);
+}
+
+.unit {
+  color: var(--fa-unit);
+  text-shadow: 0 5px 0 var(--fa-unit-label);
+}
+
+.disc {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  animation: wobble 3s ease-in-out infinite;
+}
+
+.digit:nth-child(2) .disc {
+  animation-delay: 0.4s;
+}
+
+.digit:nth-child(3) .disc {
+  animation-delay: 0.8s;
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.discHundred {
+  background: var(--fa-hundred);
+  box-shadow: var(--fa-disc-shadow-hundred);
+}
+
+.discTen {
+  background: var(--fa-ten);
+  box-shadow: var(--fa-disc-shadow-ten);
+}
+
+.discUnit {
+  background: var(--fa-unit);
+  box-shadow: var(--fa-disc-shadow-unit);
+}
+
+.code {
+  margin: 0;
+  color: var(--fa-brand-text);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--fa-font-display-stack);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.text {
+  max-width: 26em;
+  margin: 0;
+  color: var(--fa-muted);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.cta,
+.secondary {
+  display: inline-flex;
+  flex: 1 1 200px;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 22px;
+  border-radius: var(--fa-radius-md);
+  font-size: 17px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cta {
+  background: var(--fa-action);
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  box-shadow: var(--fa-shadow-cta);
+}
+
+.secondary {
+  background: var(--fa-surface);
+  color: var(--fa-brand-text);
+  box-shadow: var(--fa-shadow-secondary);
+}
+
+.cta:active {
+  transform: translateY(4px);
+  box-shadow: var(--fa-shadow-cta-pressed);
+}
+
+.secondary:active {
+  transform: translateY(4px);
+  box-shadow: var(--fa-shadow-secondary-pressed);
+}
+
+.cta:focus-visible,
+.secondary:focus-visible {
+  outline: 3px solid var(--fa-brand);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 20px 28px;
+  }
+
+  .digitValue {
+    font-size: 72px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disc {
+    animation: none;
+  }
+}

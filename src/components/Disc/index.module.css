@@ -1,0 +1,43 @@
+.disc {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  font-family: var(--fa-font-display-stack);
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+}
+
+.interactive {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.interactive:focus-visible {
+  outline: 3px solid var(--fa-brand);
+  outline-offset: 3px;
+}
+
+.hundred {
+  background: var(--fa-hundred);
+  color: var(--fa-hundred-text);
+  box-shadow: var(--fa-disc-shadow-hundred);
+}
+
+.ten {
+  background: var(--fa-ten);
+  color: var(--fa-ten-text);
+  box-shadow: var(--fa-disc-shadow-ten);
+}
+
+.unit {
+  background: var(--fa-unit);
+  color: var(--fa-unit-text);
+  box-shadow: var(--fa-disc-shadow-unit);
+}

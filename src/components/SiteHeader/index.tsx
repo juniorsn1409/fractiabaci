@@ -56,7 +56,11 @@ const NAV: {
 ]
 
 const Logo = () => (
-  <Link href="/" className={styles.logo} aria-label="Fracti Abacus, página inicial">
+  <Link
+    href="/"
+    className={styles.logo}
+    aria-label="Fracti Abacus, página inicial"
+  >
     <span className={styles.logoDiscs} aria-hidden="true">
       <span className={`${styles.logoDisc} ${styles.hundred}`} />
       <span className={`${styles.logoDisc} ${styles.ten}`} />

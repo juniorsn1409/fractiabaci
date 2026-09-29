@@ -1,97 +1,159 @@
-*{
-}
+/*
+//  S# SEVERITY
+//
+//  dark.css
+//  Tema (claro/escuro) + base do <body>
+//
+//  Created by Edson Júnior Ananias de Lima on 08/11/23.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+//  Como funciona: o script inline em layout.tsx grava `data-theme="light|dark"`
+//  no <html> antes da primeira pintura (preferência salva em localStorage
+//  `fa-theme`; padrão claro). O botão do SiteHeader alterna o atributo
+//  via useThemeStore. Aqui só redefinimos os tokens `--fa-*` de superfície,
+//  tinta e sombra; as cores das casas (centena/dezena/unidade) nunca mudam.
+*/
+
+/* Tokens extras do shell (claro) */
 :root {
-	--hue: 223;
-	--bg: hsl(var(--hue),10%,90%);
-	--fg: hsl(var(--hue),10%,10%);
-	--light-sh: hsla(var(--hue),10%,95%,0.5);
-	--dark-sh: hsla(var(--hue),10%,15%,0.4);
-	--primary: hsl(var(--hue),90%,50%);
-	--primary-t: hsla(var(--hue),90%,50%,0);
-	--trans-dur: 0.3s;
-	font-size: 1vw;
+  --fa-line: #f0e7d8;
+  --fa-hover: #f4ede2;
+  --fa-surface-sunken: #fbf6ee;
+  --fa-node-lock: #e8dfd0;
+  --fa-node-lock-text: #a79e8e;
+  --fa-node-lock-shadow: #cfc4b1;
+  /* Altura da barra de abas fixa no mobile (0 no desktop) */
+  --fa-tabbar-h: 0px;
+
+  --hue: 223;
+  --bg: var(--fa-ground, #fff7ec);
+  --fg: var(--fa-ink, #2b2340);
+  --light-sh: hsla(var(--hue), 10%, 95%, 0.5);
+  --dark-sh: hsla(var(--hue), 10%, 15%, 0.4);
+  --primary: hsl(var(--hue), 90%, 50%);
+  --primary-t: hsla(var(--hue), 90%, 50%, 0);
+  --trans-dur: 0.3s;
+
+  color-scheme: light;
 }
 
-body,
-input {
-	font: 1em/1.5 sans-serif;
-}
-body {
-	background-color: var(--bg);
-	color: var(--fg);
-	display: flex;
-	height: 100vh;
-	transition:
-		background-color var(--trans-dur),
-		color var(--trans-dur);
-}
-.icon {
-	display: flex;
-	align-items: center;
+@media (max-width: 767px) {
+  :root {
+    --fa-tabbar-h: 84px;
   }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --fa-ground: #1b1729;
+  --fa-surface: #282238;
+  --fa-surface-sunken: #221d31;
+  --fa-ink: #f5f1ff;
+  --fa-muted: #b9b0cc;
+  --fa-line: #332c47;
+  --fa-hover: #332c47;
+  --fa-track: #3a3350;
+  --fa-hint-bg: #362d63;
+  --fa-success-bg: #1d4630;
+  --fa-brand-text: #c2b4ff;
+  --fa-streak-bg: #46291b;
+  --fa-streak-text: #ffb27f;
+
+  --fa-secondary-shadow: #151121;
+  --fa-disabled-bg: #3a3350;
+  --fa-disabled-text: #9d94b3;
+  --fa-disabled-shadow: #221d31;
+
+  --fa-node-lock: #3a3350;
+  --fa-node-lock-text: #8a819f;
+  --fa-node-lock-shadow: #221d31;
+
+  --fa-shadow-clay: 0 12px 24px rgba(0, 0, 0, 0.35),
+    inset 0 -5px 0 rgba(0, 0, 0, 0.18), inset 0 3px 6px rgba(255, 255, 255, 0.06);
+  --fa-shadow-secondary: 0 6px 0 var(--fa-secondary-shadow),
+    0 12px 20px rgba(0, 0, 0, 0.3);
+  --fa-shadow-track: inset 0 2px 3px rgba(0, 0, 0, 0.35);
+
+  --bg: var(--fa-ground);
+  --fg: var(--fa-ink);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  background-color: var(--fa-ground);
+  color: var(--fa-ink);
+  line-height: 1.5;
+  transition: background-color var(--trans-dur), color var(--trans-dur);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Legado: SwitchMode antigo (componentes pré-redesign)               */
+/* ------------------------------------------------------------------ */
+
+.icon {
+  display: flex;
+  align-items: center;
+}
 .switch,
 .switch__input {
-	-webkit-tap-highlight-color: transparent;
-	display: flex;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
 }
 .switch {
-	display: flex;
-	gap: 0.5em;
-	align-items: center;
-	position: absolute;
-	margin-bottom: 1vw; 
-	margin-left: 92%;
-	top: 3vw;
-	
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  position: absolute;
+  margin-bottom: 1vw;
+  margin-left: 92%;
+  top: 3vw;
 }
 .switch__input {
-	background-color: hsla(var(--hue),10%,10%,0.1);
-	border-radius: 0.75em;
-	box-shadow:
-		0 0.0625em 0.125em var(--dark-sh) inset,
-		0 0.0625em 0.125em var(--light-sh),
-		0 0 0 0.125em var(--primary-t);
-	display: block;
-	outline: transparent;
-	position: relative;
-	width: 2.5em;
-	height: 1.5em;
-	transition: box-shadow var(--trans-dur);
-	-webkit-appearance: none;
-	cursor: pointer;
-	appearance: none;
+  background-color: hsla(var(--hue), 10%, 10%, 0.1);
+  border-radius: 0.75em;
+  box-shadow: 0 0.0625em 0.125em var(--dark-sh) inset,
+    0 0.0625em 0.125em var(--light-sh), 0 0 0 0.125em var(--primary-t);
+  display: block;
+  outline: transparent;
+  position: relative;
+  width: 2.5em;
+  height: 1.5em;
+  transition: box-shadow var(--trans-dur);
+  -webkit-appearance: none;
+  cursor: pointer;
+  appearance: none;
 }
 .switch__input:before {
-	background-color: var(--primary);
-	border-radius: 50%;
-	box-shadow: 0 0.0625em 0.125em hsla(var(--hue),10%,10%,0.5);
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0.25em;
-	left: 0.25em;
-	width: 1em;
-	height: 1em;
-	transition:
-		background-color var(--trans-dur),
-		box-shadow var(--trans-dur),
-		transform var(--trans-dur) cubic-bezier(0.65,0.05,0.34,1);
+  background-color: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0.0625em 0.125em hsla(var(--hue), 10%, 10%, 0.5);
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  width: 1em;
+  height: 1em;
+  transition: background-color var(--trans-dur), box-shadow var(--trans-dur),
+    transform var(--trans-dur) cubic-bezier(0.65, 0.05, 0.34, 1);
 }
-
 .switch__input:checked:before {
-	transform: translateX(1em);
+  transform: translateX(1em);
 }
 .switch__label {
-	overflow: hidden;
-	position: absolute;
-	width: 1px;
-	height: 1px;
-}
-
-body:has(.switch__input:checked) {
-	--bg: hsl(var(--hue),10%,30%);
-	--fg: hsl(var(--hue),10%,90%);
-	--light-sh: hsla(var(--hue),10%,55%,0.5);
-	--dark-sh: hsla(var(--hue),10%,15%,0.4);
-	--primary: hsl(var(--hue),90%,60%);
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
 }

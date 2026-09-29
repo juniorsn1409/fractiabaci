@@ -1,0 +1,60 @@
+/*
+//  S# SEVERITY
+//
+//  AbacusToast.module.css
+//
+//  Created by Edson Júnior Ananias de Lima on 28/09/26.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+*/
+
+.region {
+  position: fixed;
+  left: 40px;
+  bottom: 32px;
+  z-index: 30;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  pointer-events: none;
+}
+
+.toast {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 20px;
+  /* Sempre escuro (também no tema escuro), como no protótipo. */
+  background: #2b2340;
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(43, 35, 64, 0.25);
+  outline: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--fa-font-body-stack);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.message {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+@media (max-width: 767px) {
+  .region {
+    left: 16px;
+    bottom: 16px;
+  }
+
+  .toast {
+    padding: 12px 14px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+}

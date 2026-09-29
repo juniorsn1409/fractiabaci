@@ -1,0 +1,223 @@
+/*
+//  S# SEVERITY
+//
+//  Lesson.module.css
+//
+//  Created by Edson Júnior Ananias de Lima on 28/09/26.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+*/
+
+.screen {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--fa-ground);
+  color: var(--fa-ink);
+  font-family: var(--fa-font-body-stack);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.top {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 26px 40px 0;
+}
+
+.main {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 32px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 42px 40px 24px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.built {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-radius: 28px;
+  background: var(--fa-surface);
+  box-shadow: var(--fa-shadow-clay);
+}
+
+.builtLabel {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--fa-muted);
+}
+
+.total {
+  font-family: var(--fa-font-display-stack);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--fa-ink);
+}
+
+.tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 22px;
+  background: var(--fa-hint-bg);
+  color: var(--fa-brand-text);
+}
+
+.tip svg {
+  flex-shrink: 0;
+}
+
+.tip span {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--fa-ink);
+}
+
+.boardWrap {
+  min-width: 0;
+  height: clamp(460px, calc(100vh - 252px), 760px);
+}
+
+.bottom {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 116px;
+  margin-top: auto;
+  padding: 0 40px;
+  border-top: 2px solid var(--fa-line, #f0e7d8);
+}
+
+.check {
+  width: 220px;
+}
+
+.toast {
+  width: 420px;
+}
+
+.completeWrap {
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+}
+
+/* Telas médias: painel em cima, quadro embaixo. */
+@media (max-width: 1100px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .tip {
+    grid-column: 1 / -1;
+  }
+
+  .boardWrap {
+    height: 560px;
+  }
+}
+
+/* Celular: layout do protótipo 390×844 (prompt, quadro, "Você montou"). */
+@media (max-width: 767px) {
+  .top {
+    padding: 14px 16px 0;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px 16px 0;
+  }
+
+  .panel {
+    display: contents;
+  }
+
+  .panel > :first-child {
+    order: 1;
+  }
+
+  /* O quadro ocupa a sobra da tela (mín. 380px). */
+  .boardWrap {
+    order: 2;
+    height: max(380px, calc(100vh - 320px));
+    height: max(380px, calc(100dvh - 320px));
+  }
+
+  .built {
+    order: 3;
+    justify-content: flex-start;
+    gap: 8px;
+    min-height: 36px;
+    padding: 0 4px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .builtLabel {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .total {
+    font-size: 24px;
+  }
+
+  .tip {
+    display: none;
+  }
+
+  .bottom {
+    min-height: 0;
+    padding: 14px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+    border-top: 0;
+  }
+
+  .check {
+    width: 100%;
+  }
+
+  .toast {
+    right: 16px;
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    width: auto;
+  }
+}

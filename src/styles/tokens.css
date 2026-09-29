@@ -1,0 +1,88 @@
+/*
+//  S# SEVERITY
+//
+//  tokens.css
+//
+//  Created by Edson Júnior Ananias de Lima on 28/09/26.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+*/
+
+:root {
+  /* Cores das casas — regra pedagógica: o disco nunca muda de forma, só de cor */
+  --fa-hundred: #f7b928;
+  --fa-hundred-text: #4a3000;
+  --fa-hundred-tint: #fff1c9;
+  --fa-hundred-label: #7a5200;
+
+  --fa-ten: #2d6bdb;
+  --fa-ten-text: #ffffff;
+  --fa-ten-tint: #dde9ff;
+  --fa-ten-label: #1d4a9e;
+
+  --fa-unit: #d93b3f;
+  --fa-unit-text: #ffffff;
+  --fa-unit-tint: #ffe0dd;
+  --fa-unit-label: #9a1f24;
+
+  /* Sombras clay dos discos */
+  --fa-disc-shadow-hundred: inset -3px -5px 8px rgba(160, 95, 0, 0.35),
+    inset 3px 4px 6px rgba(255, 255, 255, 0.6), 0 4px 8px rgba(190, 120, 0, 0.3);
+  --fa-disc-shadow-ten: inset -3px -5px 8px rgba(10, 40, 120, 0.4),
+    inset 3px 4px 6px rgba(255, 255, 255, 0.35), 0 4px 8px rgba(30, 80, 190, 0.3);
+  --fa-disc-shadow-unit: inset -3px -5px 8px rgba(120, 10, 20, 0.4),
+    inset 3px 4px 6px rgba(255, 255, 255, 0.35), 0 4px 8px rgba(190, 40, 50, 0.3);
+
+  /* Cores de interface (nunca competem com as casas) */
+  --fa-brand: #6c4cf1;
+  --fa-brand-shadow: #4a2fc4;
+  --fa-brand-text: #5436d6;
+  --fa-action: #178a4a;
+  --fa-action-shadow: #0f6636;
+  --fa-progress: #3cc46b;
+  --fa-streak: #e8590c;
+  --fa-streak-text: #c2410c;
+  --fa-streak-bg: #fff0e6;
+  --fa-ink: #2b2340;
+  --fa-muted: #6b6380;
+  --fa-ground: #fff7ec;
+  --fa-surface: #ffffff;
+  --fa-track: #ede3d3;
+  --fa-hint-bg: #efeaff;
+  --fa-success-bg: #ddf6e6;
+
+  /* Estados de botão */
+  --fa-secondary-shadow: #d9d0f5;
+  --fa-disabled-bg: #ede3d3;
+  --fa-disabled-text: #8a8299;
+  --fa-disabled-shadow: #d9cdb8;
+
+  /* Superfície clay */
+  --fa-shadow-clay: 0 12px 24px rgba(72, 48, 110, 0.1),
+    inset 0 -5px 0 rgba(43, 35, 64, 0.06), inset 0 3px 6px rgba(255, 255, 255, 0.9);
+  --fa-shadow-cta: 0 6px 0 var(--fa-action-shadow),
+    0 14px 22px rgba(15, 102, 54, 0.22), inset 0 3px 4px rgba(255, 255, 255, 0.25);
+  --fa-shadow-cta-pressed: 0 2px 0 var(--fa-action-shadow);
+  --fa-shadow-secondary: 0 6px 0 var(--fa-secondary-shadow),
+    0 12px 20px rgba(72, 48, 110, 0.1);
+  --fa-shadow-secondary-pressed: 0 2px 0 var(--fa-secondary-shadow);
+  --fa-shadow-track: inset 0 2px 3px rgba(43, 35, 64, 0.12);
+  --fa-shadow-fill: inset 0 -5px 0 rgba(0, 0, 0, 0.1),
+    inset 0 4px 0 rgba(255, 255, 255, 0.35);
+
+  /* Raios */
+  --fa-radius-sm: 16px;
+  --fa-radius-md: 18px;
+  --fa-radius-lg: 24px;
+  --fa-radius-xl: 28px;
+  --fa-radius-pill: 999px;
+
+  /* Toque */
+  --fa-touch-min: 56px;
+  --fa-press-depth: 4px;
+
+  /* Tipografia (variáveis definidas via next/font em layout.tsx) */
+  --fa-font-display-stack: var(--fa-font-display), 'Baloo 2', system-ui,
+    sans-serif;
+  --fa-font-body-stack: var(--fa-font-body), 'Nunito', system-ui, sans-serif;
+}

@@ -1,0 +1,54 @@
+.card {
+  box-sizing: border-box;
+  color: var(--fa-ink);
+  box-shadow: var(--fa-shadow-clay);
+}
+
+.tone-surface {
+  background: var(--fa-surface);
+}
+
+.tone-hint {
+  background: var(--fa-hint-bg);
+}
+
+.tone-success {
+  background: var(--fa-success-bg);
+}
+
+.tone-streak {
+  background: var(--fa-streak-bg);
+  color: var(--fa-streak-text);
+}
+
+.padding-none {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: 12px 16px;
+}
+
+.padding-md {
+  padding: 20px;
+}
+
+.padding-lg {
+  padding: 24px 28px;
+}
+
+.radius-sm {
+  border-radius: var(--fa-radius-sm);
+}
+
+.radius-md {
+  border-radius: var(--fa-radius-md);
+}
+
+.radius-lg {
+  border-radius: var(--fa-radius-lg);
+}
+
+.radius-xl {
+  border-radius: var(--fa-radius-xl);
+}

@@ -1,0 +1,63 @@
+/*
+//  S# SEVERITY
+//
+//  LessonTopBar.module.css
+//
+//  Created by Edson Júnior Ananias de Lima on 28/09/26.
+//  Copyright © 2023 Fracti Abacus, FA. All rights reserved.
+//
+*/
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 44px;
+}
+
+.close {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  color: var(--fa-disabled-text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.close:hover {
+  background: var(--fa-hover, #f4ede2);
+  color: var(--fa-ink);
+}
+
+.close:focus-visible {
+  outline: 3px solid var(--fa-brand);
+  outline-offset: 2px;
+}
+
+.progress {
+  flex-grow: 1;
+}
+
+.label {
+  min-width: 90px;
+  font-family: var(--fa-font-display-stack);
+  font-size: 22px;
+  font-weight: 800;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--fa-muted);
+}
+
+@media (max-width: 767px) {
+  .bar {
+    gap: 10px;
+  }
+
+  .label {
+    min-width: 44px;
+    font-size: 16px;
+  }
+}

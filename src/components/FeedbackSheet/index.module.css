@@ -1,0 +1,179 @@
+.sheet {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 16px calc(24px + env(safe-area-inset-bottom, 0px));
+  border-radius: var(--fa-radius-xl) var(--fa-radius-xl) 0 0;
+  font-family: var(--fa-font-body-stack);
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.success {
+  background: var(--fa-success-bg);
+  box-shadow: 0 -10px 30px rgba(15, 102, 54, 0.15);
+}
+
+.hint {
+  background: var(--fa-hint-bg);
+  box-shadow: 0 -10px 30px rgba(72, 48, 110, 0.15);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge {
+  position: relative;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--fa-action);
+  color: #ffffff;
+  box-shadow: 0 4px 0 var(--fa-action-shadow);
+}
+
+.spark {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-family: var(--fa-font-display-stack);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.success .title,
+.success .message {
+  color: var(--fa-action-shadow);
+}
+
+.hint .title {
+  color: var(--fa-brand-text);
+}
+
+.message {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--fa-ink);
+}
+
+.success .message {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+}
+
+.hintBadge {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Faixa de largura total (web)                                       */
+/* ------------------------------------------------------------------ */
+
+@media (min-width: 768px) {
+  .band {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 116px;
+    padding: 16px 40px;
+    border-radius: 0;
+  }
+
+  .band .header {
+    gap: 18px;
+  }
+
+  .band .badge,
+  .band .check {
+    width: 64px;
+    height: 64px;
+  }
+
+  .band .check {
+    box-shadow: 0 5px 0 var(--fa-action-shadow);
+  }
+
+  .band .check svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .band .spark {
+    top: 26px;
+    left: 26px;
+  }
+
+  .band .hintBadge {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--fa-brand);
+    color: #ffffff;
+    box-shadow: 0 5px 0 var(--fa-brand-shadow);
+  }
+
+  .band .text {
+    gap: 2px;
+  }
+
+  .band .title {
+    font-size: 30px;
+  }
+
+  .band .message {
+    font-size: 17px;
+  }
+
+  .band .action {
+    flex-shrink: 0;
+    min-width: 220px;
+  }
+}
